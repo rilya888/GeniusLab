@@ -21,7 +21,14 @@ export function Navigation() {
         <div className="flex items-center justify-between h-16">
           <Link to="/" className="flex items-center gap-2">
             <img src="/logo.png" alt={siteConfig.brand.name} className="h-10 w-auto" />
-            <span className="font-light text-xl text-black">{siteConfig.brand.name}</span>
+            <span className="font-light text-xl text-black">
+              {siteConfig.brand.name}
+              {siteConfig.brand.legacyBrand && (
+                <span className="text-gray-500 font-normal text-base ml-1">
+                  (ex {siteConfig.brand.legacyBrand})
+                </span>
+              )}
+            </span>
           </Link>
 
           {/* Desktop Menu */}

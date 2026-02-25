@@ -18,10 +18,18 @@ export function Footer() {
         >
           <img src="/logo.png" alt={siteConfig.brand.name} className="h-12 w-auto" />
           <p className="text-gray-600 font-light text-center">
-            {siteConfig.brand.name} - {siteConfig.brand.tagline}
+            {siteConfig.brand.name}
+            {siteConfig.brand.legacyBrand && (
+              <span className="text-gray-500"> (ex {siteConfig.brand.legacyBrand})</span>
+            )}{" "}
+            — {siteConfig.brand.tagline}
           </p>
           <p className="text-gray-400 text-sm font-light">
-            © {new Date().getFullYear()} {siteConfig.brand.name}. {dict.footer.allRightsReserved}
+            © {new Date().getFullYear()} {siteConfig.brand.name}
+            {siteConfig.brand.legacyBrand && (
+              <span> (ex {siteConfig.brand.legacyBrand})</span>
+            )}
+            . {dict.footer.allRightsReserved}
           </p>
           <div className="flex gap-8 text-sm">
             <Link

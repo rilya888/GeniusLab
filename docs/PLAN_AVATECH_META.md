@@ -86,6 +86,9 @@ alternateName: siteConfig.brand.legacyBrand ?? undefined,
 | `web/src/config/site.json` | Добавить `"legacyBrand": "AvaTech"` в `brand` |
 | `web/src/app/components/SEOHead.tsx` | Добавить логику суффикса для title, description, keywords |
 | `web/src/app/utils/jsonLd.ts` | Добавить `alternateName` в LocalBusiness schema |
+| `web/src/app/components/Footer.tsx` | Видимое «(ex AvaTech)» в футере |
+| `web/src/app/components/Navigation.tsx` | Видимое «(ex AvaTech)» в шапке рядом с логотипом |
+| `web/index.html` | Fallback title с «(ex AvaTech)» в `<title>` |
 
 ---
 
