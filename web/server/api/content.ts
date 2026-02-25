@@ -67,8 +67,11 @@ async function saveContent(
   data: Content,
   message?: string
 ): Promise<{ ok: boolean; error?: string }> {
-  if (process.env.GITHUB_TOKEN && process.env.GITHUB_REPO) {
+  const useGitHub = !!(process.env.GITHUB_TOKEN && process.env.GITHUB_REPO);
+  console.log("[Content] saveContent", useGitHub ? "→ GitHub" : "→ local");
+  if (useGitHub) {
     const result = await saveContentToGitHub(data, message);
+    console.log("[Content] GitHub result:", result.ok ? "OK" : result.error);
     if (result.ok && process.env.NODE_ENV !== "production") {
       try {
         writeContentLocal(data);
@@ -119,6 +122,7 @@ export async function putContent(req: Request, res: Response): Promise<void> {
     return;
   }
   const status = result.error?.includes("modified") ? 409 : 500;
+  console.error("[Content] putContent failed:", result.error);
   res.status(status).json({ error: result.error || "Save failed" });
 }
 
@@ -147,6 +151,7 @@ export async function putContentServices(req: Request, res: Response): Promise<v
     return;
   }
   const status = result.error?.includes("modified") ? 409 : 500;
+  console.error("[Content] putContentServices failed:", result.error);
   res.status(status).json({ error: result.error || "Save failed" });
 }
 
@@ -177,5 +182,6 @@ export async function putContentServicePage(req: Request, res: Response): Promis
     return;
   }
   const status = result.error?.includes("modified") ? 409 : 500;
+  console.error("[Content] putContentServicePage failed:", result.error);
   res.status(status).json({ error: result.error || "Save failed" });
 }

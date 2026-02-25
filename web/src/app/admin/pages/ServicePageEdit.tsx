@@ -101,10 +101,17 @@ export function ServicePageEdit() {
         toast.success("Saved");
         refetch();
       } else {
-        const data = await res.json();
-        toast.error(data.error || "Save failed");
+        let msg = "Save failed";
+        try {
+          const data = await res.json();
+          msg = data.error || msg;
+        } catch {
+          msg = `Save failed (${res.status})`;
+        }
+        toast.error(msg);
       }
-    } catch {
+    } catch (err) {
+      console.error("Save error:", err);
       toast.error("Network error");
     } finally {
       setSaving(false);

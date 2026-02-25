@@ -49,13 +49,16 @@ export async function saveContentToGitHub(
 ): Promise<{ ok: boolean; error?: string }> {
   const config = getConfig();
   if (!config) {
+    console.error("[GitHub] Not configured: GITHUB_TOKEN or GITHUB_REPO missing");
     return { ok: false, error: "GitHub not configured" };
   }
 
   const [owner, repo] = config.repo.split("/");
   if (!owner || !repo) {
+    console.error("[GitHub] Invalid GITHUB_REPO format:", config.repo);
     return { ok: false, error: "Invalid GITHUB_REPO format" };
   }
+  console.log("[GitHub] Saving to", `${owner}/${repo}`, "branch:", config.branch, "path:", config.path);
 
   const content = Buffer.from(
     JSON.stringify(data, null, 2),
@@ -72,7 +75,7 @@ export async function saveContentToGitHub(
       config.token
     );
   } catch (err) {
-    console.error("GitHub save failed: could not get file sha");
+    console.error("[GitHub] Failed to get file sha:", err instanceof Error ? err.message : err);
     return { ok: false, error: "Failed to read current file from GitHub" };
   }
 
@@ -96,7 +99,10 @@ export async function saveContentToGitHub(
     body: JSON.stringify(body),
   });
 
-  if (res.ok) return { ok: true };
+  if (res.ok) {
+    console.log("[GitHub] Save OK");
+    return { ok: true };
+  }
 
   if (res.status === 409) {
     return {
@@ -106,11 +112,11 @@ export async function saveContentToGitHub(
   }
 
   if (res.status === 401 || res.status === 403) {
-    console.error("GitHub save failed: auth error");
+    console.error("[GitHub] Auth error:", res.status);
     return { ok: false, error: "GitHub authentication failed" };
   }
 
   const errText = await res.text();
-  console.error("GitHub save failed:", res.status, errText.slice(0, 200));
+  console.error("[GitHub] API error:", res.status, errText.slice(0, 300));
   return { ok: false, error: `GitHub API error: ${res.status}` };
 }

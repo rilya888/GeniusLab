@@ -16,6 +16,12 @@ router.get("/content", getContent);
 router.post("/admin/login", login);
 router.get("/admin/me", me);
 
+// Admin debug (auth required) - check if GitHub storage is configured
+router.get("/admin/debug", requireAuth, (_req, res) => {
+  const githubConfigured = !!(process.env.GITHUB_TOKEN && process.env.GITHUB_REPO);
+  res.json({ githubConfigured, repo: process.env.GITHUB_REPO || null });
+});
+
 // Admin content (auth required)
 router.put("/admin/content", requireAuth, putContent);
 router.put("/admin/content/services", requireAuth, putContentServices);
