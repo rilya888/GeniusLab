@@ -3,6 +3,7 @@
  */
 
 import { Link, Outlet, useNavigate } from "react-router";
+import { getPath } from "@/app/routes.config";
 import { useAdminLang } from "./AdminLangContext";
 
 export function AdminLayout() {
@@ -50,7 +51,13 @@ export function AdminLayout() {
             Servizi
           </Link>
         </nav>
-        <div className="p-4 border-t border-gray-700">
+        <div className="p-4 border-t border-gray-700 space-y-1">
+          <Link
+            to={getPath(adminLang?.adminLang ?? "it", "home")}
+            className="block w-full px-4 py-2 text-left rounded hover:bg-gray-800 text-gray-300"
+          >
+            Back to site
+          </Link>
           <button
             onClick={handleLogout}
             className="w-full px-4 py-2 text-left rounded hover:bg-gray-800 text-gray-300"
