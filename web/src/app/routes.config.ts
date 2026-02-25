@@ -162,6 +162,19 @@ export function getLocalizedPath(currentPath: string, newLocale: Locale): string
   }
 }
 
+/**
+ * Returns true if both paths represent the same logical page in different locales.
+ * Used to preserve scroll position on language switch.
+ * Excludes admin paths — admin has no locale-equivalent, fallback would incorrectly match.
+ */
+export function isSamePageDifferentLocale(pathA: string, pathB: string): boolean {
+  if (pathA === pathB) return false;
+  const pA = pathA.replace(/\/+$/, "") || "/";
+  const pB = pathB.replace(/\/+$/, "") || "/";
+  if (pA.startsWith("/admin") || pB.startsWith("/admin")) return false;
+  return getLocalizedPath(pA, "en") === pB || getLocalizedPath(pA, "it") === pB;
+}
+
 /** Paths to include in sitemap (public, indexable pages). */
 export const SITEMAP_PATHS: string[] = [
   ROUTES.home,
