@@ -92,6 +92,7 @@ export const it = {
       privacyBody: [
         { title: 'Titolare del trattamento', text: 'Il titolare del trattamento dei dati e Genius Lab, con sede a Roma. Per esercitare i tuoi diritti puoi contattarci via telefono, email o modulo contatti sul sito.' },
         { title: 'Dati trattati', text: 'Raccogliamo i dati inseriti nel modulo di contatto (nome, telefono o email, messaggio), eventuali preferenze di consenso e dati tecnici minimi (IP, user agent) per il funzionamento del sito.' },
+        { title: 'Analisi base visite', text: 'Raccogliamo dati anonimi (hash di IP e user agent, percorso visitato, fonte di provenienza, tipo di dispositivo) senza cookie né dati personali. Scopo: comprendere l\'utilizzo del sito e migliorare il servizio. Base giuridica: legittimo interesse (art. 6.1.f GDPR).' },
         { title: 'Finalita e base giuridica', text: 'I dati sono trattati per rispondere alle richieste di contatto e per fornire i servizi richiesti. La base giuridica e il consenso (modulo) e il legittimo interesse (cookie tecnici).' },
         { title: 'Conservazione', text: 'I dati del modulo sono conservati per il tempo necessario a evadere la richiesta e per eventuali obblighi di legge. I dati di analytics, se accettati, sono conservati secondo le policy dei fornitori.' },
         { title: 'Diritti dell\'interessato', text: 'Hai diritto di accesso, rettifica, cancellazione, limitazione, portabilita e opposizione. Puoi revocare il consenso in qualsiasi momento. Puoi proporre reclamo al Garante per la protezione dei dati personali.' }

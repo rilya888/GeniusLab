@@ -32,3 +32,6 @@ npm-debug.log*
 
 # Backup
 backup/
+
+# Visitor analytics (do not commit)
+web/server/data/visits.ndjson

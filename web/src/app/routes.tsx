@@ -17,6 +17,7 @@ import { AdminLayout } from "./admin/AdminLayout";
 import { AdminLogin } from "./admin/pages/AdminLogin";
 import { ServicesList } from "./admin/pages/ServicesList";
 import { ServicePageEdit } from "./admin/pages/ServicePageEdit";
+import { AdminStats } from "./admin/pages/AdminStats";
 
 export const router = createBrowserRouter([
   {
@@ -77,6 +78,7 @@ export const router = createBrowserRouter([
                 children: [
                   { index: true, element: <Navigate to="services" replace /> },
                   { path: "services", Component: ServicesList },
+                  { path: "stats", Component: AdminStats },
                   { path: "services/:key", Component: ServicePageEdit },
                 ],
               },

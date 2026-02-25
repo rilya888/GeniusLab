@@ -50,6 +50,12 @@ export function AdminLayout() {
           >
             Servizi
           </Link>
+          <Link
+            to="/admin/stats"
+            className="block px-4 py-2 rounded hover:bg-gray-800 text-gray-200"
+          >
+            Statistiche
+          </Link>
         </nav>
         <div className="p-4 border-t border-gray-700 space-y-1">
           <Link

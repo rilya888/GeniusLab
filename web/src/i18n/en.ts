@@ -119,6 +119,7 @@ export const en = {
       privacyBody: [
         { title: "Data controller", text: "The data controller is Genius Lab, based in Rome. You can contact us by phone, email or the contact form on the website to exercise your rights." },
         { title: "Data processed", text: "We collect data entered in the contact form (name, phone or email, message), any consent preferences and minimal technical data (IP, user agent) for site operation." },
+        { title: "Basic visit analytics", text: "We collect anonymous data (hash of IP and user agent, page path, referrer, device type) without cookies or personal data. Purpose: to understand site usage and improve our service. Legal basis: legitimate interest (Art. 6.1.f GDPR)." },
         { title: "Purpose and legal basis", text: "Data is processed to respond to contact requests and provide requested services. The legal basis is consent (form) and legitimate interest (technical cookies)." },
         { title: "Retention", text: "Form data is retained for as long as needed to process the request and for any legal obligations. Analytics data, if accepted, is retained according to provider policies." },
         { title: "Your rights", text: "You have the right to access, rectify, erase, restrict, port and object. You may withdraw consent at any time. You may lodge a complaint with the supervisory authority." }
