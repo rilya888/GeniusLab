@@ -8,6 +8,8 @@ import { Link } from "react-router";
 import { SEOHead } from "./SEOHead";
 import { serviceJsonLd, breadcrumbJsonLd } from "../utils/jsonLd";
 import { siteConfig } from "@/config";
+import { useLocale } from "@/app/context/LocaleContext";
+import { getPath } from "@/app/routes.config";
 import { it } from "@/i18n/it";
 
 export type ServicePageTemplateProps = {
@@ -30,13 +32,16 @@ export function ServicePageTemplate({
   heroSubtitle,
   services,
   problems,
-  servicesSectionTitle = it.pages.services.servicesSectionTitle,
-  problemsSectionTitle = it.pages.services.problemsSectionTitle,
+  servicesSectionTitle,
+  problemsSectionTitle,
 }: ServicePageTemplateProps) {
-  const serviceName = it.pages.services.links[serviceKey];
+  const { dict, locale } = useLocale();
+  const svc = dict.pages.services;
+  const serviceName = svc.links[serviceKey];
   const desc =
-    it.pages.services.metaDescriptions[serviceKey] ??
-    it.pages.services.description;
+    svc.metaDescriptions[serviceKey] ?? svc.description;
+  const servicesTitle = servicesSectionTitle ?? svc.servicesSectionTitle;
+  const problemsTitle = problemsSectionTitle ?? svc.problemsSectionTitle;
   const phoneHref = `tel:${siteConfig.contacts.phonePrimary.replace(/\s/g, "")}`;
   const whatsappHref = `https://wa.me/${siteConfig.contacts.whatsapp.replace(/\s/g, "").replace("+", "")}`;
 
@@ -46,12 +51,13 @@ export function ServicePageTemplate({
         title={`${serviceName} | Genius Lab`}
         description={desc}
         canonical={path}
-        keywords={it.pages.services.keywords}
+        keywords={svc.keywords}
+        locale={locale}
         jsonLd={[
-          serviceJsonLd(serviceName, desc, path),
+          serviceJsonLd(serviceName, desc, path, locale),
           breadcrumbJsonLd([
-            { name: it.pages.home.title.split(" | ")[0], path: "/" },
-            { name: it.pages.services.heading, path: "/servizi" },
+            { name: dict.pages.home.title.split(" | ")[0], path: getPath(locale, "home") },
+            { name: svc.heading, path: getPath(locale, "servizi") },
             { name: serviceName, path },
           ]),
         ]}
@@ -95,7 +101,7 @@ export function ServicePageTemplate({
               whileTap={{ scale: 0.95 }}
             >
               <Phone className="w-5 h-5" />
-              {it.nav.call}
+              {dict.nav.call}
             </motion.a>
             <motion.a
               href={whatsappHref}
@@ -120,7 +126,7 @@ export function ServicePageTemplate({
             viewport={{ once: true }}
             className="text-4xl md:text-5xl font-light tracking-tight mb-6 text-center text-black"
           >
-            {servicesSectionTitle}
+            {servicesTitle}
           </motion.h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
             {services.map((service, index) => (
@@ -148,7 +154,7 @@ export function ServicePageTemplate({
             viewport={{ once: true }}
             className="text-4xl md:text-5xl font-light tracking-tight mb-6 text-center"
           >
-            {problemsSectionTitle}
+            {problemsTitle}
           </motion.h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {problems.map((problem, index) => (
@@ -175,7 +181,7 @@ export function ServicePageTemplate({
             viewport={{ once: true }}
             className="text-4xl md:text-5xl font-light tracking-tight mb-6"
           >
-            {it.pages.services.ctaHelp}
+            {svc.ctaHelp}
           </motion.h2>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -184,10 +190,10 @@ export function ServicePageTemplate({
             className="flex gap-4 justify-center flex-wrap"
           >
             <Link
-              to="/contatti"
+              to={getPath(locale, "contatti")}
               className="bg-white text-black px-10 py-4 rounded-full hover:bg-gray-200 transition-colors text-lg font-light"
             >
-              {it.pages.services.ctaContact}
+              {svc.ctaContact}
             </Link>
           </motion.div>
         </div>

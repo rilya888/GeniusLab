@@ -1,4 +1,7 @@
 import { createBrowserRouter, Navigate, Outlet } from "react-router";
+import { AdminLangProvider } from "./admin/AdminLangContext";
+import { LocaleProvider } from "./context/LocaleContext";
+import { ContentProvider } from "./context/ContentContext";
 import { Root } from "./Root";
 import { Home } from "./pages/Home";
 import { Servizi } from "./pages/Servizi";
@@ -18,7 +21,15 @@ import { ServicePageEdit } from "./admin/pages/ServicePageEdit";
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <Outlet />,
+    element: (
+      <AdminLangProvider>
+        <LocaleProvider>
+          <ContentProvider>
+            <Outlet />
+          </ContentProvider>
+        </LocaleProvider>
+      </AdminLangProvider>
+    ),
     children: [
       {
         path: "",
@@ -32,6 +43,23 @@ export const router = createBrowserRouter([
           { path: "recensioni", Component: Recensioni },
           { path: "privacy-policy", Component: PrivacyPolicy },
           { path: "cookie-policy", Component: CookiePolicy },
+          { path: "404", Component: NotFound },
+          { path: "*", Component: NotFound },
+        ],
+      },
+      {
+        path: "en",
+        Component: Root,
+        children: [
+          { index: true, Component: Home },
+          { path: "services", Component: Servizi },
+          { path: "services/:slug", Component: GenericServicePage },
+          { path: "contacts", Component: Contatti },
+          { path: "about", Component: ChiSiamo },
+          { path: "reviews", Component: Recensioni },
+          { path: "privacy-policy", Component: PrivacyPolicy },
+          { path: "cookie-policy", Component: CookiePolicy },
+          { path: "404", Component: NotFound },
           { path: "*", Component: NotFound },
         ],
       },

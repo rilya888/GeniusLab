@@ -3,9 +3,10 @@ import { motion } from "motion/react";
 import { Link } from "react-router";
 import { SEOHead } from "../components/SEOHead";
 import { serviceJsonLd, breadcrumbJsonLd } from "../utils/jsonLd";
-import { it } from "@/i18n/it";
+import { useLocale } from "@/app/context/LocaleContext";
 
 export function DataRecovery() {
+  const { dict } = useLocale();
   const services = [
     "Recupero dati da iPhone",
     "Recupero dati da MacBook",
@@ -46,22 +47,22 @@ export function DataRecovery() {
     }
   ];
 
-  const serviceName = it.pages.services.links.dataRecovery;
+  const serviceName = dict.pages.services.links.dataRecovery;
   const desc =
-    it.pages.services.metaDescriptions.dataRecovery ??
-    it.pages.services.description;
+    dict.pages.services.metaDescriptions.dataRecovery ??
+    dict.pages.services.description;
   return (
     <div className="min-h-screen bg-white pt-16">
       <SEOHead
         title={`${serviceName} | Genius Lab`}
         description={desc}
         canonical="/servizi/recupero-dati"
-        keywords={it.pages.services.keywords}
+        keywords={dict.pages.services.keywords}
         jsonLd={[
           serviceJsonLd(serviceName, desc, "/servizi/recupero-dati"),
           breadcrumbJsonLd([
             { name: "Genius Lab", path: "/" },
-            { name: it.pages.services.heading, path: "/servizi" },
+            { name: dict.pages.services.heading, path: "/servizi" },
             { name: serviceName, path: "/servizi/recupero-dati" },
           ]),
         ]}

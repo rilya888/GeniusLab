@@ -5,7 +5,8 @@
 import { useState } from "react";
 import { motion } from "motion/react";
 import { siteConfig } from "@/config";
-import { it } from "@/i18n/it";
+import { useLocale } from "@/app/context/LocaleContext";
+import { getPath } from "@/app/routes.config";
 import { Link } from "react-router";
 
 const formEndpoint =
@@ -20,18 +21,19 @@ export function ContactForm() {
   const [status, setStatus] = useState("");
   const [consent, setConsent] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const { dict, locale } = useLocale();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!consent) {
-      setStatus(it.forms.consentRequired);
+      setStatus(dict.forms.consentRequired);
       return;
     }
     if (!hasValidEndpoint) {
-      setStatus(it.forms.missingEndpoint);
+      setStatus(dict.forms.missingEndpoint);
       return;
     }
-    setStatus(it.forms.sending);
+    setStatus(dict.forms.sending);
     window.GeniusAnalytics?.track("form_submit_attempt", { formId: "contact-form" });
 
     try {
@@ -47,10 +49,10 @@ export function ContactForm() {
         setSubmitted(true);
         setStatus("");
       } else {
-        setStatus(data.error || "Errore durante l'invio. Riprova.");
+        setStatus(data.error || dict.forms.error);
       }
     } catch {
-      setStatus("Errore di connessione. Riprova o contattaci via telefono.");
+      setStatus(dict.forms.connectionError);
     }
   };
 
@@ -58,7 +60,7 @@ export function ContactForm() {
     return (
       <div className="text-center py-12">
         <p className="text-xl font-light text-gray-300">
-          Grazie! Il tuo messaggio è stato inviato. Ti contatteremo al più presto.
+          {dict.forms.success}
         </p>
       </div>
     );
@@ -71,14 +73,14 @@ export function ContactForm() {
       data-form
       onSubmit={handleSubmit}
     >
-      <h2 className="text-2xl font-light mb-6">{it.pages.contacts.formHeading}</h2>
+      <h2 className="text-2xl font-light mb-6">{dict.pages.contacts.formHeading}</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <input
           type="text"
           name="name"
           required
           autoComplete="name"
-          placeholder={it.pages.contacts.formName}
+          placeholder={dict.pages.contacts.formName}
           className="bg-transparent border border-gray-700 px-6 py-4 rounded-lg focus:outline-none focus:border-white transition-colors font-light"
         />
         <input
@@ -86,7 +88,7 @@ export function ContactForm() {
           name="phone_or_email"
           required
           autoComplete="email"
-          placeholder={it.pages.contacts.formContact}
+          placeholder={dict.pages.contacts.formContact}
           className="bg-transparent border border-gray-700 px-6 py-4 rounded-lg focus:outline-none focus:border-white transition-colors font-light"
         />
       </div>
@@ -94,18 +96,18 @@ export function ContactForm() {
         name="device"
         className="w-full bg-black border border-gray-700 px-6 py-4 rounded-lg focus:outline-none focus:border-white transition-colors font-light"
       >
-        <option value="">Seleziona Dispositivo</option>
+        <option value="">{dict.forms.selectDevice}</option>
         <option value="iphone">iPhone</option>
         <option value="macbook">MacBook</option>
         <option value="ipad">iPad</option>
         <option value="watch">Apple Watch</option>
-        <option value="other">Altro</option>
+        <option value="other">{dict.forms.other}</option>
       </select>
       <textarea
         name="message"
         required
         rows={6}
-        placeholder={it.pages.contacts.formMessage}
+        placeholder={dict.pages.contacts.formMessage}
         className="w-full bg-transparent border border-gray-700 px-6 py-4 rounded-lg focus:outline-none focus:border-white transition-colors font-light resize-none"
       />
       <label className="flex items-start gap-3 cursor-pointer">
@@ -118,9 +120,9 @@ export function ContactForm() {
           className="mt-1"
         />
         <span className="font-light text-gray-300">
-          {it.pages.contacts.formConsent}{" "}
-          <Link to="/privacy-policy" className="underline hover:text-white">
-            {it.footer.privacy}
+          {dict.pages.contacts.formConsent}{" "}
+          <Link to={getPath(locale, "privacyPolicy")} className="underline hover:text-white">
+            {dict.footer.privacy}
           </Link>
         </span>
       </label>
@@ -132,7 +134,7 @@ export function ContactForm() {
         data-track="form_submit_click"
         data-track-label="contact_form_submit"
       >
-        {it.pages.contacts.formSubmit}
+        {dict.pages.contacts.formSubmit}
       </motion.button>
       {status && (
         <p className="text-gray-400 font-light text-sm" data-form-status>

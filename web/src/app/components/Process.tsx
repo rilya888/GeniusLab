@@ -1,6 +1,6 @@
 import { Search, Wrench, CheckCircle } from "lucide-react";
 import { motion } from "motion/react";
-import { it } from "@/i18n/it";
+import { useLocale } from "@/app/context/LocaleContext";
 
 const stepKeys = [
   { icon: Search, number: "01", key: "diagnostica" as const },
@@ -9,7 +9,8 @@ const stepKeys = [
 ];
 
 export function Process() {
-  const { heading, subheading, steps } = it.pages.process;
+  const { dict } = useLocale();
+  const { heading, subheading, steps } = dict.pages.process;
   return (
     <section className="min-h-screen bg-white px-6 py-24">
       <div className="max-w-7xl mx-auto">

@@ -3,22 +3,17 @@ import { Link } from "react-router";
 import { motion } from "motion/react";
 import { useState } from "react";
 import { siteConfig } from "@/config";
-import { it } from "@/i18n/it";
+import { useLocale } from "@/app/context/LocaleContext";
+import { useContent } from "@/app/context/ContentContext";
+import { LanguageSwitcher } from "./LanguageSwitcher";
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
-
-  const services = [
-    { name: it.pages.services.links.macbook, path: "/servizi/macbook" },
-    { name: it.pages.services.links.iphone, path: "/servizi/iphone" },
-    { name: it.pages.services.links.ipad, path: "/servizi/ipad" },
-    { name: it.pages.services.links.watch, path: "/servizi/watch" },
-    { name: it.pages.services.links.dataRecovery, path: "/servizi/recupero-dati" },
-    { name: it.pages.services.links.imac, path: "/servizi/riparazione-imac" },
-    { name: it.pages.services.links.display, path: "/servizi/display-macbook" },
-    { name: it.pages.services.links.battery, path: "/servizi/batteria-macbook" },
-    { name: it.pages.services.links.keyboard, path: "/servizi/tastiera-macbook" },
-  ];
+  const { dict, locale } = useLocale();
+  const content = useContent();
+  const services = content.services.items
+    .slice(0, 9)
+    .map((item) => ({ name: item.name, path: item.path }));
 
   return (
     <nav className="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm border-b border-gray-200 z-50">
@@ -33,15 +28,15 @@ export function Navigation() {
           <div className="hidden md:flex items-center gap-8">
             <div className="relative group">
               <button className="text-gray-600 hover:text-black font-light transition-colors">
-                {it.nav.services}
+                {dict.nav.services}
               </button>
               <div className="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
                 <div className="bg-white shadow-lg rounded-lg py-4 px-6 min-w-[200px]">
                   <Link
-                    to="/servizi"
+                    to={locale === "it" ? "/servizi" : "/en/services"}
                     className="block py-2 text-gray-600 hover:text-black font-light transition-colors whitespace-nowrap border-b border-gray-100 mb-2"
                   >
-                    Tutti i servizi
+                    {dict.pages.services.allServices}
                   </Link>
                   {services.map((service) => (
                     <Link
@@ -55,15 +50,16 @@ export function Navigation() {
                 </div>
               </div>
             </div>
-            <Link to="/contatti" className="text-gray-600 hover:text-black font-light transition-colors">
-              {it.nav.contacts}
+            <Link to={locale === "it" ? "/contatti" : "/en/contacts"} className="text-gray-600 hover:text-black font-light transition-colors">
+              {dict.nav.contacts}
             </Link>
-            <Link to="/chi-siamo" className="text-gray-600 hover:text-black font-light transition-colors">
-              {it.nav.about}
+            <Link to={locale === "it" ? "/chi-siamo" : "/en/about"} className="text-gray-600 hover:text-black font-light transition-colors">
+              {dict.nav.about}
             </Link>
-            <Link to="/recensioni" className="text-gray-600 hover:text-black font-light transition-colors">
-              {it.nav.reviews}
+            <Link to={locale === "it" ? "/recensioni" : "/en/reviews"} className="text-gray-600 hover:text-black font-light transition-colors">
+              {dict.nav.reviews}
             </Link>
+            <LanguageSwitcher />
           </div>
 
           {/* Mobile Menu Button */}
@@ -84,13 +80,13 @@ export function Navigation() {
           >
             <div className="space-y-2">
               <Link
-                to="/servizi"
+                to={locale === "it" ? "/servizi" : "/en/services"}
                 className="block py-2 px-4 text-gray-600 hover:text-black font-light transition-colors"
                 onClick={() => setIsOpen(false)}
               >
-                Tutti i servizi
+                {dict.pages.services.allServices}
               </Link>
-              <p className="text-gray-400 font-light text-sm px-4 mb-2">{it.nav.services}</p>
+              <p className="text-gray-400 font-light text-sm px-4 mb-2">{dict.nav.services}</p>
               {services.map((service) => (
                 <Link
                   key={service.path}
@@ -102,26 +98,29 @@ export function Navigation() {
                 </Link>
               ))}
               <Link
-                to="/contatti"
+                to={locale === "it" ? "/contatti" : "/en/contacts"}
                 className="block py-2 px-4 text-gray-600 hover:text-black font-light transition-colors"
                 onClick={() => setIsOpen(false)}
               >
-                {it.nav.contacts}
+                {dict.nav.contacts}
               </Link>
               <Link
-                to="/chi-siamo"
+                to={locale === "it" ? "/chi-siamo" : "/en/about"}
                 className="block py-2 px-4 text-gray-600 hover:text-black font-light transition-colors"
                 onClick={() => setIsOpen(false)}
               >
-                {it.nav.about}
+                {dict.nav.about}
               </Link>
               <Link
-                to="/recensioni"
+                to={locale === "it" ? "/recensioni" : "/en/reviews"}
                 className="block py-2 px-4 text-gray-600 hover:text-black font-light transition-colors"
                 onClick={() => setIsOpen(false)}
               >
-                {it.nav.reviews}
+                {dict.nav.reviews}
               </Link>
+              <div className="px-4 pt-2">
+                <LanguageSwitcher />
+              </div>
             </div>
           </motion.div>
         )}

@@ -1,23 +1,24 @@
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
 import { motion } from "motion/react";
 import { siteConfig } from "@/config";
-import { it } from "@/i18n/it";
+import { useLocale } from "@/app/context/LocaleContext";
 import { MapEmbed } from "./MapEmbed";
 import { ContactForm } from "./ContactForm";
 
 export function Contact() {
+  const { dict } = useLocale();
   const [loc] = siteConfig.locations;
   const address = `${loc.street}, ${loc.postalCode} ${loc.city}`;
 
   const contactInfo = [
     {
       icon: MapPin,
-      title: "Indirizzo",
+      title: dict.pages.contacts.address,
       details: [address],
     },
     {
       icon: Phone,
-      title: "Telefono",
+      title: dict.pages.contacts.phone,
       details: [
         siteConfig.contacts.phonePrimary,
         siteConfig.contacts.phoneSecondary,
@@ -25,12 +26,12 @@ export function Contact() {
     },
     {
       icon: Mail,
-      title: "Email",
+      title: dict.pages.contacts.email,
       details: [siteConfig.contacts.email],
     },
     {
       icon: Clock,
-      title: "Orari",
+      title: dict.pages.contacts.hours,
       details: [siteConfig.hours],
     },
   ];
@@ -45,7 +46,7 @@ export function Contact() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          {it.pages.contacts.heading}
+          {dict.pages.contacts.heading}
         </motion.h2>
         <motion.p
           className="text-xl font-light text-gray-400 text-center mb-20 max-w-2xl mx-auto"
@@ -54,7 +55,7 @@ export function Contact() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          Vieni a trovarci o contattaci per qualsiasi domanda
+          {dict.pages.contacts.subtext}
         </motion.p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">

@@ -1,5 +1,6 @@
 /**
  * Content context: fetches editable content from API, fallback to i18n.
+ * Uses locale from LocaleContext for API and fallback.
  */
 
 import {
@@ -10,6 +11,11 @@ import {
   type ReactNode,
 } from "react";
 import { it } from "@/i18n/it";
+import { en } from "@/i18n/en";
+import type { Locale } from "@/i18n/types";
+import { getPath, ROUTES } from "@/app/routes.config";
+import { useLocale } from "./LocaleContext";
+import { useAdminLang } from "../admin/AdminLangContext";
 
 export type ServiceItem = {
   key: string;
@@ -47,31 +53,32 @@ type ContentState = {
 
 const ContentContext = createContext<ContentState | null>(null);
 
-function getFallbackContent(): Content {
-  const links = it.pages.services.links;
-  const descriptions = it.pages.services.descriptions;
-  const metaDescriptions = it.pages.services.metaDescriptions;
+const keyToRouteKey: Record<string, keyof typeof ROUTES> = {
+  macbook: "serviziMacbook",
+  iphone: "serviziIphone",
+  ipad: "serviziIpad",
+  watch: "serviziWatch",
+  imac: "serviziRiparazioneImac",
+  display: "serviziDisplayMacbook",
+  dataRecovery: "serviziRecuperoDati",
+  battery: "serviziBatteriaMacbook",
+  ssd: "serviziMacbookSsd",
+  flexgate: "serviziFlexgateDisplay",
+  keyboard: "serviziTastieraMacbook",
+  software: "serviziSoftwareAssistenza",
+};
 
-  const keyToPath: Record<string, string> = {
-    macbook: "/servizi/macbook",
-    iphone: "/servizi/iphone",
-    ipad: "/servizi/ipad",
-    watch: "/servizi/watch",
-    imac: "/servizi/riparazione-imac",
-    display: "/servizi/display-macbook",
-    dataRecovery: "/servizi/recupero-dati",
-    battery: "/servizi/batteria-macbook",
-    ssd: "/servizi/macbook-ssd",
-    flexgate: "/servizi/flexgate-display-macbook",
-    keyboard: "/servizi/tastiera-macbook",
-    software: "/servizi/software-assistenza",
-  };
+function getFallbackContent(locale: Locale): Content {
+  const dict = locale === "it" ? it : en;
+  const links = dict.pages.services.links;
+  const descriptions = dict.pages.services.descriptions;
+  const metaDescriptions = dict.pages.services.metaDescriptions;
 
   const items: ServiceItem[] = Object.entries(links).map(([key], i) => ({
     key,
     name: links[key as keyof typeof links],
     description: descriptions[key as keyof typeof descriptions] ?? "",
-    path: keyToPath[key] ?? `/servizi/${key}`,
+    path: keyToRouteKey[key] ? getPath(locale, keyToRouteKey[key]) : (locale === "it" ? `/servizi/${key}` : `/en/services/${key}`),
     order: i,
   }));
 
@@ -79,21 +86,21 @@ function getFallbackContent(): Content {
   for (const key of Object.keys(links)) {
     servicePages[key] = {
       heroTitle: links[key as keyof typeof links],
-      heroSubtitle: it.pages.services.description,
-      servicesSectionTitle: it.pages.services.servicesSectionTitle,
-      problemsSectionTitle: it.pages.services.problemsSectionTitle,
+      heroSubtitle: dict.pages.services.subheading,
+      servicesSectionTitle: dict.pages.services.servicesSectionTitle,
+      problemsSectionTitle: dict.pages.services.problemsSectionTitle,
       services: [],
       problems: [],
       metaDescription:
         metaDescriptions[key as keyof typeof metaDescriptions] ??
-        it.pages.services.description,
+        dict.pages.services.description,
     };
   }
 
   return {
     services: {
-      heading: it.pages.services.heading,
-      subheading: it.pages.services.subheading,
+      heading: dict.pages.services.heading,
+      subheading: dict.pages.services.subheading,
       items,
     },
     servicePages,
@@ -101,6 +108,9 @@ function getFallbackContent(): Content {
 }
 
 export function ContentProvider({ children }: { children: ReactNode }) {
+  const { locale } = useLocale();
+  const adminLang = useAdminLang();
+  const effectiveLang = adminLang?.isAdmin ? adminLang.adminLang : locale;
   const [content, setContent] = useState<Content | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -109,15 +119,15 @@ export function ContentProvider({ children }: { children: ReactNode }) {
     setLoading(true);
     setError(null);
     try {
-      const res = await fetch("/api/content");
+      const res = await fetch(`/api/content?lang=${effectiveLang}`);
       if (res.ok) {
         const data = (await res.json()) as Content;
         setContent(data);
       } else {
-        setContent(getFallbackContent());
+        setContent(getFallbackContent(effectiveLang));
       }
     } catch {
-      setContent(getFallbackContent());
+      setContent(getFallbackContent(effectiveLang));
       setError("Failed to load content");
     } finally {
       setLoading(false);
@@ -126,7 +136,7 @@ export function ContentProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     fetchContent();
-  }, []);
+  }, [effectiveLang]);
 
   const value: ContentState = {
     content,
@@ -142,7 +152,8 @@ export function ContentProvider({ children }: { children: ReactNode }) {
 
 export function useContent(): Content {
   const ctx = useContext(ContentContext);
-  const fallback = getFallbackContent();
+  const { locale } = useLocale();
+  const fallback = getFallbackContent(locale);
   if (!ctx) return fallback;
   if (ctx.loading || !ctx.content) return fallback;
   return ctx.content;
@@ -150,7 +161,10 @@ export function useContent(): Content {
 
 export function useContentState(): ContentState {
   const ctx = useContext(ContentContext);
-  const fallback = getFallbackContent();
+  const { locale } = useLocale();
+  const adminLang = useAdminLang();
+  const effectiveLang = adminLang?.isAdmin ? adminLang.adminLang : locale;
+  const fallback = getFallbackContent(effectiveLang);
   return (
     ctx ?? {
       content: fallback,

@@ -4,18 +4,21 @@ import { Process } from "../components/Process";
 import { Contact } from "../components/Contact";
 import { SEOHead } from "../components/SEOHead";
 import { localBusinessJsonLd } from "../utils/jsonLd";
-import { it } from "@/i18n/it";
+import { useLocale } from "../context/LocaleContext";
+import { getPath } from "../routes.config";
 
 export function Home() {
-  const { title, description } = it.pages.home;
+  const { dict, locale } = useLocale();
+  const { title, description } = dict.pages.home;
   return (
     <>
       <SEOHead
         title={title}
         description={description}
-        canonical="/"
-        jsonLd={localBusinessJsonLd()}
-        keywords={it.pages.home.keywords}
+        canonical={getPath(locale, "home")}
+        jsonLd={localBusinessJsonLd(locale)}
+        keywords={dict.pages.home.keywords}
+        locale={locale}
       />
       <Hero />
       <Services />

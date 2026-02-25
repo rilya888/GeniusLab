@@ -4,9 +4,10 @@ import { Link } from "react-router";
 import { SEOHead } from "../components/SEOHead";
 import { serviceJsonLd, breadcrumbJsonLd } from "../utils/jsonLd";
 import { siteConfig } from "@/config";
-import { it } from "@/i18n/it";
+import { useLocale } from "@/app/context/LocaleContext";
 
 export function MacBookService() {
+  const { dict } = useLocale();
   const services = [
     "Sostituzione schermo MacBook",
     "Riparazione tastiera MacBook",
@@ -31,22 +32,22 @@ export function MacBookService() {
     "Danni causati da liquidi"
   ];
 
-  const serviceName = it.pages.services.links.macbook;
+  const serviceName = dict.pages.services.links.macbook;
   const desc =
-    it.pages.services.metaDescriptions.macbook ??
-    it.pages.services.description;
+    dict.pages.services.metaDescriptions.macbook ??
+    dict.pages.services.description;
   return (
     <div className="min-h-screen bg-white pt-16">
       <SEOHead
         title={`${serviceName} | Genius Lab`}
         description={desc}
         canonical="/servizi/macbook"
-        keywords={it.pages.services.keywords}
+        keywords={dict.pages.services.keywords}
         jsonLd={[
           serviceJsonLd(serviceName, desc, "/servizi/macbook"),
           breadcrumbJsonLd([
             { name: "Genius Lab", path: "/" },
-            { name: it.pages.services.heading, path: "/servizi" },
+            { name: dict.pages.services.heading, path: "/servizi" },
             { name: serviceName, path: "/servizi/macbook" },
           ]),
         ]}
@@ -91,7 +92,7 @@ export function MacBookService() {
               whileTap={{ scale: 0.95 }}
             >
               <Phone className="w-5 h-5" />
-              {it.nav.call}
+              {dict.nav.call}
             </motion.a>
             <motion.a
               href={`https://wa.me/${siteConfig.contacts.whatsapp.replace(/\s/g, "").replace("+", "")}`}

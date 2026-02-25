@@ -5,6 +5,7 @@ web/node_modules/
 # Build
 dist/
 web/dist/
+web/.vite/
 
 # Env
 .env

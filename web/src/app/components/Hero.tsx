@@ -1,9 +1,10 @@
 import { Phone, MessageCircle } from "lucide-react";
 import { motion } from "motion/react";
 import { siteConfig } from "@/config";
-import { it } from "@/i18n/it";
+import { useLocale } from "@/app/context/LocaleContext";
 
 export function Hero() {
+  const { dict } = useLocale();
   const { brand, contacts } = siteConfig;
   const phoneHref = `tel:${contacts.phonePrimary.replace(/\s/g, "")}`;
   const whatsappHref = `https://wa.me/${contacts.whatsapp.replace(/\s/g, "").replace("+", "")}`;
@@ -41,7 +42,7 @@ export function Hero() {
             whileTap={{ scale: 0.95 }}
           >
             <Phone className="w-5 h-5" />
-            {it.nav.call}
+            {dict.nav.call}
           </motion.a>
           <motion.a 
             href={whatsappHref}

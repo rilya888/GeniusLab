@@ -1,17 +1,20 @@
 import { motion } from "motion/react";
 import { SEOHead } from "../components/SEOHead";
-import { it } from "@/i18n/it";
+import { useLocale } from "../context/LocaleContext";
+import { getPath } from "../routes.config";
 
 export function ChiSiamo() {
+  const { dict, locale } = useLocale();
   const { title, description, heading, intro, values, timeline, timelineTitle } =
-    it.pages.about;
+    dict.pages.about;
   return (
     <>
       <SEOHead
         title={title}
         description={description}
-        canonical="/chi-siamo"
-        keywords={it.pages.about.keywords}
+        canonical={getPath(locale, "chiSiamo")}
+        keywords={dict.pages.about.keywords}
+        locale={locale}
       />
       <div className="min-h-screen bg-white pt-16 px-6 py-24">
         <div className="max-w-4xl mx-auto">

@@ -5,7 +5,7 @@
 import path from "node:path";
 import fs from "node:fs";
 import { fileURLToPath } from "node:url";
-import { SITEMAP_PATHS } from "../src/app/routes.config";
+import { SITEMAP_PATHS, getLocalizedPath } from "../src/app/routes.config";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const CONTENT_FILE =
@@ -28,16 +28,16 @@ Sitemap: ${base}/sitemap.xml
 `;
 }
 
-function getPriority(path: string): number {
-  if (path === "/") return 0.9;
-  if (["/servizi", "/contatti", "/chi-siamo", "/recensioni"].includes(path))
+function getPriority(p: string): number {
+  if (p === "/" || p === "/en") return 0.9;
+  if (["/servizi", "/contatti", "/chi-siamo", "/recensioni", "/en/services", "/en/contacts", "/en/about", "/en/reviews"].includes(p))
     return 0.8;
-  if (path.startsWith("/servizi/")) return 0.7;
+  if (p.startsWith("/servizi/") || p.startsWith("/en/services/")) return 0.7;
   return 0.5;
 }
 
-function getChangefreq(path: string): string {
-  if (["/privacy-policy", "/cookie-policy"].includes(path)) return "monthly";
+function getChangefreq(p: string): string {
+  if (["/privacy-policy", "/cookie-policy", "/en/privacy-policy", "/en/cookie-policy"].includes(p)) return "monthly";
   return "weekly";
 }
 
@@ -66,21 +66,29 @@ export function getSitemapXml(): string {
   const lastmod =
     process.env.SITEMAP_LASTMOD ?? new Date().toISOString().split("T")[0];
 
-  const paths = getPathsFromContent() ?? SITEMAP_PATHS;
+  const itPaths = getPathsFromContent() ?? SITEMAP_PATHS;
 
-  const urls = paths
+  const urls = itPaths
     .map(
-      (p) => `  <url>
-    <loc>${base}${p}</loc>
+      (p) => {
+        const loc = base + p;
+        const altEn = base + getLocalizedPath(p, "en");
+        const altIt = base + getLocalizedPath(p, "it");
+        return `  <url>
+    <loc>${loc}</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="${altIt}"/>
+    <xhtml:link rel="alternate" hreflang="en" href="${altEn}"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="${altIt}"/>
     <lastmod>${lastmod}</lastmod>
     <changefreq>${getChangefreq(p)}</changefreq>
     <priority>${getPriority(p)}</priority>
-  </url>`
+  </url>`;
+      }
     )
     .join("\n");
 
   return `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 ${urls}
 </urlset>
 `;

@@ -3,9 +3,10 @@ import { motion } from "motion/react";
 import { Link } from "react-router";
 import { SEOHead } from "../components/SEOHead";
 import { serviceJsonLd, breadcrumbJsonLd } from "../utils/jsonLd";
-import { it } from "@/i18n/it";
+import { useLocale } from "@/app/context/LocaleContext";
 
 export function WatchService() {
+  const { dict } = useLocale();
   const services = [
     "Sostituzione schermo Apple Watch",
     "Cambio batteria Apple Watch",
@@ -33,22 +34,22 @@ export function WatchService() {
     "Modelli precedenti"
   ];
 
-  const serviceName = it.pages.services.links.watch;
+  const serviceName = dict.pages.services.links.watch;
   const desc =
-    it.pages.services.metaDescriptions.watch ??
-    it.pages.services.description;
+    dict.pages.services.metaDescriptions.watch ??
+    dict.pages.services.description;
   return (
     <div className="min-h-screen bg-white pt-16">
       <SEOHead
         title={`${serviceName} | Genius Lab`}
         description={desc}
         canonical="/servizi/watch"
-        keywords={it.pages.services.keywords}
+        keywords={dict.pages.services.keywords}
         jsonLd={[
           serviceJsonLd(serviceName, desc, "/servizi/watch"),
           breadcrumbJsonLd([
             { name: "Genius Lab", path: "/" },
-            { name: it.pages.services.heading, path: "/servizi" },
+            { name: dict.pages.services.heading, path: "/servizi" },
             { name: serviceName, path: "/servizi/watch" },
           ]),
         ]}

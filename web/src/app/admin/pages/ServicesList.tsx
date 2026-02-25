@@ -5,6 +5,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router";
 import { useContentState } from "../../context/ContentContext";
+import { useAdminLang } from "../AdminLangContext";
 import { Button } from "../../components/ui/button";
 import { Input } from "../../components/ui/input";
 import { Label } from "../../components/ui/label";
@@ -21,6 +22,7 @@ function getAuthHeaders(): HeadersInit {
 
 export function ServicesList() {
   const { content, loading, refetch } = useContentState();
+  const adminLang = useAdminLang();
   const [heading, setHeading] = useState("");
   const [subheading, setSubheading] = useState("");
   const [items, setItems] = useState<{ key: string; name: string; description: string; path: string; order: number }[]>([]);
@@ -37,7 +39,8 @@ export function ServicesList() {
   const handleSave = async () => {
     setSaving(true);
     try {
-      const res = await fetch("/api/admin/content/services", {
+      const lang = adminLang?.adminLang ?? "it";
+      const res = await fetch(`/api/admin/content/services?lang=${lang}`, {
         method: "PUT",
         headers: getAuthHeaders(),
         body: JSON.stringify({

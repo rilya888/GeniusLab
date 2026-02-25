@@ -1,11 +1,13 @@
 /**
- * Admin layout: sidebar, header, logout.
+ * Admin layout: sidebar, header, logout, language selector.
  */
 
 import { Link, Outlet, useNavigate } from "react-router";
+import { useAdminLang } from "./AdminLangContext";
 
 export function AdminLayout() {
   const navigate = useNavigate();
+  const adminLang = useAdminLang();
 
   const handleLogout = () => {
     localStorage.removeItem("adminToken");
@@ -21,6 +23,26 @@ export function AdminLayout() {
           </Link>
         </div>
         <nav className="flex-1 p-4 space-y-1">
+          {adminLang && (
+            <div className="px-4 py-2 flex gap-2">
+              <button
+                onClick={() => adminLang.setAdminLang("it")}
+                className={`px-3 py-1 rounded text-sm ${
+                  adminLang.adminLang === "it" ? "bg-gray-700" : "hover:bg-gray-800"
+                }`}
+              >
+                IT
+              </button>
+              <button
+                onClick={() => adminLang.setAdminLang("en")}
+                className={`px-3 py-1 rounded text-sm ${
+                  adminLang.adminLang === "en" ? "bg-gray-700" : "hover:bg-gray-800"
+                }`}
+              >
+                EN
+              </button>
+            </div>
+          )}
           <Link
             to="/admin/services"
             className="block px-4 py-2 rounded hover:bg-gray-800 text-gray-200"

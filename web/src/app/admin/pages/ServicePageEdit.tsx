@@ -5,6 +5,7 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router";
 import { useContentState } from "../../context/ContentContext";
+import { useAdminLang } from "../AdminLangContext";
 import { Button } from "../../components/ui/button";
 import { Input } from "../../components/ui/input";
 import { Label } from "../../components/ui/label";
@@ -61,6 +62,7 @@ function StringListEditor({
 export function ServicePageEdit() {
   const { key } = useParams<{ key: string }>();
   const { content, loading, refetch } = useContentState();
+  const adminLang = useAdminLang();
   const [form, setForm] = useState({
     heroTitle: "",
     heroSubtitle: "",
@@ -92,7 +94,8 @@ export function ServicePageEdit() {
     if (!key) return;
     setSaving(true);
     try {
-      const res = await fetch(`/api/admin/content/servicePages/${key}`, {
+      const lang = adminLang?.adminLang ?? "it";
+      const res = await fetch(`/api/admin/content/servicePages/${key}?lang=${lang}`, {
         method: "PUT",
         headers: getAuthHeaders(),
         body: JSON.stringify(form),

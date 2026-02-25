@@ -3,6 +3,7 @@
  */
 
 import { siteConfig } from "@/config";
+import type { Locale } from "@/i18n/types";
 
 const SITE_URL =
   (typeof import.meta !== "undefined" &&
@@ -12,9 +13,9 @@ const SITE_URL =
 
 const base = SITE_URL.replace(/\/$/, "");
 
-export function localBusinessJsonLd() {
+export function localBusinessJsonLd(locale?: Locale) {
   const [loc] = siteConfig.locations;
-  return {
+  const schema: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     name: siteConfig.brand.name,
@@ -44,12 +45,15 @@ export function localBusinessJsonLd() {
       },
     ],
   };
+  if (locale) schema.inLanguage = locale === "en" ? "en" : "it";
+  return schema;
 }
 
 export function serviceJsonLd(
   serviceName: string,
   description: string,
-  path?: string
+  path?: string,
+  locale?: Locale
 ) {
   const schema: Record<string, unknown> = {
     "@context": "https://schema.org",
@@ -61,9 +65,8 @@ export function serviceJsonLd(
       name: siteConfig.brand.name,
     },
   };
-  if (path) {
-    schema.url = base + path;
-  }
+  if (path) schema.url = base + path;
+  if (locale) schema.inLanguage = locale === "en" ? "en" : "it";
   return schema;
 }
 

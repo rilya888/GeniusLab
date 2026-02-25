@@ -3,28 +3,33 @@
  * Replaces 12 individual service page components when content is available.
  */
 
-import { useParams, Link, Navigate } from "react-router";
+import { Link, Navigate, useLocation } from "react-router";
 import { Phone, MessageCircle, CheckCircle } from "lucide-react";
 import { motion } from "motion/react";
 import { SEOHead } from "../components/SEOHead";
 import { serviceJsonLd, breadcrumbJsonLd } from "../utils/jsonLd";
 import { siteConfig } from "@/config";
 import { useContent } from "../context/ContentContext";
+import { useLocale } from "../context/LocaleContext";
 import { getServiceIcon } from "../config/services.config";
-import { it } from "@/i18n/it";
+import { getPath, getServiceKeyFromPath } from "../routes.config";
 
 export function GenericServicePage() {
-  const { slug } = useParams<{ slug: string }>();
+  const location = useLocation();
   const content = useContent();
-  const path = slug ? `/servizi/${slug}` : "";
+  const { dict, locale } = useLocale();
+  const path = location.pathname;
 
-  const serviceItem = content.services.items.find((item) => item.path === path);
+  const serviceKey = getServiceKeyFromPath(path);
+  const serviceItem = serviceKey
+    ? content.services.items.find((item) => item.key === serviceKey)
+    : undefined;
   const pageData = serviceItem
     ? content.servicePages[serviceItem.key]
     : undefined;
 
   if (!serviceItem || !pageData) {
-    return <Navigate to="/404" replace />;
+    return <Navigate to={getPath(locale, "notFound")} replace />;
   }
 
   const Icon = getServiceIcon(serviceItem.key);
@@ -37,12 +42,13 @@ export function GenericServicePage() {
         title={`${serviceItem.name} | Genius Lab`}
         description={pageData.metaDescription}
         canonical={path}
-        keywords={it.pages.services.keywords}
+        keywords={dict.pages.services.keywords}
+        locale={locale}
         jsonLd={[
-          serviceJsonLd(serviceItem.name, pageData.metaDescription, path),
+          serviceJsonLd(serviceItem.name, pageData.metaDescription, path, locale),
           breadcrumbJsonLd([
-            { name: "Genius Lab", path: "/" },
-            { name: content.services.heading, path: "/servizi" },
+            { name: "Genius Lab", path: getPath(locale, "home") },
+            { name: content.services.heading, path: getPath(locale, "servizi") },
             { name: serviceItem.name, path },
           ]),
         ]}
@@ -86,7 +92,7 @@ export function GenericServicePage() {
               whileTap={{ scale: 0.95 }}
             >
               <Phone className="w-5 h-5" />
-              {it.nav.call}
+              {dict.nav.call}
             </motion.a>
             <motion.a
               href={whatsappHref}
@@ -166,7 +172,7 @@ export function GenericServicePage() {
             viewport={{ once: true }}
             className="text-4xl md:text-5xl font-light tracking-tight mb-6"
           >
-            {it.pages.services.ctaHelp}
+            {dict.pages.services.ctaHelp}
           </motion.h2>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -175,10 +181,10 @@ export function GenericServicePage() {
             className="flex gap-4 justify-center flex-wrap"
           >
             <Link
-              to="/contatti"
+              to={getPath(locale, "contatti")}
               className="bg-white text-black px-10 py-4 rounded-full hover:bg-gray-200 transition-colors text-lg font-light"
             >
-              {it.pages.services.ctaContact}
+              {dict.pages.services.ctaContact}
             </Link>
           </motion.div>
         </div>

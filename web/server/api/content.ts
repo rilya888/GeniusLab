@@ -13,7 +13,16 @@ import { saveContentToGitHub } from "../lib/github-content.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-const CONTENT_FILE =
+const CONTENT_DIR = path.resolve(__dirname, "../data");
+
+function getContentFilePath(lang: string): string {
+  if (lang === "en") {
+    return path.join(CONTENT_DIR, "content.en.json");
+  }
+  return path.join(CONTENT_DIR, "content.it.json");
+}
+
+const LEGACY_CONTENT_FILE =
   process.env.CONTENT_FILE ||
   path.resolve(__dirname, "../data/content.json");
 
@@ -46,35 +55,45 @@ const contentSchema = z.object({
 
 export type Content = z.infer<typeof contentSchema>;
 
-function readContent(): Content | null {
-  try {
-    const raw = fs.readFileSync(CONTENT_FILE, "utf-8");
-    return JSON.parse(raw) as Content;
-  } catch {
-    return null;
+function readContent(lang: "it" | "en" = "it"): Content | null {
+  const filePath = getContentFilePath(lang);
+  const pathsToTry = fs.existsSync(filePath)
+    ? [filePath]
+    : [filePath, LEGACY_CONTENT_FILE];
+  for (const p of pathsToTry) {
+    try {
+      if (fs.existsSync(p)) {
+        const raw = fs.readFileSync(p, "utf-8");
+        return JSON.parse(raw) as Content;
+      }
+    } catch {
+      // try next
+    }
   }
+  return null;
 }
 
-function writeContentLocal(data: Content): void {
-  const dir = path.dirname(CONTENT_FILE);
+function writeContentLocal(data: Content, lang: "it" | "en" = "it"): void {
+  const filePath = getContentFilePath(lang);
+  const dir = path.dirname(filePath);
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir, { recursive: true });
   }
-  fs.writeFileSync(CONTENT_FILE, JSON.stringify(data, null, 2), "utf-8");
+  fs.writeFileSync(filePath, JSON.stringify(data, null, 2), "utf-8");
 }
 
 async function saveContent(
   data: Content,
-  message?: string
+  message?: string,
+  lang: "it" | "en" = "it"
 ): Promise<{ ok: boolean; error?: string }> {
   const useGitHub = !!(process.env.GITHUB_TOKEN && process.env.GITHUB_REPO);
-  console.log("[Content] saveContent", useGitHub ? "→ GitHub" : "→ local");
+  console.log("[Content] saveContent", lang, useGitHub ? "→ GitHub" : "→ local");
   if (useGitHub) {
-    const result = await saveContentToGitHub(data, message);
-    console.log("[Content] GitHub result:", result.ok ? "OK" : result.error);
+    const result = await saveContentToGitHub(data, message, lang);
     if (result.ok && process.env.NODE_ENV !== "production") {
       try {
-        writeContentLocal(data);
+        writeContentLocal(data, lang);
       } catch {
         // dev only; ignore if fs is read-only
       }
@@ -82,7 +101,7 @@ async function saveContent(
     return result;
   }
   try {
-    writeContentLocal(data);
+    writeContentLocal(data, lang);
     return { ok: true };
   } catch (err) {
     console.error("Local content write failed:", err);
@@ -92,7 +111,9 @@ async function saveContent(
 
 export function getContent(req: Request, res: Response): void {
   const section = req.query.section as string | undefined;
-  const content = readContent();
+  const langParam = (req.query.lang as string) || "it";
+  const lang = langParam === "en" ? "en" : "it";
+  const content = readContent(lang);
 
   if (!content) {
     res.status(404).json({ error: "Content not found" });
@@ -107,8 +128,14 @@ export function getContent(req: Request, res: Response): void {
   res.json(content);
 }
 
+function getLangFromQuery(req: Request): "it" | "en" {
+  const langParam = (req.query.lang as string) || "it";
+  return langParam === "en" ? "en" : "it";
+}
+
 export async function putContent(req: Request, res: Response): Promise<void> {
   const body = req.body;
+  const lang = getLangFromQuery(req);
 
   const parsed = contentSchema.safeParse(body);
   if (!parsed.success) {
@@ -116,7 +143,7 @@ export async function putContent(req: Request, res: Response): Promise<void> {
     return;
   }
 
-  const result = await saveContent(parsed.data, "admin: update full content");
+  const result = await saveContent(parsed.data, "admin: update full content", lang);
   if (result.ok) {
     res.json({ ok: true });
     return;
@@ -128,7 +155,8 @@ export async function putContent(req: Request, res: Response): Promise<void> {
 
 export async function putContentServices(req: Request, res: Response): Promise<void> {
   const body = req.body;
-  const content = readContent();
+  const lang = getLangFromQuery(req);
+  const content = readContent(lang);
   if (!content) {
     res.status(404).json({ error: "Content not found" });
     return;
@@ -145,7 +173,7 @@ export async function putContentServices(req: Request, res: Response): Promise<v
   }
   content.services = parsed.data;
 
-  const result = await saveContent(content, "admin: update services");
+  const result = await saveContent(content, "admin: update services", lang);
   if (result.ok) {
     res.json({ ok: true });
     return;
@@ -158,7 +186,8 @@ export async function putContentServices(req: Request, res: Response): Promise<v
 export async function putContentServicePage(req: Request, res: Response): Promise<void> {
   const key = (req.params as { key: string }).key;
   const body = req.body;
-  const content = readContent();
+  const lang = getLangFromQuery(req);
+  const content = readContent(lang);
   if (!content) {
     res.status(404).json({ error: "Content not found" });
     return;
@@ -176,7 +205,7 @@ export async function putContentServicePage(req: Request, res: Response): Promis
   }
   content.servicePages[key] = parsed.data;
 
-  const result = await saveContent(content, `admin: update servicePage ${key}`);
+  const result = await saveContent(content, `admin: update servicePage ${key}`, lang);
   if (result.ok) {
     res.json({ ok: true });
     return;

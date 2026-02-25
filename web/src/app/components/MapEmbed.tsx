@@ -1,16 +1,17 @@
-import { it } from "@/i18n/it";
+import { useLocale } from "@/app/context/LocaleContext";
 import { siteConfig } from "@/config";
 
 const MAP_URL =
   "https://maps.google.com/maps?q=Viale%20Somalia%20246%20Roma&t=&z=15&ie=UTF8&iwloc=&output=embed";
 
 export function MapEmbed() {
+  const { dict } = useLocale();
   const [loc] = siteConfig.locations;
-  const fallbackText = `${it.pages.contacts.mapHeading}. ${loc.street}, ${loc.postalCode} ${loc.city}.`;
+  const fallbackText = `${dict.pages.contacts.mapHeading}. ${loc.street}, ${loc.postalCode} ${loc.city}.`;
 
   return (
     <section className="rounded-lg overflow-hidden" data-embed-wrapper>
-      <h2 className="text-2xl font-light mb-4">{it.pages.contacts.mapHeading}</h2>
+      <h2 className="text-2xl font-light mb-4">{dict.pages.contacts.mapHeading}</h2>
       <iframe
         title="Mappa sede"
         src={MAP_URL}
@@ -21,7 +22,7 @@ export function MapEmbed() {
         className="border-0 w-full"
       />
       <p hidden data-embed-fallback>
-        Mappa temporaneamente non disponibile. {fallbackText}
+        {dict.pages.contacts.mapUnavailable} {fallbackText}
       </p>
     </section>
   );

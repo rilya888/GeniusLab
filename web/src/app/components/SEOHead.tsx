@@ -3,6 +3,9 @@
  */
 
 import { Helmet } from "react-helmet-async";
+import { useLocation } from "react-router";
+import { getLocalizedPath } from "@/app/routes.config";
+import type { Locale } from "@/i18n/types";
 
 function getSiteUrl(): string {
   if (typeof import.meta !== "undefined") {
@@ -24,6 +27,7 @@ export type SEOHeadProps = {
   jsonLd?: object | object[];
   ogImage?: string;
   keywords?: string;
+  locale?: Locale;
 };
 
 export function SEOHead({
@@ -34,18 +38,33 @@ export function SEOHead({
   jsonLd,
   ogImage = "/logo.png",
   keywords,
+  locale,
 }: SEOHeadProps) {
+  const { pathname } = useLocation();
   const canonicalUrl = canonical
     ? canonical.startsWith("http")
       ? canonical
       : `${SITE_URL.replace(/\/$/, "")}${canonical === "/" ? "" : canonical}`
     : undefined;
 
+  const ogLocale = locale === "en" ? "en_US" : "it_IT";
+  const base = SITE_URL.replace(/\/$/, "");
+  const currentPath = pathname || canonical || "/";
+  const altIt = base + getLocalizedPath(currentPath, "it");
+  const altEn = base + getLocalizedPath(currentPath, "en");
+
   return (
     <Helmet>
       <title>{title}</title>
       <meta name="description" content={description} />
       {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+      {locale && !noindex && (
+        <>
+          <link rel="alternate" hrefLang="it" href={altIt} />
+          <link rel="alternate" hrefLang="en" href={altEn} />
+          <link rel="alternate" hrefLang="x-default" href={altIt} />
+        </>
+      )}
       {noindex && <meta name="robots" content="noindex, nofollow" />}
       {canonicalUrl && (
         <meta property="og:url" content={canonicalUrl} />
@@ -53,7 +72,10 @@ export function SEOHead({
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:type" content="website" />
-      <meta property="og:locale" content="it_IT" />
+      <meta property="og:locale" content={ogLocale} />
+      {locale && (
+        <meta property="og:locale:alternate" content={locale === "it" ? "en_US" : "it_IT"} />
+      )}
       {ogImage && (
         <meta property="og:image" content={ogImage.startsWith("http") ? ogImage : `${SITE_URL.replace(/\/$/, "")}${ogImage}`} />
       )}

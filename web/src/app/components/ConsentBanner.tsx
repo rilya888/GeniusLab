@@ -5,7 +5,7 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "motion/react";
-import { it } from "@/i18n/it";
+import { useLocale } from "@/app/context/LocaleContext";
 
 const CONSENT_KEY = "genius_consent_v1";
 
@@ -29,6 +29,7 @@ function setConsent(analytics: boolean) {
 
 export function ConsentBanner() {
   const [visible, setVisible] = useState(false);
+  const { dict } = useLocale();
 
   useEffect(() => {
     if (getConsent() === null) setVisible(true);
@@ -57,7 +58,7 @@ export function ConsentBanner() {
       transition={{ duration: 0.3 }}
     >
       <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-        <p className="font-light text-sm sm:text-base">{it.consent.text}</p>
+        <p className="font-light text-sm sm:text-base">{dict.consent.text}</p>
         <div className="flex gap-4 flex-shrink-0">
           <button
             type="button"
@@ -65,7 +66,7 @@ export function ConsentBanner() {
             data-consent-action="accept"
             onClick={handleAccept}
           >
-            {it.consent.accept}
+            {dict.consent.accept}
           </button>
           <button
             type="button"
@@ -73,7 +74,7 @@ export function ConsentBanner() {
             data-consent-action="reject"
             onClick={handleReject}
           >
-            {it.consent.reject}
+            {dict.consent.reject}
           </button>
         </div>
       </div>

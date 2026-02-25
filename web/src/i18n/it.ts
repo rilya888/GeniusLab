@@ -12,7 +12,8 @@ export const it = {
   },
   footer: {
     privacy: 'Privacy Policy',
-    cookie: 'Cookie Policy'
+    cookie: 'Cookie Policy',
+    allRightsReserved: 'Tutti i diritti riservati.'
   },
   consent: {
     text: 'Usiamo cookie tecnici e, solo con consenso, analytics per migliorare il servizio.',
@@ -36,13 +37,19 @@ export const it = {
       description: 'Contatta Genius Lab a Roma: telefoni, WhatsApp, sedi e modulo contatti.',
       keywords: 'contatti Genius Lab Roma, telefono riparazione Apple, WhatsApp assistenza MacBook',
       heading: 'Contatti',
+      subtext: 'Vieni a trovarci o contattaci per qualsiasi domanda',
+      address: 'Indirizzo',
+      phone: 'Telefono',
+      email: 'Email',
+      hours: 'Orari',
       formHeading: 'Contattaci',
       formName: 'Nome',
       formContact: 'Telefono o Email',
       formMessage: 'Messaggio',
       formConsent: 'Ho letto la',
       formSubmit: 'Invia',
-      mapHeading: 'Dove siamo'
+      mapHeading: 'Dove siamo',
+      mapUnavailable: 'Mappa temporaneamente non disponibile.'
     },
     about: {
       title: 'Genius Lab | Chi Siamo',
@@ -82,8 +89,21 @@ export const it = {
     policies: {
       privacyTitle: 'Privacy Policy | Genius Lab',
       privacyDescription: 'Informativa privacy di Genius Lab.',
+      privacyBody: [
+        { title: 'Titolare del trattamento', text: 'Il titolare del trattamento dei dati e Genius Lab, con sede a Roma. Per esercitare i tuoi diritti puoi contattarci via telefono, email o modulo contatti sul sito.' },
+        { title: 'Dati trattati', text: 'Raccogliamo i dati inseriti nel modulo di contatto (nome, telefono o email, messaggio), eventuali preferenze di consenso e dati tecnici minimi (IP, user agent) per il funzionamento del sito.' },
+        { title: 'Finalita e base giuridica', text: 'I dati sono trattati per rispondere alle richieste di contatto e per fornire i servizi richiesti. La base giuridica e il consenso (modulo) e il legittimo interesse (cookie tecnici).' },
+        { title: 'Conservazione', text: 'I dati del modulo sono conservati per il tempo necessario a evadere la richiesta e per eventuali obblighi di legge. I dati di analytics, se accettati, sono conservati secondo le policy dei fornitori.' },
+        { title: 'Diritti dell\'interessato', text: 'Hai diritto di accesso, rettifica, cancellazione, limitazione, portabilita e opposizione. Puoi revocare il consenso in qualsiasi momento. Puoi proporre reclamo al Garante per la protezione dei dati personali.' }
+      ],
       cookieTitle: 'Cookie Policy | Genius Lab',
-      cookieDescription: 'Policy cookie e gestione consenso.'
+      cookieDescription: 'Policy cookie e gestione consenso.',
+      cookieBody: [
+        { title: 'Cosa sono i cookie', text: 'I cookie sono piccoli file di testo che i siti memorizzano sul tuo dispositivo. Servono per il funzionamento del sito, per ricordare preferenze e, con il tuo consenso, per analisi di utilizzo.' },
+        { title: 'Cookie tecnici', text: 'I cookie tecnici sono necessari per il corretto funzionamento del sito (es. gestione della sessione, preferenze lingua). Non richiedono consenso esplicito.' },
+        { title: 'Cookie analytics', text: 'Utilizziamo cookie analytics solo dopo il tuo consenso esplicito (banner). Servono a capire come i visitatori usano il sito e a migliorare il servizio.' },
+        { title: 'Gestione e revoca', text: 'Puoi accettare o rifiutare i cookie analytics tramite il banner. Puoi modificare le preferenze in qualsiasi momento tramite le impostazioni del browser.' }
+      ]
     },
     notFound: {
       title: '404 | Genius Lab',
@@ -98,6 +118,7 @@ export const it = {
       keywords: 'riparazione MacBook Roma, assistenza iPhone, riparazione iMac, data recovery',
       heading: 'Servizi',
       subheading: 'Riparazione MacBook, iMac, iPhone e recupero dati.',
+      allServices: 'Tutti i servizi',
       servicesSectionTitle: 'Servizi di Riparazione',
       problemsSectionTitle: 'Problemi Comuni',
       ctaHelp: 'Hai bisogno di assistenza?',
@@ -161,6 +182,11 @@ export const it = {
   forms: {
     missingEndpoint: 'Endpoint form non configurato. Usa telefono o WhatsApp.',
     consentRequired: 'Devi accettare la privacy policy per inviare il modulo.',
-    sending: 'Invio in corso...'
+    sending: 'Invio in corso...',
+    success: 'Grazie! Il tuo messaggio è stato inviato. Ti contatteremo al più presto.',
+    error: 'Errore durante l\'invio. Riprova.',
+    connectionError: 'Errore di connessione. Riprova o contattaci via telefono.',
+    selectDevice: 'Seleziona Dispositivo',
+    other: 'Altro'
   }
 } as const;

@@ -3,9 +3,10 @@ import { motion } from "motion/react";
 import { Link } from "react-router";
 import { SEOHead } from "../components/SEOHead";
 import { serviceJsonLd, breadcrumbJsonLd } from "../utils/jsonLd";
-import { it } from "@/i18n/it";
+import { useLocale } from "@/app/context/LocaleContext";
 
 export function IPadService() {
+  const { dict } = useLocale();
   const services = [
     "Sostituzione schermo iPad",
     "Cambio batteria iPad",
@@ -27,21 +28,21 @@ export function IPadService() {
     "iPad Mini (tutti i modelli)"
   ];
 
-  const serviceName = it.pages.services.links.ipad;
+  const serviceName = dict.pages.services.links.ipad;
   const desc =
-    it.pages.services.metaDescriptions.ipad ?? it.pages.services.description;
+    dict.pages.services.metaDescriptions.ipad ?? dict.pages.services.description;
   return (
     <div className="min-h-screen bg-white pt-16">
       <SEOHead
         title={`${serviceName} | Genius Lab`}
         description={desc}
         canonical="/servizi/ipad"
-        keywords={it.pages.services.keywords}
+        keywords={dict.pages.services.keywords}
         jsonLd={[
           serviceJsonLd(serviceName, desc, "/servizi/ipad"),
           breadcrumbJsonLd([
             { name: "Genius Lab", path: "/" },
-            { name: it.pages.services.heading, path: "/servizi" },
+            { name: dict.pages.services.heading, path: "/servizi" },
             { name: serviceName, path: "/servizi/ipad" },
           ]),
         ]}

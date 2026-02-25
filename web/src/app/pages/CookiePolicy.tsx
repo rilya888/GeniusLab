@@ -1,15 +1,18 @@
 import { motion } from "motion/react";
 import { SEOHead } from "../components/SEOHead";
-import { it } from "@/i18n/it";
+import { useLocale } from "../context/LocaleContext";
+import { getPath } from "../routes.config";
 
 export function CookiePolicy() {
-  const { cookieTitle, cookieDescription } = it.pages.policies;
+  const { dict, locale } = useLocale();
+  const { cookieTitle, cookieDescription, cookieBody } = dict.pages.policies;
   return (
     <>
       <SEOHead
         title={cookieTitle}
         description={cookieDescription}
-        canonical="/cookie-policy"
+        canonical={getPath(locale, "cookiePolicy")}
+        locale={locale}
       />
       <div className="min-h-screen bg-white pt-16 px-6 py-24">
         <div className="max-w-3xl mx-auto">
@@ -19,15 +22,20 @@ export function CookiePolicy() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            {it.footer.cookie}
+            {dict.footer.cookie}
           </motion.h1>
           <motion.div
-            className="prose prose-gray font-light text-gray-600 space-y-4"
+            className="prose prose-gray font-light text-gray-600 space-y-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <p>Cookie tecnici sempre attivi. Analytics solo dopo consenso esplicito.</p>
+            {cookieBody.map((section, i) => (
+              <section key={i}>
+                <h2 className="text-xl font-light text-black mb-2">{section.title}</h2>
+                <p>{section.text}</p>
+              </section>
+            ))}
           </motion.div>
         </div>
       </div>

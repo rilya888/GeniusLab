@@ -1,0 +1,130 @@
+{
+  "services": {
+    "heading": "Services",
+    "subheading": "MacBook, iMac, iPhone repair and data recovery.",
+    "items": [
+      {"key": "macbook", "name": "MacBook Repair", "description": "Screen, battery, keyboard and component replacement.", "path": "/en/services/macbook", "order": 0},
+      {"key": "iphone", "name": "iPhone Repair", "description": "Screen, battery, camera and more.", "path": "/en/services/iphone", "order": 1},
+      {"key": "ipad", "name": "iPad Repair", "description": "Display repair, charging issues, troubleshooting.", "path": "/en/services/ipad", "order": 2},
+      {"key": "watch", "name": "Apple Watch Repair", "description": "Battery replacement, screen repair, sensors.", "path": "/en/services/watch", "order": 3},
+      {"key": "imac", "name": "iMac Repair", "description": "Display, power supply, internal components repair.", "path": "/en/services/imac-repair", "order": 4},
+      {"key": "display", "name": "MacBook Display", "description": "MacBook display replacement, glass and LCD.", "path": "/en/services/display-macbook", "order": 5},
+      {"key": "dataRecovery", "name": "Data Recovery", "description": "Data recovery from damaged devices.", "path": "/en/services/data-recovery", "order": 6},
+      {"key": "battery", "name": "MacBook Battery", "description": "MacBook battery replacement with warranty.", "path": "/en/services/battery-macbook", "order": 7},
+      {"key": "ssd", "name": "MacBook SSD", "description": "SSD upgrade and data transfer.", "path": "/en/services/macbook-ssd", "order": 8},
+      {"key": "flexgate", "name": "Flexgate Display", "description": "Display cable and Flexgate repair.", "path": "/en/services/flexgate-display-macbook", "order": 9},
+      {"key": "keyboard", "name": "MacBook Keyboard", "description": "Butterfly and Magic Keyboard replacement.", "path": "/en/services/keyboard-macbook", "order": 10},
+      {"key": "software", "name": "Software Support", "description": "Diagnostics, macOS reinstall, support.", "path": "/en/services/software-assistenza", "order": 11}
+    ]
+  },
+  "servicePages": {
+    "macbook": {
+      "heroTitle": "MacBook Repair Rome",
+      "heroSubtitle": "Authorized Apple support center specialized in MacBook Pro, MacBook Air repair in Rome",
+      "servicesSectionTitle": "MacBook Repair Services",
+      "problemsSectionTitle": "Common MacBook Issues",
+      "services": ["MacBook screen replacement", "MacBook keyboard repair", "Battery replacement", "Trackpad repair", "SSD and RAM upgrade", "Cooling system cleaning", "Charging connector repair", "Full hardware diagnostics", "macOS software troubleshooting", "Data recovery from damaged MacBook"],
+      "problems": ["MacBook won't turn on", "Cracked or damaged screen", "Battery drains quickly", "MacBook overheating", "Keyboard not working", "MacBook slow or frozen", "Charging issues", "Liquid damage"],
+      "metaDescription": "MacBook repair in Rome: screen, battery, keyboard replacement. Genius Lab, specialized Apple lab. Free quote."
+    },
+    "iphone": {
+      "heroTitle": "iPhone Repair Rome",
+      "heroSubtitle": "Authorized iPhone support center in Rome - Screen, battery and more for all models",
+      "servicesSectionTitle": "iPhone Repair Services",
+      "problemsSectionTitle": "Common iPhone Issues",
+      "services": ["iPhone screen replacement", "iPhone battery replacement", "iPhone camera repair", "Back glass replacement", "Button and key repair", "Speaker replacement", "Charging connector repair", "Face ID and Touch ID", "Water damage repair", "iPhone unlock"],
+      "problems": ["Cracked screen", "Battery drains", "Camera not working", "iPhone won't turn on", "Charging issues", "Liquid damage", "Face ID not working", "Faulty speaker"],
+      "metaDescription": "iPhone repair in Rome: display, battery, camera. Fast service with original parts. Genius Lab."
+    },
+    "ipad": {
+      "heroTitle": "iPad Repair Rome",
+      "heroSubtitle": "iPad support center in Rome - Screen, battery and components for all iPad models",
+      "servicesSectionTitle": "iPad Repair Services",
+      "problemsSectionTitle": "Common iPad Issues",
+      "services": ["iPad screen replacement", "iPad battery replacement", "Charging connector repair", "Touch screen glass replacement", "Home button repair", "iPad camera replacement", "Speaker repair", "WiFi and Bluetooth issues", "iPadOS software update", "Liquid damage repair"],
+      "problems": ["Cracked screen", "Battery drains", "Charging issues", "iPad won't turn on", "WiFi issues", "Home button not working", "Liquid damage"],
+      "metaDescription": "iPad repair in Rome: display, charging issues, troubleshooting. Genius Lab, Apple support center."
+    },
+    "watch": {
+      "heroTitle": "Apple Watch Repair Rome",
+      "heroSubtitle": "Apple Watch support center in Rome - Screen, battery and components for all models",
+      "servicesSectionTitle": "Apple Watch Repair Services",
+      "problemsSectionTitle": "Common Apple Watch Issues",
+      "services": ["Apple Watch screen replacement", "Apple Watch battery replacement", "Band and mechanism repair", "Protective glass replacement", "Sensor repair", "Charging issues", "watchOS update", "Digital crown repair", "iPhone sync", "Water damage repair"],
+      "problems": ["Cracked screen", "Battery drains", "Charging issues", "Watch won't turn on", "Sensors not working", "Water damage"],
+      "metaDescription": "Apple Watch repair in Rome: battery, screen, sensors. Genius Lab, specialist support."
+    },
+    "imac": {
+      "heroTitle": "iMac Repair Rome",
+      "heroSubtitle": "Specialized iMac, iMac Pro and iMac Studio repair center in Rome",
+      "servicesSectionTitle": "iMac Repair Services",
+      "problemsSectionTitle": "Common iMac Issues",
+      "services": ["iMac display replacement", "Power supply repair", "RAM and SSD upgrade", "Fan and heatsink cleaning", "Webcam and microphone repair", "Hard drive replacement", "Software troubleshooting", "iMac data recovery"],
+      "problems": ["iMac won't turn on", "Black display or artifacts", "Overheating", "Fan noise", "iMac slow", "Network issues"],
+      "metaDescription": "iMac repair in Rome: display, power, components. Genius Lab, authorized Apple lab."
+    },
+    "display": {
+      "heroTitle": "MacBook Display Rome",
+      "heroSubtitle": "MacBook Pro and MacBook Air display replacement with original Apple parts",
+      "servicesSectionTitle": "MacBook Display Services",
+      "problemsSectionTitle": "MacBook Display Issues",
+      "services": ["MacBook screen replacement", "Display glass repair", "LCD replacement", "Backlight repair", "Retina MacBook Pro display", "MacBook Air M1/M2 display"],
+      "problems": ["Cracked screen", "Black display", "Lines on screen", "Flickering", "Touch Bar not working"],
+      "metaDescription": "MacBook display replacement in Rome: glass, LCD, Retina. Genius Lab, professional repair."
+    },
+    "dataRecovery": {
+      "heroTitle": "Data Recovery Rome",
+      "heroSubtitle": "Professional data recovery from iPhone, iPad, MacBook and damaged drives in Rome",
+      "servicesSectionTitle": "Data Recovery Services",
+      "problemsSectionTitle": "Recovery Situations",
+      "services": ["iPhone data recovery", "MacBook data recovery", "iPad data recovery", "Damaged SSD recovery", "Hard drive recovery", "Water-damaged device recovery", "Photo and video recovery", "Document and file recovery", "Full Apple device backup", "Data transfer between devices"],
+      "problems": ["Device won't turn on", "Liquid damage", "Cracked screen", "Accidental deletion", "Software issues", "Damaged SSD/HDD"],
+      "metaDescription": "Data recovery in Rome: damaged drives, SSD, fusion drive. Genius Lab, maximum confidentiality."
+    },
+    "battery": {
+      "heroTitle": "MacBook Battery Rome",
+      "heroSubtitle": "MacBook battery replacement with warranty. Free diagnostics.",
+      "servicesSectionTitle": "MacBook Battery Services",
+      "problemsSectionTitle": "MacBook Battery Issues",
+      "services": ["MacBook Pro battery replacement", "MacBook Air battery replacement", "Battery calibration", "Battery status diagnostics", "Original Apple batteries"],
+      "problems": ["Battery drains fast", "MacBook won't charge", "Service Battery", "Swollen battery", "Reduced autonomy"],
+      "metaDescription": "MacBook battery replacement in Rome with warranty. Genius Lab, quality parts."
+    },
+    "ssd": {
+      "heroTitle": "MacBook SSD Rome",
+      "heroSubtitle": "MacBook SSD upgrade and data transfer. More space, more speed.",
+      "servicesSectionTitle": "MacBook SSD Services",
+      "problemsSectionTitle": "MacBook SSD Issues",
+      "services": ["MacBook SSD upgrade", "Data transfer", "Damaged SSD replacement", "Disk clone to new SSD", "Compatible NVMe SSD"],
+      "problems": ["Insufficient space", "Slow SSD", "Disk error", "MacBook doesn't see SSD", "Corrupted files"],
+      "metaDescription": "MacBook SSD upgrade in Rome: data transfer, installation. Genius Lab, full support."
+    },
+    "flexgate": {
+      "heroTitle": "Flexgate Display MacBook Rome",
+      "heroSubtitle": "Display cable and Flexgate repair for MacBook Pro 2016-2019",
+      "servicesSectionTitle": "Flexgate Services",
+      "problemsSectionTitle": "Flexgate Symptoms",
+      "services": ["Display cable repair", "Flex cable replacement", "Display stage light", "MacBook Pro 13\" and 15\"", "2016-2019 models"],
+      "problems": ["Stage light display", "Display turns off", "Vertical lines", "Corner flickering", "Black display when opening lid"],
+      "metaDescription": "Flexgate and display cable repair for MacBook in Rome. Genius Lab, flicker resolution."
+    },
+    "keyboard": {
+      "heroTitle": "MacBook Keyboard Rome",
+      "heroSubtitle": "Butterfly and Magic Keyboard replacement. Apple keyboard program for defective units.",
+      "servicesSectionTitle": "MacBook Keyboard Services",
+      "problemsSectionTitle": "MacBook Keyboard Issues",
+      "services": ["Full keyboard replacement", "Butterfly keyboard", "Magic Keyboard", "Single key repair", "Apple keyboard program"],
+      "problems": ["Keys repeating", "Keys not responding", "Liquid-damaged keyboard", "Stuck keys", "Backlight not working"],
+      "metaDescription": "MacBook keyboard replacement in Rome: Butterfly, Magic Keyboard. Genius Lab, certified repair."
+    },
+    "software": {
+      "heroTitle": "Apple Software Support Rome",
+      "heroSubtitle": "macOS diagnostics, reinstall, optimization and software troubleshooting",
+      "servicesSectionTitle": "Software Services",
+      "problemsSectionTitle": "Common Software Issues",
+      "services": ["macOS reinstall", "Software diagnostics", "Virus and malware removal", "Password recovery", "System optimization", "macOS update", "Backup and data migration"],
+      "problems": ["Mac slow", "Boot error", "Blue screen", "Apps crashing", "Network issues", "Full disk"],
+      "metaDescription": "macOS software support in Rome: diagnostics, reinstall, backup. Genius Lab."
+    }
+  }
+}

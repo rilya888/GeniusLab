@@ -3,9 +3,10 @@ import { motion } from "motion/react";
 import { Link } from "react-router";
 import { SEOHead } from "../components/SEOHead";
 import { serviceJsonLd, breadcrumbJsonLd } from "../utils/jsonLd";
-import { it } from "@/i18n/it";
+import { useLocale } from "@/app/context/LocaleContext";
 
 export function IPhoneService() {
+  const { dict } = useLocale();
   const services = [
     "Sostituzione schermo iPhone",
     "Cambio batteria iPhone",
@@ -44,22 +45,22 @@ export function IPhoneService() {
     "E modelli precedenti"
   ];
 
-  const serviceName = it.pages.services.links.iphone;
+  const serviceName = dict.pages.services.links.iphone;
   const desc =
-    it.pages.services.metaDescriptions.iphone ??
-    it.pages.services.description;
+    dict.pages.services.metaDescriptions.iphone ??
+    dict.pages.services.description;
   return (
     <div className="min-h-screen bg-white pt-16">
       <SEOHead
         title={`${serviceName} | Genius Lab`}
         description={desc}
         canonical="/servizi/iphone"
-        keywords={it.pages.services.keywords}
+        keywords={dict.pages.services.keywords}
         jsonLd={[
           serviceJsonLd(serviceName, desc, "/servizi/iphone"),
           breadcrumbJsonLd([
             { name: "Genius Lab", path: "/" },
-            { name: it.pages.services.heading, path: "/servizi" },
+            { name: dict.pages.services.heading, path: "/servizi" },
             { name: serviceName, path: "/servizi/iphone" },
           ]),
         ]}

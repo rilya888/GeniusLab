@@ -7,15 +7,18 @@ import type { Content } from "../api/content.js";
 
 const GITHUB_API = "https://api.github.com";
 
-function getConfig(): { token: string; repo: string; branch: string; path: string } | null {
+function getConfig(lang: "it" | "en" = "it"): { token: string; repo: string; branch: string; path: string } | null {
   const token = process.env.GITHUB_TOKEN;
   const repo = process.env.GITHUB_REPO;
   if (!token || !repo) return null;
+  const base = process.env.GITHUB_CONTENT_PATH || "web/server/data/content.json";
+  const path = base
+    .replace(/content\.(it|en)?\.json$/, lang === "en" ? "content.en.json" : "content.it.json");
   return {
     token,
     repo,
     branch: process.env.GITHUB_BRANCH || "main",
-    path: process.env.GITHUB_CONTENT_PATH || "web/server/data/content.json",
+    path,
   };
 }
 
@@ -45,9 +48,10 @@ async function getFileShaFromGitHub(
 
 export async function saveContentToGitHub(
   data: Content,
-  message?: string
+  message?: string,
+  lang: "it" | "en" = "it"
 ): Promise<{ ok: boolean; error?: string }> {
-  const config = getConfig();
+  const config = getConfig(lang);
   if (!config) {
     console.error("[GitHub] Not configured: GITHUB_TOKEN or GITHUB_REPO missing");
     return { ok: false, error: "GitHub not configured" };

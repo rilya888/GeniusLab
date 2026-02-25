@@ -37,12 +37,13 @@ app.use((_req, res, next) => {
   next();
 });
 
-// 301 redirects
+// 301 redirects: /en/servizi/* -> /en/services/*, exact matches from REDIRECTS
 app.use((req, res, next) => {
-  const normalized = req.path.replace(/\/$/, "") || "/";
-  const entry = REDIRECTS.find(
-    (r) => r.from === req.path || r.from === normalized
-  );
+  const p = req.path.replace(/\/$/, "") || "/";
+  if (p.startsWith("/en/servizi")) {
+    return res.redirect(301, p.replace("/en/servizi", "/en/services"));
+  }
+  const entry = REDIRECTS.find((r) => r.from === req.path || r.from === p);
   if (entry) {
     return res.redirect(entry.status, entry.to);
   }
