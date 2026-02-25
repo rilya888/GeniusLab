@@ -5,6 +5,7 @@
 import { Helmet } from "react-helmet-async";
 import { useLocation } from "react-router";
 import { getLocalizedPath } from "@/app/routes.config";
+import { siteConfig } from "@/config";
 import type { Locale } from "@/i18n/types";
 
 function getSiteUrl(): string {
@@ -41,6 +42,21 @@ export function SEOHead({
   locale,
 }: SEOHeadProps) {
   const { pathname } = useLocation();
+
+  // Append legacy brand for SEO (ex-AvaTech users find Genius Lab)
+  const legacyBrand = siteConfig.brand.legacyBrand;
+  const legacySuffix = legacyBrand ? ` | ex ${legacyBrand}` : "";
+  const skipLegacy = noindex;
+
+  const finalTitle = skipLegacy ? title : `${title}${legacySuffix}`;
+  const finalDescription = skipLegacy ? description : `${description}${legacySuffix}`;
+  const finalKeywords =
+    keywords && legacyBrand && !skipLegacy
+      ? keywords.includes(legacyBrand)
+        ? keywords
+        : `${keywords}, ${legacyBrand}`
+      : keywords;
+
   const canonicalUrl = canonical
     ? canonical.startsWith("http")
       ? canonical
@@ -55,8 +71,8 @@ export function SEOHead({
 
   return (
     <Helmet>
-      <title>{title}</title>
-      <meta name="description" content={description} />
+      <title>{finalTitle}</title>
+      <meta name="description" content={finalDescription} />
       {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
       {locale && !noindex && (
         <>
@@ -69,8 +85,8 @@ export function SEOHead({
       {canonicalUrl && (
         <meta property="og:url" content={canonicalUrl} />
       )}
-      <meta property="og:title" content={title} />
-      <meta property="og:description" content={description} />
+      <meta property="og:title" content={finalTitle} />
+      <meta property="og:description" content={finalDescription} />
       <meta property="og:type" content="website" />
       <meta property="og:locale" content={ogLocale} />
       {locale && (
@@ -83,7 +99,7 @@ export function SEOHead({
       {ogImage && (
         <meta name="twitter:image" content={ogImage.startsWith("http") ? ogImage : `${SITE_URL.replace(/\/$/, "")}${ogImage}`} />
       )}
-      {keywords && <meta name="keywords" content={keywords} />}
+      {finalKeywords && <meta name="keywords" content={finalKeywords} />}
       {jsonLd && (
         <script type="application/ld+json">
           {JSON.stringify(

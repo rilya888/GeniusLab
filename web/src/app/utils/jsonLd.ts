@@ -19,6 +19,9 @@ export function localBusinessJsonLd(locale?: Locale) {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     name: siteConfig.brand.name,
+    ...(siteConfig.brand.legacyBrand && {
+      alternateName: siteConfig.brand.legacyBrand,
+    }),
     description: siteConfig.brand.tagline,
     url: base,
     telephone: siteConfig.contacts.phonePrimary,
