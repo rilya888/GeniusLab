@@ -1,0 +1,28 @@
+# Deploy to Railway on push to main.
+# Setup: Add RAILWAY_TOKEN to GitHub Secrets (Railway Settings > Tokens > Generate Project Token).
+# See docs/RAILWAY_AUTO_DEPLOY.md
+
+name: Deploy to Railway
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'web/**'
+      - 'docs/**'
+      - '.github/workflows/deploy-railway.yml'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Railway CLI
+        run: npm install -g @railway/cli
+
+      - name: Deploy to Railway
+        run: railway up web --path-as-root --service geniuslab-web --ci
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
