@@ -3,18 +3,90 @@
     "heading": "Servizi",
     "subheading": "Riparazione MacBook, iMac, iPhone e recupero dati.",
     "items": [
-      { "key": "macbook", "name": "Riparazione MacBook", "description": "Sostituzione schermo, batteria, tastiera e componenti.", "path": "/servizi/macbook", "order": 0 },
-      { "key": "iphone", "name": "Riparazione iPhone", "description": "Sostituzione schermo, batteria, fotocamera e molto altro.", "path": "/servizi/iphone", "order": 1 },
-      { "key": "ipad", "name": "Riparazione iPad", "description": "Riparazione display, problemi di ricarica, troubleshooting.", "path": "/servizi/ipad", "order": 2 },
-      { "key": "watch", "name": "Riparazione Apple Watch", "description": "Sostituzione batteria, riparazione schermo, sensori.", "path": "/servizi/watch", "order": 3 },
-      { "key": "imac", "name": "Riparazione iMac", "description": "Riparazione display, alimentazione, componenti interni.", "path": "/servizi/riparazione-imac", "order": 4 },
-      { "key": "display", "name": "Display MacBook", "description": "Sostituzione display MacBook, vetro e LCD.", "path": "/servizi/display-macbook", "order": 5 },
-      { "key": "dataRecovery", "name": "Data Recovery", "description": "Recupero dati da dispositivi danneggiati.", "path": "/servizi/recupero-dati", "order": 6 },
-      { "key": "battery", "name": "Batteria MacBook", "description": "Sostituzione batteria MacBook con garanzia.", "path": "/servizi/batteria-macbook", "order": 7 },
-      { "key": "ssd", "name": "MacBook SSD", "description": "Upgrade SSD e trasferimento dati.", "path": "/servizi/macbook-ssd", "order": 8 },
-      { "key": "flexgate", "name": "Flexgate Display", "description": "Riparazione cavi display e Flexgate.", "path": "/servizi/flexgate-display-macbook", "order": 9 },
-      { "key": "keyboard", "name": "Tastiera MacBook", "description": "Sostituzione tastiera Butterfly e Magic Keyboard.", "path": "/servizi/tastiera-macbook", "order": 10 },
-      { "key": "software", "name": "Assistenza Software", "description": "Diagnostica, reinstallazione macOS, assistenza.", "path": "/servizi/software-assistenza", "order": 11 }
+      {
+        "key": "macbook!!!",
+        "name": "Riparazione MacBook",
+        "description": "Sostituzione schermo, batteria, tastiera e componenti.",
+        "path": "/servizi/macbook",
+        "order": 0
+      },
+      {
+        "key": "iphone",
+        "name": "Riparazione iPhone",
+        "description": "Sostituzione schermo, batteria, fotocamera e molto altro.",
+        "path": "/servizi/iphone",
+        "order": 1
+      },
+      {
+        "key": "ipad",
+        "name": "Riparazione iPad",
+        "description": "Riparazione display, problemi di ricarica, troubleshooting.",
+        "path": "/servizi/ipad",
+        "order": 2
+      },
+      {
+        "key": "watch",
+        "name": "Riparazione Apple Watch",
+        "description": "Sostituzione batteria, riparazione schermo, sensori.",
+        "path": "/servizi/watch",
+        "order": 3
+      },
+      {
+        "key": "imac",
+        "name": "Riparazione iMac",
+        "description": "Riparazione display, alimentazione, componenti interni.",
+        "path": "/servizi/riparazione-imac",
+        "order": 4
+      },
+      {
+        "key": "display",
+        "name": "Display MacBook",
+        "description": "Sostituzione display MacBook, vetro e LCD.",
+        "path": "/servizi/display-macbook",
+        "order": 5
+      },
+      {
+        "key": "dataRecovery",
+        "name": "Data Recovery",
+        "description": "Recupero dati da dispositivi danneggiati.",
+        "path": "/servizi/recupero-dati",
+        "order": 6
+      },
+      {
+        "key": "battery",
+        "name": "Batteria MacBook",
+        "description": "Sostituzione batteria MacBook con garanzia.",
+        "path": "/servizi/batteria-macbook",
+        "order": 7
+      },
+      {
+        "key": "ssd",
+        "name": "MacBook SSD",
+        "description": "Upgrade SSD e trasferimento dati.",
+        "path": "/servizi/macbook-ssd",
+        "order": 8
+      },
+      {
+        "key": "flexgate",
+        "name": "Flexgate Display",
+        "description": "Riparazione cavi display e Flexgate.",
+        "path": "/servizi/flexgate-display-macbook",
+        "order": 9
+      },
+      {
+        "key": "keyboard",
+        "name": "Tastiera MacBook",
+        "description": "Sostituzione tastiera Butterfly e Magic Keyboard.",
+        "path": "/servizi/tastiera-macbook",
+        "order": 10
+      },
+      {
+        "key": "software",
+        "name": "Assistenza Software",
+        "description": "Diagnostica, reinstallazione macOS, assistenza.",
+        "path": "/servizi/software-assistenza",
+        "order": 11
+      }
     ]
   },
   "servicePages": {
@@ -23,8 +95,28 @@
       "heroSubtitle": "Centro assistenza Apple autorizzato specializzato in riparazione MacBook Pro, MacBook Air a Roma",
       "servicesSectionTitle": "Servizi di Riparazione MacBook",
       "problemsSectionTitle": "Problemi Comuni MacBook",
-      "services": ["Sostituzione schermo MacBook", "Riparazione tastiera MacBook", "Cambio batteria MacBook", "Riparazione trackpad", "Upgrade SSD e RAM", "Pulizia sistema di raffreddamento", "Riparazione connettori di ricarica", "Diagnostica hardware completa", "Risoluzione problemi software macOS", "Recupero dati da MacBook danneggiati"],
-      "problems": ["MacBook non si accende", "Schermo rotto o danneggiato", "Batteria che si scarica rapidamente", "Surriscaldamento MacBook", "Tastiera non funzionante", "MacBook lento o bloccato", "Problemi di ricarica", "Danni causati da liquidi"],
+      "services": [
+        "Sostituzione schermo MacBook",
+        "Riparazione tastiera MacBook",
+        "Cambio batteria MacBook",
+        "Riparazione trackpad",
+        "Upgrade SSD e RAM",
+        "Pulizia sistema di raffreddamento",
+        "Riparazione connettori di ricarica",
+        "Diagnostica hardware completa",
+        "Risoluzione problemi software macOS",
+        "Recupero dati da MacBook danneggiati"
+      ],
+      "problems": [
+        "MacBook non si accende",
+        "Schermo rotto o danneggiato",
+        "Batteria che si scarica rapidamente",
+        "Surriscaldamento MacBook",
+        "Tastiera non funzionante",
+        "MacBook lento o bloccato",
+        "Problemi di ricarica",
+        "Danni causati da liquidi"
+      ],
       "metaDescription": "Riparazione MacBook a Roma: sostituzione schermo, batteria, tastiera. Genius Lab, laboratorio specializzato Apple. Preventivo gratuito."
     },
     "iphone": {
@@ -32,8 +124,28 @@
       "heroSubtitle": "Centro assistenza iPhone autorizzato a Roma - Riparazione schermo, batteria e altro per tutti i modelli",
       "servicesSectionTitle": "Servizi di Riparazione iPhone",
       "problemsSectionTitle": "Problemi Comuni iPhone",
-      "services": ["Sostituzione schermo iPhone", "Cambio batteria iPhone", "Riparazione fotocamera iPhone", "Sostituzione vetro posteriore", "Riparazione pulsanti e tasti", "Sostituzione altoparlanti", "Riparazione connettore di ricarica", "Face ID e Touch ID", "Riparazione danni da acqua", "Sblocco iPhone"],
-      "problems": ["Schermo rotto", "Batteria che si scarica", "Fotocamera non funziona", "iPhone non si accende", "Problemi di ricarica", "Danni da liquidi", "Face ID non funziona", "Altoparlante difettoso"],
+      "services": [
+        "Sostituzione schermo iPhone",
+        "Cambio batteria iPhone",
+        "Riparazione fotocamera iPhone",
+        "Sostituzione vetro posteriore",
+        "Riparazione pulsanti e tasti",
+        "Sostituzione altoparlanti",
+        "Riparazione connettore di ricarica",
+        "Face ID e Touch ID",
+        "Riparazione danni da acqua",
+        "Sblocco iPhone"
+      ],
+      "problems": [
+        "Schermo rotto",
+        "Batteria che si scarica",
+        "Fotocamera non funziona",
+        "iPhone non si accende",
+        "Problemi di ricarica",
+        "Danni da liquidi",
+        "Face ID non funziona",
+        "Altoparlante difettoso"
+      ],
       "metaDescription": "Riparazione iPhone a Roma: display, batteria, fotocamera. Assistenza rapida con ricambi originali. Genius Lab."
     },
     "ipad": {
@@ -41,8 +153,27 @@
       "heroSubtitle": "Centro assistenza iPad a Roma - Riparazione schermo, batteria e componenti per tutti i modelli di iPad",
       "servicesSectionTitle": "Servizi di Riparazione iPad",
       "problemsSectionTitle": "Problemi Comuni iPad",
-      "services": ["Sostituzione schermo iPad", "Cambio batteria iPad", "Riparazione connettore di ricarica", "Sostituzione vetro touch screen", "Riparazione pulsante Home", "Sostituzione fotocamera iPad", "Riparazione altoparlanti", "Problemi WiFi e Bluetooth", "Aggiornamento software iPadOS", "Riparazione danni da liquidi"],
-      "problems": ["Schermo rotto", "Batteria che si scarica", "Problemi di ricarica", "iPad non si accende", "Problemi WiFi", "Pulsante Home non funziona", "Danni da liquidi"],
+      "services": [
+        "Sostituzione schermo iPad",
+        "Cambio batteria iPad",
+        "Riparazione connettore di ricarica",
+        "Sostituzione vetro touch screen",
+        "Riparazione pulsante Home",
+        "Sostituzione fotocamera iPad",
+        "Riparazione altoparlanti",
+        "Problemi WiFi e Bluetooth",
+        "Aggiornamento software iPadOS",
+        "Riparazione danni da liquidi"
+      ],
+      "problems": [
+        "Schermo rotto",
+        "Batteria che si scarica",
+        "Problemi di ricarica",
+        "iPad non si accende",
+        "Problemi WiFi",
+        "Pulsante Home non funziona",
+        "Danni da liquidi"
+      ],
       "metaDescription": "Riparazione iPad a Roma: display, problemi di ricarica, troubleshooting. Genius Lab, centro assistenza Apple."
     },
     "watch": {
@@ -50,8 +181,26 @@
       "heroSubtitle": "Centro assistenza Apple Watch a Roma - Riparazione schermo, batteria e componenti per tutti i modelli",
       "servicesSectionTitle": "Servizi di Riparazione Apple Watch",
       "problemsSectionTitle": "Problemi Comuni Apple Watch",
-      "services": ["Sostituzione schermo Apple Watch", "Cambio batteria Apple Watch", "Riparazione cinturino e meccanismi", "Sostituzione vetro protettivo", "Riparazione sensori", "Problemi di ricarica", "Aggiornamento watchOS", "Riparazione corona digitale", "Sincronizzazione con iPhone", "Riparazione danni da acqua"],
-      "problems": ["Schermo rotto", "Batteria che si scarica", "Problemi di ricarica", "Watch non si accende", "Sensori non funzionano", "Danni da acqua"],
+      "services": [
+        "Sostituzione schermo Apple Watch",
+        "Cambio batteria Apple Watch",
+        "Riparazione cinturino e meccanismi",
+        "Sostituzione vetro protettivo",
+        "Riparazione sensori",
+        "Problemi di ricarica",
+        "Aggiornamento watchOS",
+        "Riparazione corona digitale",
+        "Sincronizzazione con iPhone",
+        "Riparazione danni da acqua"
+      ],
+      "problems": [
+        "Schermo rotto",
+        "Batteria che si scarica",
+        "Problemi di ricarica",
+        "Watch non si accende",
+        "Sensori non funzionano",
+        "Danni da acqua"
+      ],
       "metaDescription": "Riparazione Apple Watch a Roma: batteria, schermo, sensori. Genius Lab, assistenza specialistica."
     },
     "imac": {
@@ -59,8 +208,24 @@
       "heroSubtitle": "Centro assistenza specializzato in riparazione iMac, iMac Pro e iMac Studio a Roma",
       "servicesSectionTitle": "Servizi Riparazione iMac",
       "problemsSectionTitle": "Problemi Comuni iMac",
-      "services": ["Sostituzione display iMac", "Riparazione alimentazione", "Upgrade RAM e SSD", "Pulizia ventole e dissipatori", "Riparazione webcam e microfoni", "Sostituzione hard disk", "Risoluzione problemi software", "Recupero dati iMac"],
-      "problems": ["iMac non si accende", "Display nero o artefatti", "Surriscaldamento", "Rumore ventole", "iMac lento", "Problemi di rete"],
+      "services": [
+        "Sostituzione display iMac",
+        "Riparazione alimentazione",
+        "Upgrade RAM e SSD",
+        "Pulizia ventole e dissipatori",
+        "Riparazione webcam e microfoni",
+        "Sostituzione hard disk",
+        "Risoluzione problemi software",
+        "Recupero dati iMac"
+      ],
+      "problems": [
+        "iMac non si accende",
+        "Display nero o artefatti",
+        "Surriscaldamento",
+        "Rumore ventole",
+        "iMac lento",
+        "Problemi di rete"
+      ],
       "metaDescription": "Riparazione iMac a Roma: display, alimentazione, componenti. Genius Lab, laboratorio Apple autorizzato."
     },
     "display": {
@@ -68,8 +233,21 @@
       "heroSubtitle": "Sostituzione display MacBook Pro e MacBook Air con ricambi originali Apple",
       "servicesSectionTitle": "Servizi Display MacBook",
       "problemsSectionTitle": "Problemi Display MacBook",
-      "services": ["Sostituzione schermo MacBook", "Riparazione vetro display", "Sostituzione LCD", "Riparazione backlight", "Display Retina MacBook Pro", "Display MacBook Air M1/M2"],
-      "problems": ["Schermo rotto", "Display nero", "Linee sullo schermo", "Flickering", "Touch Bar non funzionante"],
+      "services": [
+        "Sostituzione schermo MacBook",
+        "Riparazione vetro display",
+        "Sostituzione LCD",
+        "Riparazione backlight",
+        "Display Retina MacBook Pro",
+        "Display MacBook Air M1/M2"
+      ],
+      "problems": [
+        "Schermo rotto",
+        "Display nero",
+        "Linee sullo schermo",
+        "Flickering",
+        "Touch Bar non funzionante"
+      ],
       "metaDescription": "Sostituzione display MacBook a Roma: vetro, LCD, Retina. Genius Lab, riparazione professionale."
     },
     "dataRecovery": {
@@ -77,8 +255,26 @@
       "heroSubtitle": "Recupero dati professionale da iPhone, iPad, MacBook e dischi danneggiati a Roma",
       "servicesSectionTitle": "Servizi Recupero Dati",
       "problemsSectionTitle": "Situazioni di Recupero",
-      "services": ["Recupero dati da iPhone", "Recupero dati da MacBook", "Recupero dati da iPad", "Recupero dati da SSD danneggiati", "Recupero dati da hard disk", "Recupero dati da dispositivi danneggiati dall'acqua", "Recupero foto e video", "Recupero documenti e file", "Backup completo dispositivi Apple", "Trasferimento dati tra dispositivi"],
-      "problems": ["Dispositivo non si accende", "Danni da liquidi", "Schermo rotto", "Cancellazione accidentale", "Problemi software", "SSD/HDD danneggiato"],
+      "services": [
+        "Recupero dati da iPhone",
+        "Recupero dati da MacBook",
+        "Recupero dati da iPad",
+        "Recupero dati da SSD danneggiati",
+        "Recupero dati da hard disk",
+        "Recupero dati da dispositivi danneggiati dall'acqua",
+        "Recupero foto e video",
+        "Recupero documenti e file",
+        "Backup completo dispositivi Apple",
+        "Trasferimento dati tra dispositivi"
+      ],
+      "problems": [
+        "Dispositivo non si accende",
+        "Danni da liquidi",
+        "Schermo rotto",
+        "Cancellazione accidentale",
+        "Problemi software",
+        "SSD/HDD danneggiato"
+      ],
       "metaDescription": "Recupero dati a Roma: dischi danneggiati, SSD, fusion drive. Genius Lab, massima riservatezza."
     },
     "battery": {
@@ -86,8 +282,20 @@
       "heroSubtitle": "Sostituzione batteria MacBook con garanzia. Diagnostica gratuita.",
       "servicesSectionTitle": "Servizi Batteria MacBook",
       "problemsSectionTitle": "Problemi Batteria MacBook",
-      "services": ["Sostituzione batteria MacBook Pro", "Sostituzione batteria MacBook Air", "Calibrazione batteria", "Diagnostica stato batteria", "Batterie originali Apple"],
-      "problems": ["Batteria che si scarica veloce", "MacBook non carica", "Service Battery", "Batteria gonfiata", "Autonomia ridotta"],
+      "services": [
+        "Sostituzione batteria MacBook Pro",
+        "Sostituzione batteria MacBook Air",
+        "Calibrazione batteria",
+        "Diagnostica stato batteria",
+        "Batterie originali Apple"
+      ],
+      "problems": [
+        "Batteria che si scarica veloce",
+        "MacBook non carica",
+        "Service Battery",
+        "Batteria gonfiata",
+        "Autonomia ridotta"
+      ],
       "metaDescription": "Sostituzione batteria MacBook a Roma con garanzia. Genius Lab, ricambi di qualita."
     },
     "ssd": {
@@ -95,8 +303,20 @@
       "heroSubtitle": "Upgrade SSD MacBook e trasferimento dati. Più spazio, più velocità.",
       "servicesSectionTitle": "Servizi SSD MacBook",
       "problemsSectionTitle": "Problemi SSD MacBook",
-      "services": ["Upgrade SSD MacBook", "Trasferimento dati", "Sostituzione SSD danneggiato", "Clone disco su nuovo SSD", "SSD NVMe compatibili"],
-      "problems": ["Spazio insufficiente", "SSD lento", "Errore disco", "MacBook non vede SSD", "File corrotti"],
+      "services": [
+        "Upgrade SSD MacBook",
+        "Trasferimento dati",
+        "Sostituzione SSD danneggiato",
+        "Clone disco su nuovo SSD",
+        "SSD NVMe compatibili"
+      ],
+      "problems": [
+        "Spazio insufficiente",
+        "SSD lento",
+        "Errore disco",
+        "MacBook non vede SSD",
+        "File corrotti"
+      ],
       "metaDescription": "Upgrade SSD MacBook a Roma: trasferimento dati, installazione. Genius Lab, assistenza completa."
     },
     "flexgate": {
@@ -104,8 +324,20 @@
       "heroSubtitle": "Riparazione cavi display e problema Flexgate su MacBook Pro 2016-2019",
       "servicesSectionTitle": "Servizi Flexgate",
       "problemsSectionTitle": "Sintomi Flexgate",
-      "services": ["Riparazione cavi display", "Sostituzione flex cable", "Display stage light", "MacBook Pro 13\" e 15\"", "Modelli 2016-2019"],
-      "problems": ["Stage light display", "Display che si spegne", "Linee verticali", "Flickering ad angoli", "Display nero aprendo coperchio"],
+      "services": [
+        "Riparazione cavi display",
+        "Sostituzione flex cable",
+        "Display stage light",
+        "MacBook Pro 13\" e 15\"",
+        "Modelli 2016-2019"
+      ],
+      "problems": [
+        "Stage light display",
+        "Display che si spegne",
+        "Linee verticali",
+        "Flickering ad angoli",
+        "Display nero aprendo coperchio"
+      ],
       "metaDescription": "Riparazione Flexgate e cavi display MacBook a Roma. Genius Lab, risoluzione problemi flicker."
     },
     "keyboard": {
@@ -113,8 +345,20 @@
       "heroSubtitle": "Sostituzione tastiera Butterfly e Magic Keyboard. Programma Apple per tastiere difettose.",
       "servicesSectionTitle": "Servizi Tastiera MacBook",
       "problemsSectionTitle": "Problemi Tastiera MacBook",
-      "services": ["Sostituzione tastiera completa", "Tastiera Butterfly", "Magic Keyboard", "Riparazione tasti singoli", "Programma Apple tastiere"],
-      "problems": ["Tasti che si ripetono", "Tasti che non rispondono", "Tastiera danneggiata da liquidi", "Tasti incollati", "Backlight non funziona"],
+      "services": [
+        "Sostituzione tastiera completa",
+        "Tastiera Butterfly",
+        "Magic Keyboard",
+        "Riparazione tasti singoli",
+        "Programma Apple tastiere"
+      ],
+      "problems": [
+        "Tasti che si ripetono",
+        "Tasti che non rispondono",
+        "Tastiera danneggiata da liquidi",
+        "Tasti incollati",
+        "Backlight non funziona"
+      ],
       "metaDescription": "Sostituzione tastiera MacBook a Roma: Butterfly, Magic Keyboard. Genius Lab, riparazione certificata."
     },
     "software": {
@@ -122,8 +366,23 @@
       "heroSubtitle": "Diagnostica, reinstallazione macOS, ottimizzazione e risoluzione problemi software",
       "servicesSectionTitle": "Servizi Software",
       "problemsSectionTitle": "Problemi Software Comuni",
-      "services": ["Reinstallazione macOS", "Diagnostica software", "Rimozione virus e malware", "Recupero password", "Ottimizzazione sistema", "Aggiornamento macOS", "Backup e migrazione dati"],
-      "problems": ["Mac lento", "Errore di avvio", "Schermata blu", "App che si chiudono", "Problemi di rete", "Disco pieno"],
+      "services": [
+        "Reinstallazione macOS",
+        "Diagnostica software",
+        "Rimozione virus e malware",
+        "Recupero password",
+        "Ottimizzazione sistema",
+        "Aggiornamento macOS",
+        "Backup e migrazione dati"
+      ],
+      "problems": [
+        "Mac lento",
+        "Errore di avvio",
+        "Schermata blu",
+        "App che si chiudono",
+        "Problemi di rete",
+        "Disco pieno"
+      ],
       "metaDescription": "Assistenza software macOS a Roma: diagnostica, reinstallazione, backup. Genius Lab."
     }
   }
