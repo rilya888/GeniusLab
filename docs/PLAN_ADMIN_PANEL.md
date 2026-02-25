@@ -159,8 +159,26 @@
 
 Файловая система эфемерна. Варианты: Railway Volume (`/app/data`), Supabase, GitHub. При использовании Volume: `CONTENT_FILE=/app/data/content.json`.
 
+## GitHub storage (реализовано)
+
+При наличии `GITHUB_TOKEN` и `GITHUB_REPO` сохранение из админки коммитит изменения в репозиторий. Подробности — в [docs/PLAN_GITHUB_CONTENT_STORAGE.md](PLAN_GITHUB_CONTENT_STORAGE.md).
+
+**Логика:**
+- `saveContent(data, message)` — единая точка сохранения; при GitHub — вызывает `saveContentToGitHub`, иначе — `writeContentLocal`
+- В production при успешном сохранении в GitHub локальный файл не перезаписывается (fs может быть read-only)
+- В dev — после успешного GitHub также пишем локально для консистентности
+- 409 Conflict — API возвращает 409 с сообщением «Content was modified. Please refresh and try again.»
+
+**Файлы:**
+- `web/server/lib/github-content.ts` — модуль `saveContentToGitHub`
+- `web/server/api/content.ts` — `saveContent()`, вызовы в putContent, putContentServices, putContentServicePage
+
 ## Env vars
 
 - `ADMIN_PASSWORD` — пароль для входа в админку (обязательно в production)
 - `ADMIN_SECRET` — секрет для JWT (по умолчанию = ADMIN_PASSWORD)
 - `CONTENT_FILE` — путь к content.json (опционально)
+- `GITHUB_TOKEN` — Personal Access Token с scope `repo` (для сохранения в GitHub)
+- `GITHUB_REPO` — `owner/repo` (например `rilya888/GeniusLab`)
+- `GITHUB_BRANCH` — ветка (default: `main`)
+- `GITHUB_CONTENT_PATH` — путь к файлу (default: `web/server/data/content.json`)

@@ -1,6 +1,7 @@
 /**
  * Content API: GET /api/content, PUT /api/admin/content.
  * Reads/writes content.json. Validates with Zod on write.
+ * When GITHUB_TOKEN is set, saves to GitHub repo instead of local file.
  */
 
 import path from "node:path";
@@ -8,6 +9,7 @@ import fs from "node:fs";
 import { fileURLToPath } from "node:url";
 import type { Request, Response } from "express";
 import { z } from "zod";
+import { saveContentToGitHub } from "../lib/github-content.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -53,12 +55,36 @@ function readContent(): Content | null {
   }
 }
 
-function writeContent(data: Content): void {
+function writeContentLocal(data: Content): void {
   const dir = path.dirname(CONTENT_FILE);
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir, { recursive: true });
   }
   fs.writeFileSync(CONTENT_FILE, JSON.stringify(data, null, 2), "utf-8");
+}
+
+async function saveContent(
+  data: Content,
+  message?: string
+): Promise<{ ok: boolean; error?: string }> {
+  if (process.env.GITHUB_TOKEN && process.env.GITHUB_REPO) {
+    const result = await saveContentToGitHub(data, message);
+    if (result.ok && process.env.NODE_ENV !== "production") {
+      try {
+        writeContentLocal(data);
+      } catch {
+        // dev only; ignore if fs is read-only
+      }
+    }
+    return result;
+  }
+  try {
+    writeContentLocal(data);
+    return { ok: true };
+  } catch (err) {
+    console.error("Local content write failed:", err);
+    return { ok: false, error: "Failed to write content locally" };
+  }
 }
 
 export function getContent(req: Request, res: Response): void {
@@ -78,7 +104,7 @@ export function getContent(req: Request, res: Response): void {
   res.json(content);
 }
 
-export function putContent(req: Request, res: Response): void {
+export async function putContent(req: Request, res: Response): Promise<void> {
   const body = req.body;
 
   const parsed = contentSchema.safeParse(body);
@@ -87,21 +113,16 @@ export function putContent(req: Request, res: Response): void {
     return;
   }
 
-  try {
-    const backupPath = CONTENT_FILE + ".bak";
-    const existing = readContent();
-    if (existing) {
-      fs.writeFileSync(backupPath, JSON.stringify(existing, null, 2), "utf-8");
-    }
-
-    writeContent(parsed.data);
+  const result = await saveContent(parsed.data, "admin: update full content");
+  if (result.ok) {
     res.json({ ok: true });
-  } catch (err) {
-    res.status(500).json({ error: "Write failed" });
+    return;
   }
+  const status = result.error?.includes("modified") ? 409 : 500;
+  res.status(status).json({ error: result.error || "Save failed" });
 }
 
-export function putContentServices(req: Request, res: Response): void {
+export async function putContentServices(req: Request, res: Response): Promise<void> {
   const body = req.body;
   const content = readContent();
   if (!content) {
@@ -120,20 +141,16 @@ export function putContentServices(req: Request, res: Response): void {
   }
   content.services = parsed.data;
 
-  try {
-    const backupPath = CONTENT_FILE + ".bak";
-    const existing = readContent();
-    if (existing) {
-      fs.writeFileSync(backupPath, JSON.stringify(existing, null, 2), "utf-8");
-    }
-    writeContent(content);
+  const result = await saveContent(content, "admin: update services");
+  if (result.ok) {
     res.json({ ok: true });
-  } catch {
-    res.status(500).json({ error: "Write failed" });
+    return;
   }
+  const status = result.error?.includes("modified") ? 409 : 500;
+  res.status(status).json({ error: result.error || "Save failed" });
 }
 
-export function putContentServicePage(req: Request, res: Response): void {
+export async function putContentServicePage(req: Request, res: Response): Promise<void> {
   const key = (req.params as { key: string }).key;
   const body = req.body;
   const content = readContent();
@@ -154,15 +171,11 @@ export function putContentServicePage(req: Request, res: Response): void {
   }
   content.servicePages[key] = parsed.data;
 
-  try {
-    const backupPath = CONTENT_FILE + ".bak";
-    const existing = readContent();
-    if (existing) {
-      fs.writeFileSync(backupPath, JSON.stringify(existing, null, 2), "utf-8");
-    }
-    writeContent(content);
+  const result = await saveContent(content, `admin: update servicePage ${key}`);
+  if (result.ok) {
     res.json({ ok: true });
-  } catch {
-    res.status(500).json({ error: "Write failed" });
+    return;
   }
+  const status = result.error?.includes("modified") ? 409 : 500;
+  res.status(status).json({ error: result.error || "Save failed" });
 }
