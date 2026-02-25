@@ -1,5 +1,5 @@
 /**
- * Admin: edit one service page (hero, services[], problems[], section titles).
+ * Admin: edit one service page (hero, services[], problems[], FAQ, answer-first, section titles).
  */
 
 import { useState, useEffect } from "react";
@@ -59,6 +59,51 @@ function StringListEditor({
   );
 }
 
+function FaqEditor({
+  items,
+  onChange,
+}: {
+  items: { question: string; answer: string }[];
+  onChange: (items: { question: string; answer: string }[]) => void;
+}) {
+  const update = (index: number, field: "question" | "answer", value: string) => {
+    const next = [...items];
+    next[index] = { ...next[index], [field]: value };
+    onChange(next);
+  };
+  const add = () => onChange([...items, { question: "", answer: "" }]);
+  const remove = (index: number) => onChange(items.filter((_, i) => i !== index));
+
+  return (
+    <div className="space-y-4">
+      {items.map((item, i) => (
+        <div key={i} className="flex flex-col gap-2 p-4 border rounded-lg">
+          <div className="flex justify-between items-center">
+            <span className="text-sm font-medium text-gray-600">FAQ #{i + 1}</span>
+            <Button variant="outline" size="sm" onClick={() => remove(i)}>
+              − Remove
+            </Button>
+          </div>
+          <Input
+            value={item.question}
+            onChange={(e) => update(i, "question", e.target.value)}
+            placeholder="Question"
+          />
+          <Textarea
+            value={item.answer}
+            onChange={(e) => update(i, "answer", e.target.value)}
+            placeholder="Answer"
+            rows={2}
+          />
+        </div>
+      ))}
+      <Button variant="outline" size="sm" onClick={add}>
+        + Add FAQ
+      </Button>
+    </div>
+  );
+}
+
 export function ServicePageEdit() {
   const { key } = useParams<{ key: string }>();
   const { content, loading, refetch } = useContentState();
@@ -71,6 +116,9 @@ export function ServicePageEdit() {
     services: [] as string[],
     problems: [] as string[],
     metaDescription: "",
+    answerFirstIntro: "",
+    keywords: "",
+    faq: [] as { question: string; answer: string }[],
   });
   const [saving, setSaving] = useState(false);
 
@@ -86,6 +134,9 @@ export function ServicePageEdit() {
         services: [...pageData.services],
         problems: [...pageData.problems],
         metaDescription: pageData.metaDescription,
+        answerFirstIntro: pageData.answerFirstIntro ?? "",
+        keywords: pageData.keywords ?? "",
+        faq: [...(pageData.faq ?? [])],
       });
     }
   }, [pageData]);
@@ -210,14 +261,56 @@ export function ServicePageEdit() {
 
       <Card>
         <CardHeader>
-          <h2 className="text-lg font-medium">Meta Description</h2>
+          <h2 className="text-lg font-medium">Answer-first intro (GEO SEO)</h2>
+        </CardHeader>
+        <CardContent className="space-y-2">
+          <Textarea
+            value={form.answerFirstIntro}
+            onChange={(e) => setForm((f) => ({ ...f, answerFirstIntro: e.target.value }))}
+            placeholder="Direct answer to 'dove riparare X a Roma?' — 120–160 words recommended"
+            rows={4}
+          />
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <h2 className="text-lg font-medium">Page-specific keywords</h2>
         </CardHeader>
         <CardContent>
+          <Input
+            value={form.keywords}
+            onChange={(e) => setForm((f) => ({ ...f, keywords: e.target.value }))}
+            placeholder="e.g. dove riparare macbook roma, riparazione MacBook Roma"
+          />
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <h2 className="text-lg font-medium">FAQ</h2>
+        </CardHeader>
+        <CardContent>
+          <FaqEditor
+            items={form.faq}
+            onChange={(faq) => setForm((f) => ({ ...f, faq }))}
+          />
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <h2 className="text-lg font-medium">Meta Description</h2>
+        </CardHeader>
+        <CardContent className="space-y-2">
           <Textarea
             value={form.metaDescription}
             onChange={(e) => setForm((f) => ({ ...f, metaDescription: e.target.value }))}
             rows={3}
           />
+          <p className="text-sm text-gray-500">
+            The suffix &quot; | ex AvaTech&quot; is automatically appended on the site for SEO. Do not add it here.
+          </p>
         </CardContent>
       </Card>
 

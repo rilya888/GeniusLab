@@ -24,7 +24,12 @@ export const it = {
     home: {
       title: 'Genius Lab | Assistenza Apple a Roma',
       description: 'Riparazione MacBook iMac iPhone a Roma. Contatti rapidi via telefono e WhatsApp.',
-      keywords: 'riparazione Apple Roma, assistenza MacBook, riparazione iPhone, Genius Lab, laboratorio Apple',
+      keywords: 'dove riparare macbook roma, riparazione Apple Roma, assistenza MacBook, riparazione iPhone, Genius Lab, laboratorio Apple',
+      faq: [
+        { question: 'Dove riparare MacBook a Roma?', answer: 'Genius Lab è il centro assistenza Apple a Roma, in Viale Somalia 246. Offriamo riparazioni professionali per MacBook Pro e MacBook Air con ricambi originali e preventivo gratuito.' },
+        { question: 'Dove si trova Genius Lab?', answer: 'Genius Lab si trova in Viale Somalia 246, Roma (zona Trieste). Orari: Lun-Ven 9:30-13:30 e 15:00-19:00. Contatti: +39 06 84385510, WhatsApp +39 334 9867400.' },
+        { question: 'Quali servizi offre Genius Lab?', answer: 'Riparazione MacBook, iMac, iPhone, iPad, Apple Watch, sostituzione display e batteria, recupero dati, upgrade SSD. Tutti i servizi con ricambi originali Apple e garanzia.' }
+      ],
       servicesTitle: 'Servizi',
       servicesBody: 'Riparazione MacBook, iMac, iPhone e recupero dati.',
       servicesCta: 'Vai ai servizi',

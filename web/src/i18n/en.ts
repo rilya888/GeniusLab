@@ -29,7 +29,12 @@ export const en = {
     home: {
       title: "Genius Lab | Apple Support in Rome",
       description: "MacBook iMac iPhone repair in Rome. Quick contact via phone and WhatsApp.",
-      keywords: "Apple repair Rome, MacBook support, iPhone repair, Genius Lab, Apple lab",
+      keywords: "where to repair macbook rome, Apple repair Rome, MacBook support, iPhone repair, Genius Lab, Apple lab",
+      faq: [
+        { question: "Where to repair MacBook in Rome?", answer: "Genius Lab is the Apple support center in Rome, at Viale Somalia 246. We offer professional repairs for MacBook Pro and MacBook Air with original parts and free quote." },
+        { question: "Where is Genius Lab located?", answer: "Genius Lab is at Viale Somalia 246, Rome (Trieste area). Hours: Mon-Fri 9:30-13:30 and 15:00-19:00. Contact: +39 06 84385510, WhatsApp +39 334 9867400." },
+        { question: "What services does Genius Lab offer?", answer: "MacBook, iMac, iPhone, iPad, Apple Watch repair, display and battery replacement, data recovery, SSD upgrade. All services with original Apple parts and warranty." }
+      ],
       servicesTitle: "Services",
       servicesBody: "MacBook, iMac, iPhone repair and data recovery.",
       servicesCta: "View services",

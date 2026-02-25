@@ -7,7 +7,7 @@ import { Link, Navigate, useLocation } from "react-router";
 import { Phone, MessageCircle, CheckCircle } from "lucide-react";
 import { motion } from "motion/react";
 import { SEOHead } from "../components/SEOHead";
-import { serviceJsonLd, breadcrumbJsonLd } from "../utils/jsonLd";
+import { serviceJsonLd, breadcrumbJsonLd, faqJsonLd } from "../utils/jsonLd";
 import { siteConfig } from "@/config";
 import { useContent } from "../context/ContentContext";
 import { useLocale } from "../context/LocaleContext";
@@ -36,22 +36,43 @@ export function GenericServicePage() {
   const phoneHref = `tel:${siteConfig.contacts.phonePrimary.replace(/\s/g, "")}`;
   const whatsappHref = `https://wa.me/${siteConfig.contacts.whatsapp.replace(/\s/g, "").replace("+", "")}`;
 
+  const faq = pageData.faq ?? [];
+  const serviceTypeMap: Record<string, string> = {
+    macbook: "MacBook repair",
+    iphone: "iPhone repair",
+    ipad: "iPad repair",
+    watch: "Apple Watch repair",
+    imac: "iMac repair",
+    display: "MacBook display replacement",
+    dataRecovery: "Data recovery",
+    battery: "MacBook battery replacement",
+    ssd: "MacBook SSD upgrade",
+    flexgate: "Flexgate display repair",
+    keyboard: "MacBook keyboard replacement",
+    software: "macOS software support",
+  };
+  const serviceType = serviceTypeMap[serviceItem.key];
+
+  const jsonLdItems = [
+    serviceJsonLd(serviceItem.name, pageData.metaDescription, path, locale, serviceType),
+    breadcrumbJsonLd([
+      { name: "Genius Lab", path: getPath(locale, "home") },
+      { name: content.services.heading, path: getPath(locale, "servizi") },
+      { name: serviceItem.name, path },
+    ]),
+  ];
+  const faqSchema = faqJsonLd(faq, locale);
+  if (faqSchema) jsonLdItems.push(faqSchema);
+
   return (
     <div className="min-h-screen bg-white pt-16">
       <SEOHead
         title={`${serviceItem.name} | Genius Lab`}
         description={pageData.metaDescription}
         canonical={path}
-        keywords={dict.pages.services.keywords}
+        keywords={(pageData.keywords?.trim()) ? pageData.keywords : dict.pages.services.keywords}
         locale={locale}
-        jsonLd={[
-          serviceJsonLd(serviceItem.name, pageData.metaDescription, path, locale),
-          breadcrumbJsonLd([
-            { name: "Genius Lab", path: getPath(locale, "home") },
-            { name: content.services.heading, path: getPath(locale, "servizi") },
-            { name: serviceItem.name, path },
-          ]),
-        ]}
+        jsonLd={jsonLdItems}
       />
       <section className="px-6 py-20 bg-black text-white">
         <div className="max-w-4xl mx-auto text-center">
@@ -109,6 +130,21 @@ export function GenericServicePage() {
         </div>
       </section>
 
+      {pageData.answerFirstIntro && (
+        <section className="px-6 py-16 bg-gray-50">
+          <div className="max-w-4xl mx-auto">
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-lg md:text-xl font-light text-black leading-relaxed"
+            >
+              {pageData.answerFirstIntro}
+            </motion.p>
+          </div>
+        </section>
+      )}
+
       <section className="px-6 py-20">
         <div className="max-w-6xl mx-auto">
           <motion.h2
@@ -163,6 +199,36 @@ export function GenericServicePage() {
           </div>
         </div>
       </section>
+
+      {faq.length > 0 && (
+        <section className="px-6 py-20 bg-gray-50">
+          <div className="max-w-4xl mx-auto">
+            <motion.h2
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-4xl md:text-5xl font-light tracking-tight mb-10 text-center text-black"
+            >
+              {locale === "it" ? "Domande frequenti" : "Frequently asked questions"}
+            </motion.h2>
+            <dl className="space-y-6">
+              {faq.map((item, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.05 }}
+                  className="p-6 bg-white rounded-lg shadow-sm"
+                >
+                  <dt className="font-medium text-lg text-black mb-2">{item.question}</dt>
+                  <dd className="font-light text-gray-700">{item.answer}</dd>
+                </motion.div>
+              ))}
+            </dl>
+          </div>
+        </section>
+      )}
 
       <section className="px-6 py-20 bg-black text-white">
         <div className="max-w-4xl mx-auto text-center">

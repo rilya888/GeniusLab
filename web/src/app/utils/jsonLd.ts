@@ -1,5 +1,5 @@
 /**
- * JSON-LD schemas for SEO: LocalBusiness, Service, etc.
+ * JSON-LD schemas for SEO: LocalBusiness, Service, FAQPage, etc.
  */
 
 import { siteConfig } from "@/config";
@@ -24,6 +24,7 @@ export function localBusinessJsonLd(locale?: Locale) {
     }),
     description: siteConfig.brand.tagline,
     url: base,
+    image: base + "/logo.png",
     telephone: siteConfig.contacts.phonePrimary,
     email: siteConfig.contacts.email,
     address: {
@@ -48,6 +49,14 @@ export function localBusinessJsonLd(locale?: Locale) {
       },
     ],
   };
+  const locWithGeo = loc as { geo?: { latitude: number; longitude: number } };
+  if (locWithGeo.geo) {
+    schema.geo = {
+      "@type": "GeoCoordinates",
+      latitude: locWithGeo.geo.latitude,
+      longitude: locWithGeo.geo.longitude,
+    };
+  }
   if (locale) schema.inLanguage = locale === "en" ? "en" : "it";
   return schema;
 }
@@ -56,8 +65,10 @@ export function serviceJsonLd(
   serviceName: string,
   description: string,
   path?: string,
-  locale?: Locale
+  locale?: Locale,
+  serviceType?: string
 ) {
+  const city = siteConfig.locations[0]?.city ?? "Roma";
   const schema: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -67,8 +78,14 @@ export function serviceJsonLd(
       "@type": "LocalBusiness",
       name: siteConfig.brand.name,
     },
+    areaServed: {
+      "@type": "City",
+      name: city,
+      containedInPlace: { "@type": "Country", name: "Italy" },
+    },
   };
   if (path) schema.url = base + path;
+  if (serviceType) schema.serviceType = serviceType;
   if (locale) schema.inLanguage = locale === "en" ? "en" : "it";
   return schema;
 }
@@ -87,4 +104,26 @@ export function breadcrumbJsonLd(items: { name: string; path: string }[]) {
       })
     ),
   };
+}
+
+/** FAQPage JSON-LD for pages with Q&A content. Reusable for Home, service pages, etc. */
+export function faqJsonLd(
+  items: { question: string; answer: string }[],
+  locale?: Locale
+) {
+  if (!items.length) return null;
+  const schema: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  };
+  if (locale) schema.inLanguage = locale === "en" ? "en" : "it";
+  return schema;
 }

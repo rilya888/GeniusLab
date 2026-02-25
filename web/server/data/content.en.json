@@ -25,7 +25,14 @@
       "problemsSectionTitle": "Common MacBook Issues",
       "services": ["MacBook screen replacement", "MacBook keyboard repair", "Battery replacement", "Trackpad repair", "SSD and RAM upgrade", "Cooling system cleaning", "Charging connector repair", "Full hardware diagnostics", "macOS software troubleshooting", "Data recovery from damaged MacBook"],
       "problems": ["MacBook won't turn on", "Cracked or damaged screen", "Battery drains quickly", "MacBook overheating", "Keyboard not working", "MacBook slow or frozen", "Charging issues", "Liquid damage"],
-      "metaDescription": "MacBook repair in Rome: screen, battery, keyboard replacement. Genius Lab, specialized Apple lab. Free quote."
+      "metaDescription": "MacBook repair in Rome: screen, battery, keyboard replacement. Genius Lab, specialized Apple lab. Free quote.",
+      "answerFirstIntro": "Where to repair MacBook in Rome? Genius Lab is the Apple support center in Rome, at Viale Somalia 246. We offer professional repairs for MacBook Pro and MacBook Air with original Apple parts and free quote. Accurate diagnostics, clear timelines and warranty on all work.",
+      "keywords": "where to repair macbook rome, MacBook repair Rome, Apple support center Rome",
+      "faq": [
+        {"question": "Where to repair MacBook in Rome?", "answer": "Genius Lab, at Viale Somalia 246 in Rome, offers professional repairs for MacBook Pro and MacBook Air. Free quote and original Apple parts."},
+        {"question": "What is the best Apple repair center in Rome?", "answer": "Genius Lab is a specialized Apple support lab in Rome. Certified technicians, original parts and warranty on every repair."},
+        {"question": "How much does MacBook repair cost in Rome?", "answer": "Cost varies by type of repair. Genius Lab offers free diagnostics and transparent quote before proceeding. Contact us at +39 06 84385510."}
+      ]
     },
     "iphone": {
       "heroTitle": "iPhone Repair Rome",
@@ -34,7 +41,13 @@
       "problemsSectionTitle": "Common iPhone Issues",
       "services": ["iPhone screen replacement", "iPhone battery replacement", "iPhone camera repair", "Back glass replacement", "Button and key repair", "Speaker replacement", "Charging connector repair", "Face ID and Touch ID", "Water damage repair", "iPhone unlock"],
       "problems": ["Cracked screen", "Battery drains", "Camera not working", "iPhone won't turn on", "Charging issues", "Liquid damage", "Face ID not working", "Faulty speaker"],
-      "metaDescription": "iPhone repair in Rome: display, battery, camera. Fast service with original parts. Genius Lab."
+      "metaDescription": "iPhone repair in Rome: display, battery, camera. Fast service with original parts. Genius Lab.",
+      "answerFirstIntro": "Where to repair iPhone in Rome? Genius Lab, at Viale Somalia 246, is the iPhone support center in Rome. Screen, battery and camera replacement with original Apple parts. Fast service and free quote.",
+      "keywords": "where to repair iphone rome, iPhone repair Rome, iPhone support center Rome",
+      "faq": [
+        {"question": "Where to repair iPhone in Rome?", "answer": "Genius Lab at Viale Somalia 246, Rome. Screen, battery, camera replacement with original parts. Free quote."},
+        {"question": "How long does iPhone repair take in Rome?", "answer": "Most repairs are completed same day. Genius Lab provides an accurate estimate at diagnosis."}
+      ]
     },
     "ipad": {
       "heroTitle": "iPad Repair Rome",
@@ -43,7 +56,12 @@
       "problemsSectionTitle": "Common iPad Issues",
       "services": ["iPad screen replacement", "iPad battery replacement", "Charging connector repair", "Touch screen glass replacement", "Home button repair", "iPad camera replacement", "Speaker repair", "WiFi and Bluetooth issues", "iPadOS software update", "Liquid damage repair"],
       "problems": ["Cracked screen", "Battery drains", "Charging issues", "iPad won't turn on", "WiFi issues", "Home button not working", "Liquid damage"],
-      "metaDescription": "iPad repair in Rome: display, charging issues, troubleshooting. Genius Lab, Apple support center."
+      "metaDescription": "iPad repair in Rome: display, charging issues, troubleshooting. Genius Lab, Apple support center.",
+      "answerFirstIntro": "Where to repair iPad in Rome? Genius Lab offers iPad support in Rome at Viale Somalia 246. Display repair, charging issues and troubleshooting for iPad Pro, iPad Air and iPad Mini. Original parts and free quote.",
+      "keywords": "where to repair ipad rome, iPad repair Rome, iPad support center Rome",
+      "faq": [
+        {"question": "Where to repair iPad in Rome?", "answer": "Genius Lab, Viale Somalia 246, Rome. Repairs for all iPad models with original Apple parts."}
+      ]
     },
     "watch": {
       "heroTitle": "Apple Watch Repair Rome",
@@ -79,7 +97,13 @@
       "problemsSectionTitle": "Recovery Situations",
       "services": ["iPhone data recovery", "MacBook data recovery", "iPad data recovery", "Damaged SSD recovery", "Hard drive recovery", "Water-damaged device recovery", "Photo and video recovery", "Document and file recovery", "Full Apple device backup", "Data transfer between devices"],
       "problems": ["Device won't turn on", "Liquid damage", "Cracked screen", "Accidental deletion", "Software issues", "Damaged SSD/HDD"],
-      "metaDescription": "Data recovery in Rome: damaged drives, SSD, fusion drive. Genius Lab, maximum confidentiality."
+      "metaDescription": "Data recovery in Rome: damaged drives, SSD, fusion drive. Genius Lab, maximum confidentiality.",
+      "answerFirstIntro": "Where to get data recovery in Rome? Genius Lab offers professional data recovery from iPhone, iPad, MacBook and damaged drives. At Viale Somalia 246 in Rome, with maximum confidentiality and free evaluation.",
+      "keywords": "data recovery rome, where to recover data rome, data recovery Rome",
+      "faq": [
+        {"question": "Where to get data recovery in Rome?", "answer": "Genius Lab, Viale Somalia 246, Rome. Data recovery from Apple devices and damaged drives with free evaluation."},
+        {"question": "Can you recover data from a damaged iPhone?", "answer": "Yes, Genius Lab uses professional technology to recover data from damaged iPhone, iPad and MacBook. Contact us for a free evaluation."}
+      ]
     },
     "battery": {
       "heroTitle": "MacBook Battery Rome",

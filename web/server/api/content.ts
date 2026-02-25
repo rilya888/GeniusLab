@@ -34,6 +34,11 @@ const serviceItemSchema = z.object({
   order: z.number(),
 });
 
+const faqItemSchema = z.object({
+  question: z.string(),
+  answer: z.string(),
+});
+
 const servicePageSchema = z.object({
   heroTitle: z.string(),
   heroSubtitle: z.string(),
@@ -42,6 +47,9 @@ const servicePageSchema = z.object({
   services: z.array(z.string()),
   problems: z.array(z.string()),
   metaDescription: z.string(),
+  faq: z.array(faqItemSchema).optional().default([]),
+  answerFirstIntro: z.string().optional().default(""),
+  keywords: z.string().optional(),
 });
 
 const contentSchema = z.object({

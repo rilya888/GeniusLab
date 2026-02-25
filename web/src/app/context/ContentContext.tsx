@@ -33,6 +33,9 @@ export type ServicePageData = {
   services: string[];
   problems: string[];
   metaDescription: string;
+  faq?: { question: string; answer: string }[];
+  answerFirstIntro?: string;
+  keywords?: string;
 };
 
 export type Content = {
@@ -94,6 +97,8 @@ function getFallbackContent(locale: Locale): Content {
       metaDescription:
         metaDescriptions[key as keyof typeof metaDescriptions] ??
         dict.pages.services.description,
+      faq: [],
+      answerFirstIntro: "",
     };
   }
 
