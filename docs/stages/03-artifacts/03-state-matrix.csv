@@ -1,0 +1,18 @@
+component_or_page,state,expected_behavior,notes
+Header,default,Nav visible and usable,Mobile menu collapsed by default
+Header,mobile-menu-open,Body scroll locked; focus safe,Close action always visible
+CTA Button,default,Clickable with visible label,Touch target >=44x44
+CTA Button,focus-visible,High contrast focus ring,WCAG AA
+Contact Form,default,Fields + consent visible,No hidden required data
+Contact Form,validation-error,Inline errors + aria-invalid,No submit until fixed
+Contact Form,submit-success,Unified success message,Do not expose technical internals
+Contact Form,submit-fail,Human fallback guidance (call/WhatsApp),Log failure internally
+Consent Banner,initial,Visible before non-essential tracking,Choice controls available
+Consent Banner,reject,No analytics events sent,Core UX remains functional
+Consent Banner,accept,Analytics can initialize,Respect selected categories
+Reviews Widget,loaded,Rendered within layout,No layout shifts
+Reviews Widget,error-fallback,Show local fallback text,No external fallback button
+Map Widget,loaded,Map interactive and sized,Address still visible
+Map Widget,error-fallback,Address + directions/call links remain,No broken layout
+Service Page,loading-initial,Content readable without JS dependency,SSG-first
+Service Page,long-content,No overflow on mobile,Stress-tested for long copy

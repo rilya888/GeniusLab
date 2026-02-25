@@ -1,0 +1,6 @@
+scenario,consent_choice,analytics_loaded,form_submit_allowed,events_sent,expected_result
+first_visit_no_action,none,no,yes,no,banner visible and no non-essential tracking
+accept_all,accept_all,yes,yes,yes,full analytics available
+reject_all,reject_all,no,yes,no,forms work without analytics
+customize_necessary_only,necessary_only,no,yes,no,only necessary scripts
+change_choice_from_reject_to_accept,updated_accept,yes,yes,yes,new choice persisted and analytics starts

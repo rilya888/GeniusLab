@@ -1,0 +1,11 @@
+check_id,check,status,owner,notes
+SMK-01,Homepage loads on geniuslab.it,TBD,Dev,
+SMK-02,P1 old URLs return 301 to mapped targets,TBD,SEO+Dev,
+SMK-03,Contact form submit success,TBD,Dev,
+SMK-04,Consent reject blocks analytics,TBD,Dev,
+SMK-05,Consent accept enables analytics,TBD,Dev,
+SMK-06,Reviews fallback safe when widget unavailable,TBD,Dev,
+SMK-07,Maps fallback safe when widget unavailable,TBD,Dev,
+SMK-08,Canonical tags point to target URLs,TBD,SEO,
+SMK-09,/healthz returns 200 and body 'ok',TBD,DevOps,
+SMK-10,Security headers include CSP/frame/referrer/nosniff,TBD,DevOps,

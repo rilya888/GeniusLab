@@ -1,0 +1,4 @@
+date,availability_pct,form_success_rate,critical_incidents_open,redirect_errors_count,lcp_p75,inp_p75,cls_p75,notes
+2026-02-24,TBD,TBD,TBD,TBD,TBD,TBD,TBD,tracker initialized
+2026-02-24,100,TBD,TBD,TBD,TBD,TBD,TBD,home:200/0.344201s;contatti:200/0.300821s;recensioni:200/0.249289s
+2026-02-24,100,TBD,TBD,TBD,TBD,TBD,TBD,home:200/0.138730s;contatti:200/0.153699s;recensioni:200/0.185548s

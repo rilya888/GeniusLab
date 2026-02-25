@@ -1,0 +1,11 @@
+target_page,primary_source,secondary_source,content_action,legal_review_required
+/,avatech.info,assistenza-macbook.it,keep structure from avatech + reduce duplicate claims,yes
+/chi-siamo,apple-assistenza.it/avatech-chi-siamo,avatech.info/chi-siamo.html,rewrite to concise brand story,yes
+/contatti,avatech.info/contatti.html,assistenza-macbook.it/contattaci/,merge and enforce canonical NAP/hours,no
+/recensioni,apple-assistenza.it/recensioni,assistenza-macbook.it,replace manual reviews with Google widget + fallback,no
+/servizi/riparazione-macbook,assistenza-macbook.it/service/riparazione-macbook,apple-assistenza.it/riparazione-macbook-2,shorten copy and remove risky absolutes,yes
+/servizi/riparazione-imac,assistenza-macbook.it/service/riparazione-imac,apple-assistenza.it/riparazione-ima,normalize headings and CTA,no
+/servizi/display-macbook,assistenza-macbook.it/service/display-macbook,avatech.info,remove repetitive keywords,no
+/servizi/data-recovery,assistenza-macbook.it/service/data-recovery,avatech.info,split long paragraphs into bullet points,no
+/servizi/batteria-macbook,assistenza-macbook.it/service/batteria-macbook,avatech.info,standardize service format,no
+/servizi/tastiera-macbook,assistenza-macbook.it/service/tastiera-macbook,avatech.info,standardize service format,no

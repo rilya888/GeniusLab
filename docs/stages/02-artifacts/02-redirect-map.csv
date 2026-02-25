@@ -1,0 +1,24 @@
+source_domain,old_path,target_path,type,priority,status,notes
+avatech.info,/,/,301,P1,ready,canonical home
+avatech.info,/index.html,/,301,P2,ready,home duplicate
+avatech.info,/chi-siamo.html,/chi-siamo,301,P2,ready,
+avatech.info,/contatti.html,/contatti,301,P1,ready,
+assistenza-macbook.it,/,/,301,P1,ready,
+assistenza-macbook.it,/assistenza/,/servizi,301,P2,ready,or dedicated page if kept
+assistenza-macbook.it,/contattaci/,/contatti,301,P1,ready,
+assistenza-macbook.it,/service/riparazione-imac/,/servizi/riparazione-imac,301,P2,ready,
+assistenza-macbook.it,/service/software-assistenza/,/servizi/software-assistenza,301,P2,ready,
+assistenza-macbook.it,/service/tastiera-macbook/,/servizi/tastiera-macbook,301,P2,ready,
+assistenza-macbook.it,/service/riparazione-macbook/,/servizi/riparazione-macbook,301,P1,ready,
+assistenza-macbook.it,/service/macbook-ssd/,/servizi/macbook-ssd,301,P2,ready,
+assistenza-macbook.it,/service/flexgate-display-macbook/,/servizi/flexgate-display-macbook,301,P2,ready,
+assistenza-macbook.it,/service/display-macbook/,/servizi/display-macbook,301,P1,ready,
+assistenza-macbook.it,/service/data-recovery/,/servizi/data-recovery,301,P1,ready,
+assistenza-macbook.it,/service/batteria-macbook/,/servizi/batteria-macbook,301,P2,ready,
+apple-assistenza.it,/,/,301,P1,ready,
+apple-assistenza.it,/avatech-chi-siamo/,/chi-siamo,301,P2,ready,
+apple-assistenza.it,/contatti/,/contatti,301,P1,ready,
+apple-assistenza.it,/recensioni/,/recensioni,301,P1,ready,
+apple-assistenza.it,/riparazione-ima/,/servizi/riparazione-imac,301,P2,ready,
+apple-assistenza.it,/riparazione-macbook-2/,/servizi/riparazione-macbook,301,P2,ready,
+apple-assistenza.it,/support-help-faq/,/supporto,301,P2,review,keep only if support page exists

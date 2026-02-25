@@ -1,0 +1,45 @@
+/**
+ * Admin layout: sidebar, header, logout.
+ */
+
+import { Link, Outlet, useNavigate } from "react-router";
+
+export function AdminLayout() {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("adminToken");
+    navigate("/admin/login", { replace: true });
+  };
+
+  return (
+    <div className="min-h-screen bg-gray-100 flex">
+      <aside className="w-64 bg-gray-900 text-white flex flex-col">
+        <div className="p-6 border-b border-gray-700">
+          <Link to="/admin/services" className="text-xl font-light">
+            Genius Lab Admin
+          </Link>
+        </div>
+        <nav className="flex-1 p-4 space-y-1">
+          <Link
+            to="/admin/services"
+            className="block px-4 py-2 rounded hover:bg-gray-800 text-gray-200"
+          >
+            Servizi
+          </Link>
+        </nav>
+        <div className="p-4 border-t border-gray-700">
+          <button
+            onClick={handleLogout}
+            className="w-full px-4 py-2 text-left rounded hover:bg-gray-800 text-gray-300"
+          >
+            Logout
+          </button>
+        </div>
+      </aside>
+      <main className="flex-1 overflow-auto p-8">
+        <Outlet />
+      </main>
+    </div>
+  );
+}

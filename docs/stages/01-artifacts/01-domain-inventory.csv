@@ -1,0 +1,28 @@
+domain,url,status,source,notes,recommended_target
+avatech.info,https://www.avatech.info/,200,sitemap.xml,Homepage; current Genius Lab branding,/ 
+avatech.info,https://www.avatech.info/index.html,200,sitemap.xml,Duplicate home variant,/ 
+avatech.info,https://www.avatech.info/chi-siamo.html,200,sitemap.xml,About page,/chi-siamo
+avatech.info,https://www.avatech.info/contatti.html,200,sitemap.xml,Contacts + schema,/contatti
+assistenza-macbook.it,https://www.assistenza-macbook.it/,200,page-sitemap.xml,Homepage; service-heavy WP,/ 
+assistenza-macbook.it,https://www.assistenza-macbook.it/assistenza/,200,page-sitemap.xml,Main assistance page,/assistenza
+assistenza-macbook.it,https://www.assistenza-macbook.it/contattaci/,200,page-sitemap.xml,Contact page,/contatti
+assistenza-macbook.it,https://www.assistenza-macbook.it/service/riparazione-imac/,200,service-sitemap.xml,Service page,/servizi/riparazione-imac
+assistenza-macbook.it,https://www.assistenza-macbook.it/service/software-assistenza/,200,service-sitemap.xml,Service page,/servizi/software-assistenza
+assistenza-macbook.it,https://www.assistenza-macbook.it/service/tastiera-macbook/,200,service-sitemap.xml,Service page,/servizi/tastiera-macbook
+assistenza-macbook.it,https://www.assistenza-macbook.it/service/riparazione-macbook/,200,service-sitemap.xml,Service page,/servizi/riparazione-macbook
+assistenza-macbook.it,https://www.assistenza-macbook.it/service/macbook-ssd/,200,service-sitemap.xml,Service page,/servizi/macbook-ssd
+assistenza-macbook.it,https://www.assistenza-macbook.it/service/flexgate-display-macbook/,200,service-sitemap.xml,Service page,/servizi/flexgate-display-macbook
+assistenza-macbook.it,https://www.assistenza-macbook.it/service/display-macbook/,200,service-sitemap.xml,Service page,/servizi/display-macbook
+assistenza-macbook.it,https://www.assistenza-macbook.it/service/data-recovery/,200,service-sitemap.xml,Service page,/servizi/data-recovery
+assistenza-macbook.it,https://www.assistenza-macbook.it/service/batteria-macbook/,200,service-sitemap.xml,Service page,/servizi/batteria-macbook
+apple-assistenza.it,https://www.apple-assistenza.it/,200,homepage links,Legacy home (WordPress),/
+apple-assistenza.it,https://www.apple-assistenza.it/avatech-chi-siamo/,200,homepage links,About page,/chi-siamo
+apple-assistenza.it,https://www.apple-assistenza.it/contatti/,200,homepage links,Contacts,/contatti
+apple-assistenza.it,https://www.apple-assistenza.it/recensioni/,200,homepage links,Reviews page,/recensioni
+apple-assistenza.it,https://www.apple-assistenza.it/riparazione-ima/,200,homepage links,Service-like page,/servizi/riparazione-imac
+apple-assistenza.it,https://www.apple-assistenza.it/riparazione-macbook-2/,200,homepage links,Service-like page,/servizi/riparazione-macbook
+apple-assistenza.it,https://www.apple-assistenza.it/support-help-faq/,200,homepage links,Support/faq content,/supporto
+apple-assistenza.it,https://www.apple-assistenza.it/sitemap.xml,200,error payload,Sitemap endpoint returns WP critical error,/n-a
+apple-assistenza.it,https://www.apple-assistenza.it/wp-sitemap.xml,200,error payload,WP sitemap endpoint returns error,/n-a
+apple-assistenza.it,https://www.apple-assistenza.it/sitemap_index.xml,200,error payload,Yoast sitemap endpoint returns error,/n-a
+apple-assistenza.it,https://www.apple-assistenza.it/robots.txt,500,error page,Robots endpoint unavailable,/n-a

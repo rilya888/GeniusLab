@@ -1,0 +1,11 @@
+priority,domain,old_url,rationale,recommended_target,qa_priority
+P1,avatech.info,https://www.avatech.info/,main entry and branded home,/,critical
+P1,avatech.info,https://www.avatech.info/contatti.html,lead capture and NAP,/contatti,critical
+P1,assistenza-macbook.it,https://www.assistenza-macbook.it/,high-intent legacy home,/,critical
+P1,assistenza-macbook.it,https://www.assistenza-macbook.it/contattaci/,lead/contact flow,/contatti,critical
+P1,assistenza-macbook.it,https://www.assistenza-macbook.it/service/riparazione-macbook/,core commercial service,/servizi/riparazione-macbook,critical
+P1,assistenza-macbook.it,https://www.assistenza-macbook.it/service/data-recovery/,core commercial service,/servizi/data-recovery,critical
+P1,assistenza-macbook.it,https://www.assistenza-macbook.it/service/display-macbook/,core commercial service,/servizi/display-macbook,high
+P1,apple-assistenza.it,https://www.apple-assistenza.it/,legacy branded traffic source,/,critical
+P1,apple-assistenza.it,https://www.apple-assistenza.it/contatti/,lead/contact flow,/contatti,critical
+P1,apple-assistenza.it,https://www.apple-assistenza.it/recensioni/,trust/reviews page,/recensioni,high
