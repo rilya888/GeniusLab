@@ -9,7 +9,7 @@ import fs from "node:fs";
 import { fileURLToPath } from "node:url";
 import type { Request, Response } from "express";
 import { z } from "zod";
-import { saveContentToGitHub } from "../lib/github-content.js";
+import { saveContentToGitHub, readContentFromGitHub } from "../lib/github-content.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -63,7 +63,7 @@ const contentSchema = z.object({
 
 export type Content = z.infer<typeof contentSchema>;
 
-function readContent(lang: "it" | "en" = "it"): Content | null {
+function readContentLocal(lang: "it" | "en" = "it"): Content | null {
   const filePath = getContentFilePath(lang);
   const pathsToTry = fs.existsSync(filePath)
     ? [filePath]
@@ -79,6 +79,16 @@ function readContent(lang: "it" | "en" = "it"): Content | null {
     }
   }
   return null;
+}
+
+/** Read content: from GitHub when configured, else from local file. */
+async function readContent(lang: "it" | "en" = "it"): Promise<Content | null> {
+  if (process.env.GITHUB_TOKEN && process.env.GITHUB_REPO) {
+    const fromGitHub = await readContentFromGitHub(lang);
+    if (fromGitHub) return fromGitHub;
+    console.warn("[Content] GitHub read failed, falling back to local");
+  }
+  return readContentLocal(lang);
 }
 
 function writeContentLocal(data: Content, lang: "it" | "en" = "it"): void {
@@ -117,11 +127,11 @@ async function saveContent(
   }
 }
 
-export function getContent(req: Request, res: Response): void {
+export async function getContent(req: Request, res: Response): Promise<void> {
   const section = req.query.section as string | undefined;
   const langParam = (req.query.lang as string) || "it";
   const lang = langParam === "en" ? "en" : "it";
-  const content = readContent(lang);
+  const content = await readContent(lang);
 
   if (!content) {
     res.status(404).json({ error: "Content not found" });
@@ -164,7 +174,7 @@ export async function putContent(req: Request, res: Response): Promise<void> {
 export async function putContentServices(req: Request, res: Response): Promise<void> {
   const body = req.body;
   const lang = getLangFromQuery(req);
-  const content = readContent(lang);
+  const content = await readContent(lang);
   if (!content) {
     res.status(404).json({ error: "Content not found" });
     return;
@@ -195,7 +205,7 @@ export async function putContentServicePage(req: Request, res: Response): Promis
   const key = (req.params as { key: string }).key;
   const body = req.body;
   const lang = getLangFromQuery(req);
-  const content = readContent(lang);
+  const content = await readContent(lang);
   if (!content) {
     res.status(404).json({ error: "Content not found" });
     return;

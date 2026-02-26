@@ -46,6 +46,37 @@ async function getFileShaFromGitHub(
   return data.sha ?? null;
 }
 
+/** Fetch content file from GitHub. Returns null on 404 or error. */
+export async function readContentFromGitHub(
+  lang: "it" | "en" = "it"
+): Promise<Content | null> {
+  const config = getConfig(lang);
+  if (!config) return null;
+
+  const [owner, repo] = config.repo.split("/");
+  if (!owner || !repo) return null;
+
+  const encodedPath = config.path.split("/").map(encodeURIComponent).join("/");
+  const url = `${GITHUB_API}/repos/${owner}/${repo}/contents/${encodedPath}?ref=${encodeURIComponent(config.branch)}`;
+  const res = await fetch(url, {
+    headers: {
+      Authorization: `Bearer ${config.token}`,
+      Accept: "application/vnd.github+json",
+      "X-GitHub-Api-Version": "2022-11-28",
+    },
+  });
+  if (res.status === 404 || !res.ok) return null;
+
+  const data = (await res.json()) as { content?: string; encoding?: string };
+  if (data.encoding !== "base64" || !data.content) return null;
+  try {
+    const raw = Buffer.from(data.content, "base64").toString("utf-8");
+    return JSON.parse(raw) as Content;
+  } catch {
+    return null;
+  }
+}
+
 export async function saveContentToGitHub(
   data: Content,
   message?: string,
