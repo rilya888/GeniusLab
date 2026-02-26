@@ -23,11 +23,9 @@ export function Navigation() {
             <img src="/logo.png" alt={siteConfig.brand.name} className="h-10 w-auto" />
             <span className="font-light text-xl text-black">
               {siteConfig.brand.name}
-              {siteConfig.brand.legacyBrand && (
-                <span className="text-gray-500 font-normal text-base ml-1">
-                  (ex {siteConfig.brand.legacyBrand})
-                </span>
-              )}
+              <span className="text-gray-500 font-normal text-base ml-1">
+                (ex {siteConfig.brand.legacyBrand ?? "AvaTech"})
+              </span>
             </span>
           </Link>
 
@@ -57,7 +55,12 @@ export function Navigation() {
                 </div>
               </div>
             </div>
-            <Link to={locale === "it" ? "/contatti" : "/en/contacts"} className="text-gray-600 hover:text-black font-light transition-colors">
+            <Link
+              to={locale === "it" ? "/contatti" : "/en/contacts"}
+              className="text-gray-600 hover:text-black font-light transition-colors"
+              data-track="cta_click_contact"
+              data-track-label="nav_contacts"
+            >
               {dict.nav.contacts}
             </Link>
             <Link to={locale === "it" ? "/chi-siamo" : "/en/about"} className="text-gray-600 hover:text-black font-light transition-colors">
@@ -108,6 +111,8 @@ export function Navigation() {
                 to={locale === "it" ? "/contatti" : "/en/contacts"}
                 className="block py-2 px-4 text-gray-600 hover:text-black font-light transition-colors"
                 onClick={() => setIsOpen(false)}
+                data-track="cta_click_contact"
+                data-track-label="nav_mobile_contacts"
               >
                 {dict.nav.contacts}
               </Link>

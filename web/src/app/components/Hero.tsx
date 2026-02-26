@@ -41,22 +41,26 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
         >
-          <motion.a 
+          <motion.a
             href={phoneHref}
             className="bg-black text-white px-10 py-4 rounded-full hover:bg-gray-800 transition-colors text-lg font-light inline-flex items-center gap-3"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            data-track="cta_click_call"
+            data-track-label="hero_call"
           >
             <Phone className="w-5 h-5" />
             {dict.nav.call}
           </motion.a>
-          <motion.a 
+          <motion.a
             href={whatsappHref}
             target="_blank"
             rel="noopener noreferrer"
             className="bg-black text-white px-10 py-4 rounded-full hover:bg-gray-800 transition-colors text-lg font-light inline-flex items-center gap-3"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            data-track="cta_click_whatsapp"
+            data-track-label="hero_whatsapp"
           >
             <MessageCircle className="w-5 h-5" />
             WhatsApp

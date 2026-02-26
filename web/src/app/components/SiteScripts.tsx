@@ -68,18 +68,19 @@ export function SiteScripts() {
     };
     window.addEventListener("consent-updated", onConsent as EventListener);
 
-    const trackButtons = document.querySelectorAll("[data-track]");
+    // Event delegation: captures data-track on dynamically rendered elements (SPA navigation)
     const handleTrack = (e: Event) => {
-      const target = e.currentTarget as HTMLElement;
+      const target = (e.target as HTMLElement).closest("[data-track]");
+      if (!target) return;
       const eventName = target.getAttribute("data-track") || "";
       const label = target.getAttribute("data-track-label") || target.textContent?.trim() || "";
       window.GeniusAnalytics?.track(eventName, { label });
     };
-    trackButtons.forEach((el) => el.addEventListener("click", handleTrack));
+    document.addEventListener("click", handleTrack);
 
     return () => {
       window.removeEventListener("consent-updated", onConsent as EventListener);
-      trackButtons.forEach((el) => el.removeEventListener("click", handleTrack));
+      document.removeEventListener("click", handleTrack);
     };
   }, []);
 

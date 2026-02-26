@@ -99,6 +99,8 @@ export function ServicePageTemplate({
               className="bg-white text-black px-8 py-4 rounded-full hover:bg-gray-200 transition-colors text-lg font-light inline-flex items-center gap-3"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              data-track="cta_click_call"
+              data-track-label="service_hero_call"
             >
               <Phone className="w-5 h-5" />
               {dict.nav.call}
@@ -110,6 +112,8 @@ export function ServicePageTemplate({
               className="bg-white text-black px-8 py-4 rounded-full hover:bg-gray-200 transition-colors text-lg font-light inline-flex items-center gap-3"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              data-track="cta_click_whatsapp"
+              data-track-label="service_hero_whatsapp"
             >
               <MessageCircle className="w-5 h-5" />
               WhatsApp
@@ -192,6 +196,8 @@ export function ServicePageTemplate({
             <Link
               to={getPath(locale, "contatti")}
               className="bg-white text-black px-10 py-4 rounded-full hover:bg-gray-200 transition-colors text-lg font-light"
+              data-track="cta_click_contact"
+              data-track-label="service_cta_contact"
             >
               {svc.ctaContact}
             </Link>

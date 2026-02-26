@@ -6,6 +6,7 @@ import { Footer } from "./components/Footer";
 import { ScrollToTop } from "./components/ScrollToTop";
 import { ConsentBanner } from "./components/ConsentBanner";
 import { SiteScripts } from "./components/SiteScripts";
+import { AnalyticsPageTracker } from "./components/AnalyticsPageTracker";
 import { VisitorBeacon } from "./components/VisitorBeacon";
 
 export function Root() {
@@ -13,6 +14,7 @@ export function Root() {
     <MotionConfig reducedMotion="user">
       <VisitorBeacon />
       <SiteScripts />
+      <AnalyticsPageTracker />
       <div className="relative">
         <SkipLink />
       </div>

@@ -42,12 +42,15 @@ export function ContactForm() {
       });
       const data = await res.json();
       if (data.ok) {
+        window.GeniusAnalytics?.track("form_submit_success", { formId: "contact-form" });
         setSubmitted(true);
         setStatus("");
       } else {
+        window.GeniusAnalytics?.track("form_submit_fail", { formId: "contact-form" });
         setStatus(data.error || dict.forms.error);
       }
     } catch {
+      window.GeniusAnalytics?.track("form_submit_fail", { formId: "contact-form" });
       setStatus(dict.forms.connectionError);
     }
   };

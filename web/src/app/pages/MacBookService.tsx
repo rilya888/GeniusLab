@@ -90,6 +90,8 @@ export function MacBookService() {
               className="bg-white text-black px-8 py-4 rounded-full hover:bg-gray-200 transition-colors text-lg font-light inline-flex items-center gap-3"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              data-track="cta_click_call"
+              data-track-label="macbook_service_call"
             >
               <Phone className="w-5 h-5" />
               {dict.nav.call}
@@ -101,6 +103,8 @@ export function MacBookService() {
               className="bg-white text-black px-8 py-4 rounded-full hover:bg-gray-200 transition-colors text-lg font-light inline-flex items-center gap-3"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              data-track="cta_click_whatsapp"
+              data-track-label="macbook_service_whatsapp"
             >
               <MessageCircle className="w-5 h-5" />
               WhatsApp
