@@ -99,11 +99,11 @@ async function saveContent(
   console.log("[Content] saveContent", lang, useGitHub ? "→ GitHub" : "→ local");
   if (useGitHub) {
     const result = await saveContentToGitHub(data, message, lang);
-    if (result.ok && process.env.NODE_ENV !== "production") {
+    if (result.ok) {
       try {
         writeContentLocal(data, lang);
-      } catch {
-        // dev only; ignore if fs is read-only
+      } catch (err) {
+        console.warn("[Content] Local write failed (GitHub save OK):", err instanceof Error ? err.message : err);
       }
     }
     return result;
