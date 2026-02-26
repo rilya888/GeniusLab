@@ -5,16 +5,12 @@
 import { useState } from "react";
 import { motion } from "motion/react";
 import { siteConfig } from "@/config";
+import { env } from "@/config/env";
 import { useLocale } from "@/app/context/LocaleContext";
 import { getPath } from "@/app/routes.config";
 import { Link } from "react-router";
 
-const formEndpoint =
-  (typeof import.meta !== "undefined" &&
-    (import.meta as { env?: { VITE_PUBLIC_FORM_ENDPOINT?: string } }).env
-      ?.VITE_PUBLIC_FORM_ENDPOINT) ||
-  siteConfig.forms.endpoint;
-
+const formEndpoint = env.formEndpoint ?? siteConfig.forms.endpoint;
 const hasValidEndpoint = formEndpoint && !formEndpoint.includes("your-form-id");
 
 export function ContactForm() {

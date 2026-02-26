@@ -30,8 +30,10 @@ The contact form endpoint is configured in `src/config/site.json`:
 
 ## Environment
 
-- **Production:** Set `VITE_PUBLIC_FORM_ENDPOINT` in Railway (or your host) if you prefer env over config
-- **Development:** Uses `site.json` or `VITE_PUBLIC_FORM_ENDPOINT` if set
+- **Production (Railway):** Set `VITE_PUBLIC_FORMSPREE_FORM_ID` (form ID only) or `VITE_PUBLIC_FORM_ENDPOINT` (full URL) in Project → Variables. After adding, run **Redeploy** (env are used at build time).
+- **Development:** Uses `site.json` or env vars if set
+
+**Priority:** `VITE_PUBLIC_FORM_ENDPOINT` > `VITE_PUBLIC_FORMSPREE_FORM_ID` > `site.json`
 
 ## Future Admin Panel
 

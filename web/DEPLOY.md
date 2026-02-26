@@ -9,6 +9,7 @@
 - [ ] JSON-LD valid
 - [ ] Consent blocks analytics until accepted
 - [ ] CSP does not block Formspree/GTM/Maps
+- [ ] Form endpoint set in Railway (`VITE_PUBLIC_FORMSPREE_FORM_ID` or `VITE_PUBLIC_FORM_ENDPOINT`)
 - [ ] Run `npm run smoke` and `npm run check:headers`
 
 ## Local
@@ -21,7 +22,7 @@ npm run preview      # Build + production server
 
 ## Production (Railway)
 
-1. Set env: `NODE_ENV=production`, `PORT` (Railway sets), `PUBLIC_SITE_URL`, `VITE_PUBLIC_SITE_URL`
+1. Set env: `NODE_ENV=production`, `PORT` (Railway sets), `PUBLIC_SITE_URL`, `VITE_PUBLIC_SITE_URL`, `VITE_PUBLIC_FORMSPREE_FORM_ID` or `VITE_PUBLIC_FORM_ENDPOINT` (for contact form)
 2. Dockerfile: build + run Express
 3. Health check: `GET /healthz` → 200
 
