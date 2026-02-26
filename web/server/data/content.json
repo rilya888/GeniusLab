@@ -86,13 +86,6 @@
         "description": "Diagnostica, reinstallazione macOS, assistenza.",
         "path": "/servizi/software-assistenza",
         "order": 11
-      },
-      {
-        "key": "TEST",
-        "name": "TEST",
-        "description": "",
-        "path": "",
-        "order": 12
       }
     ]
   },
