@@ -1,5 +1,6 @@
 /**
- * Analytics (GTM) loaded only after consent. Handles data-track and form tracking.
+ * Analytics (GTM) loaded on page load with Consent Mode. Tag is always present for verification;
+ * data collection is gated by consent. Handles data-track and form tracking.
  */
 
 import { useEffect } from "react";
@@ -13,6 +14,7 @@ const gtmId =
 declare global {
   interface Window {
     dataLayer?: Record<string, unknown>[];
+    gtag?: (...args: unknown[]) => void;
     GeniusAnalytics?: {
       track: (eventName: string, payload?: Record<string, unknown>) => void;
     };
@@ -21,7 +23,7 @@ declare global {
 
 export function SiteScripts() {
   useEffect(() => {
-    let analyticsLoaded = false;
+    let gtmLoaded = false;
 
     const getConsent = (): { analytics: boolean } | null => {
       try {
@@ -35,14 +37,36 @@ export function SiteScripts() {
       }
     };
 
+    const pushConsentUpdate = (granted: boolean) => {
+      window.gtag?.("consent", "update", {
+        analytics_storage: granted ? "granted" : "denied",
+        ad_storage: granted ? "granted" : "denied",
+        ad_user_data: granted ? "granted" : "denied",
+        ad_personalization: granted ? "granted" : "denied",
+      });
+    };
+
     const loadGTM = () => {
-      if (analyticsLoaded || !gtmId) return;
-      analyticsLoaded = true;
+      if (gtmLoaded || !gtmId) return;
+      gtmLoaded = true;
+
+      // Consent Mode v2: default denied so tag is present but no cookies until user accepts
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function gtag(...args: unknown[]) {
+        window.dataLayer?.push(args);
+      };
+      window.gtag("consent", "default", {
+        analytics_storage: "denied",
+        ad_storage: "denied",
+        ad_user_data: "denied",
+        ad_personalization: "denied",
+      });
+
       const script = document.createElement("script");
       script.async = true;
       script.src = `https://www.googletagmanager.com/gtm.js?id=${encodeURIComponent(gtmId)}`;
       script.onerror = () => {
-        analyticsLoaded = false;
+        gtmLoaded = false;
       };
       document.head.appendChild(script);
     };
@@ -61,12 +85,16 @@ export function SiteScripts() {
       },
     };
 
-    if (getConsent()?.analytics && gtmId) loadGTM();
+    // Load GTM on page load (tag detectable for verification); Consent Mode blocks data until accepted
+    if (gtmId) loadGTM();
 
     const onConsent = (e: CustomEvent<{ analytics: boolean }>) => {
-      if (e.detail.analytics && gtmId) loadGTM();
+      pushConsentUpdate(e.detail.analytics);
     };
     window.addEventListener("consent-updated", onConsent as EventListener);
+
+    // If user already had consent, update immediately
+    if (getConsent()?.analytics) pushConsentUpdate(true);
 
     // Event delegation: captures data-track on dynamically rendered elements (SPA navigation)
     const handleTrack = (e: Event) => {

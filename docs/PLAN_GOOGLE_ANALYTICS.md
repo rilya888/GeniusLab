@@ -47,9 +47,10 @@
 
 1. **Tags** → New → Tag Configuration → **Google Analytics: GA4 Configuration**
 2. Measurement ID: вставить `G-XXXXXXXXXX`
-3. Trigger: **All Pages** (для первой загрузки)
+3. Trigger: **All Pages**
 4. **Важно:** снять галочку «Send a page view event when this configuration loads» — иначе дублируем page_view с первым virtual_page_view
-5. Сохранить тег
+5. **Consent Mode:** включить «Enable consent mode» / «Respect consent mode» в настройках тега — иначе GA4 будет собирать данные до согласия
+6. Сохранить тег
 
 ### 1.4 Настроить виртуальные page_view для SPA
 
