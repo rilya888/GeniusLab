@@ -4,6 +4,7 @@ import { siteConfig } from "@/config";
 import { useLocale } from "@/app/context/LocaleContext";
 import { MapEmbed } from "./MapEmbed";
 import { ContactForm } from "./ContactForm";
+import { SocialLinks } from "./SocialLinks";
 
 export function Contact() {
   const { dict } = useLocale();
@@ -81,6 +82,18 @@ export function Contact() {
             </motion.div>
           ))}
         </div>
+
+        {siteConfig.social && (
+          <motion.div
+            className="flex justify-center mb-20"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.25 }}
+          >
+            <SocialLinks links={siteConfig.social} variant="light" />
+          </motion.div>
+        )}
 
         <motion.div
           className="mb-20"

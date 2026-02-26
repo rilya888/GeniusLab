@@ -19,7 +19,13 @@ export function Hero() {
           animate={{ scale: 1 }}
           transition={{ duration: 0.5 }}
         >
-          <img src="/logo.png" alt={brand.name} className="h-96 w-auto" />
+          <img
+            src="/logo.png"
+            alt={brand.name}
+            className="h-96 w-auto"
+            fetchPriority="high"
+            loading="eager"
+          />
         </motion.div>
         <motion.p 
           className="text-xl md:text-2xl font-light text-gray-600 mb-12 max-w-2xl mx-auto"

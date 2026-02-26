@@ -19,6 +19,10 @@ export const en = {
     privacy: "Privacy Policy",
     cookie: "Cookie Policy",
     allRightsReserved: "All rights reserved.",
+    followUs: "Follow us",
+    instagram: "Instagram",
+    tiktok: "TikTok",
+    facebook: "Facebook",
   },
   consent: {
     text: "We use technical cookies and, only with consent, analytics to improve our service.",

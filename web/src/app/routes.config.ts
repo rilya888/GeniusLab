@@ -18,6 +18,7 @@ const IT_TO_EN_PATH: Record<string, string> = {
   "/404": "/en/404",
   // Service pages
   "/servizi/macbook": "/en/services/macbook",
+  "/servizi/riparazione-macbook": "/en/services/macbook",
   "/servizi/iphone": "/en/services/iphone",
   "/servizi/ipad": "/en/services/ipad",
   "/servizi/watch": "/en/services/watch",
@@ -34,6 +35,7 @@ const IT_TO_EN_PATH: Record<string, string> = {
 /** Italian slug -> English slug for service pages */
 const IT_TO_EN_SLUG: Record<string, string> = {
   macbook: "macbook",
+  "riparazione-macbook": "macbook",
   iphone: "iphone",
   ipad: "ipad",
   watch: "watch",
@@ -54,6 +56,7 @@ const EN_TO_IT_SLUG: Record<string, string> = Object.fromEntries(
 /** Slug (from URL) -> content item key. Works for both IT and EN slugs. */
 export const SLUG_TO_SERVICE_KEY: Record<string, string> = {
   macbook: "macbook",
+  "riparazione-macbook": "macbook",
   iphone: "iphone",
   ipad: "ipad",
   watch: "watch",

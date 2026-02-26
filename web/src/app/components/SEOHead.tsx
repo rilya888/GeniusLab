@@ -37,14 +37,14 @@ export function SEOHead({
   canonical,
   noindex = false,
   jsonLd,
-  ogImage = "/logo.png",
+  ogImage = (siteConfig as { ogImage?: string }).ogImage ?? "/logo.png",
   keywords,
   locale,
 }: SEOHeadProps) {
   const { pathname } = useLocation();
 
   // Append legacy brand for SEO (ex-AvaTech users find Genius Lab)
-  const legacyBrand = siteConfig.brand.legacyBrand;
+  const legacyBrand = siteConfig.brand.legacyBrand ?? "AvaTech";
   const legacySuffix = legacyBrand ? ` | ex ${legacyBrand}` : "";
   const skipLegacy = noindex;
 
@@ -93,11 +93,19 @@ export function SEOHead({
         <meta property="og:locale:alternate" content={locale === "it" ? "en_US" : "it_IT"} />
       )}
       {ogImage && (
-        <meta property="og:image" content={ogImage.startsWith("http") ? ogImage : `${SITE_URL.replace(/\/$/, "")}${ogImage}`} />
+        <>
+          <meta property="og:image" content={ogImage.startsWith("http") ? ogImage : `${base}${ogImage}`} />
+          {ogImage.includes("og-image") && (
+            <>
+              <meta property="og:image:width" content="1200" />
+              <meta property="og:image:height" content="630" />
+            </>
+          )}
+        </>
       )}
       <meta name="twitter:card" content="summary_large_image" />
       {ogImage && (
-        <meta name="twitter:image" content={ogImage.startsWith("http") ? ogImage : `${SITE_URL.replace(/\/$/, "")}${ogImage}`} />
+        <meta name="twitter:image" content={ogImage.startsWith("http") ? ogImage : `${base}${ogImage}`} />
       )}
       {finalKeywords && <meta name="keywords" content={finalKeywords} />}
       {jsonLd && (

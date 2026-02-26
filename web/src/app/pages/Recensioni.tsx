@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 import { SEOHead } from "../components/SEOHead";
 import { ReviewsEmbed } from "../components/ReviewsEmbed";
+import { webPageJsonLd } from "../utils/jsonLd";
 import { useLocale } from "../context/LocaleContext";
 import { getPath } from "../routes.config";
 
@@ -8,14 +9,16 @@ export function Recensioni() {
   const { dict, locale } = useLocale();
   const { title, description, heading, intro, checkpoints, fallbackText, checkpointsTitle, fallbackTitle } =
     dict.pages.reviews;
+  const path = getPath(locale, "recensioni");
   return (
     <>
       <SEOHead
         title={title}
         description={description}
-        canonical={getPath(locale, "recensioni")}
+        canonical={path}
         keywords={dict.pages.reviews.keywords}
         locale={locale}
+        jsonLd={webPageJsonLd(heading, description, path, locale)}
       />
       <div className="min-h-screen bg-white pt-16 px-6 py-24">
         <div className="max-w-4xl mx-auto">

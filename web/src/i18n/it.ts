@@ -13,7 +13,11 @@ export const it = {
   footer: {
     privacy: 'Privacy Policy',
     cookie: 'Cookie Policy',
-    allRightsReserved: 'Tutti i diritti riservati.'
+    allRightsReserved: 'Tutti i diritti riservati.',
+    followUs: 'Seguici',
+    instagram: 'Instagram',
+    tiktok: 'TikTok',
+    facebook: 'Facebook',
   },
   consent: {
     text: 'Usiamo cookie tecnici e, solo con consenso, analytics per migliorare il servizio.',

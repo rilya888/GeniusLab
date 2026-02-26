@@ -3,6 +3,7 @@ import { motion } from "motion/react";
 import { siteConfig } from "@/config";
 import { useLocale } from "@/app/context/LocaleContext";
 import { getPath } from "@/app/routes.config";
+import { SocialLinks } from "./SocialLinks";
 
 export function Footer() {
   const { dict, locale } = useLocale();
@@ -17,19 +18,18 @@ export function Footer() {
           transition={{ duration: 0.6 }}
         >
           <img src="/logo.png" alt={siteConfig.brand.name} className="h-12 w-auto" />
+          {siteConfig.social && (
+            <SocialLinks links={siteConfig.social} className="mt-2" />
+          )}
           <p className="text-gray-600 font-light text-center">
             {siteConfig.brand.name}
-            {siteConfig.brand.legacyBrand && (
-              <span className="text-gray-500"> (ex {siteConfig.brand.legacyBrand})</span>
-            )}{" "}
-            — {siteConfig.brand.tagline}
+            <span className="text-gray-500"> (ex {siteConfig.brand.legacyBrand ?? "AvaTech"})</span> —{" "}
+            {siteConfig.brand.tagline}
           </p>
           <p className="text-gray-400 text-sm font-light">
-            © {new Date().getFullYear()} {siteConfig.brand.name}
-            {siteConfig.brand.legacyBrand && (
-              <span> (ex {siteConfig.brand.legacyBrand})</span>
-            )}
-            . {dict.footer.allRightsReserved}
+            © {new Date().getFullYear()} {siteConfig.brand.name}{" "}
+            <span>(ex {siteConfig.brand.legacyBrand ?? "AvaTech"})</span>.{" "}
+            {dict.footer.allRightsReserved}
           </p>
           <div className="flex gap-8 text-sm">
             <Link

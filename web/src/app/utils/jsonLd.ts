@@ -58,6 +58,11 @@ export function localBusinessJsonLd(locale?: Locale) {
     };
   }
   if (locale) schema.inLanguage = locale === "en" ? "en" : "it";
+  const social = siteConfig.social as { instagram?: string; tiktok?: string; facebook?: string } | undefined;
+  if (social) {
+    const sameAs = [social.instagram, social.tiktok, social.facebook].filter(Boolean);
+    if (sameAs.length) schema.sameAs = sameAs;
+  }
   return schema;
 }
 
@@ -104,6 +109,24 @@ export function breadcrumbJsonLd(items: { name: string; path: string }[]) {
       })
     ),
   };
+}
+
+/** WebPage JSON-LD for pages like Recensioni, Chi-siamo. */
+export function webPageJsonLd(
+  name: string,
+  description: string,
+  path: string,
+  locale?: Locale
+) {
+  const schema: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name,
+    description,
+    url: base + path,
+  };
+  if (locale) schema.inLanguage = locale === "en" ? "en" : "it";
+  return schema;
 }
 
 /** FAQPage JSON-LD for pages with Q&A content. Reusable for Home, service pages, etc. */

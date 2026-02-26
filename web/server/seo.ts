@@ -8,9 +8,10 @@ import { fileURLToPath } from "node:url";
 import { SITEMAP_PATHS, getLocalizedPath } from "../src/app/routes.config";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const CONTENT_DIR = path.resolve(__dirname, "data");
 const CONTENT_FILE =
   process.env.CONTENT_FILE ||
-  path.resolve(__dirname, "data/content.json");
+  path.resolve(CONTENT_DIR, "content.json");
 
 const DEFAULT_SITE_URL = "https://geniuslab-web-production.up.railway.app";
 
@@ -23,6 +24,7 @@ export function getRobotsTxt(): string {
   const base = getSiteUrl();
   return `User-agent: *
 Allow: /
+Disallow: /admin
 
 Sitemap: ${base}/sitemap.xml
 `;
@@ -42,23 +44,31 @@ function getChangefreq(p: string): string {
 }
 
 function getPathsFromContent(): string[] | null {
-  try {
-    const raw = fs.readFileSync(CONTENT_FILE, "utf-8");
-    const data = JSON.parse(raw) as { services?: { items?: { path: string }[] } };
-    const servicePaths = data.services?.items?.map((i) => i.path) ?? [];
-    const staticPaths = [
-      "/",
-      "/servizi",
-      "/contatti",
-      "/chi-siamo",
-      "/recensioni",
-      "/privacy-policy",
-      "/cookie-policy",
-    ];
-    return [...staticPaths, ...servicePaths];
-  } catch {
-    return null;
+  const pathsToTry = [
+    path.join(CONTENT_DIR, "content.it.json"),
+    CONTENT_FILE,
+  ];
+  for (const filePath of pathsToTry) {
+    try {
+      if (!fs.existsSync(filePath)) continue;
+      const raw = fs.readFileSync(filePath, "utf-8");
+      const data = JSON.parse(raw) as { services?: { items?: { path: string }[] } };
+      const servicePaths = data.services?.items?.map((i) => i.path) ?? [];
+      const staticPaths = [
+        "/",
+        "/servizi",
+        "/contatti",
+        "/chi-siamo",
+        "/recensioni",
+        "/privacy-policy",
+        "/cookie-policy",
+      ];
+      return [...staticPaths, ...servicePaths];
+    } catch {
+      continue;
+    }
   }
+  return null;
 }
 
 export function getSitemapXml(): string {
