@@ -117,7 +117,23 @@
         "Problemi di ricarica",
         "Danni causati da liquidi"
       ],
-      "metaDescription": "Riparazione MacBook a Roma: sostituzione schermo, batteria, tastiera. Genius Lab, laboratorio specializzato Apple. Preventivo gratuito."
+      "metaDescription": "Riparazione MacBook a Roma: sostituzione schermo, batteria, tastiera. Genius Lab, laboratorio specializzato Apple. Preventivo gratuito.",
+      "answerFirstIntro": "Dove riparare MacBook a Roma? Genius Lab è il centro assistenza Apple a Roma, in Viale Somalia 246. Offriamo riparazioni professionali per MacBook Pro e MacBook Air con ricambi originali Apple e preventivo gratuito. Diagnostica precisa, tempi chiari e garanzia sul lavoro svolto.",
+      "keywords": "dove riparare macbook roma, riparazione MacBook Roma, centro assistenza Apple Roma",
+      "faq": [
+        {
+          "question": "Dove riparare MacBook a Roma?",
+          "answer": "Genius Lab, in Viale Somalia 246 a Roma, offre riparazioni professionali per MacBook Pro e MacBook Air. Preventivo gratuito e ricambi originali Apple."
+        },
+        {
+          "question": "Qual è il miglior centro riparazione Apple a Roma?",
+          "answer": "Genius Lab è un laboratorio specializzato in assistenza Apple a Roma. Tecnici certificati, ricambi originali e garanzia su ogni riparazione."
+        },
+        {
+          "question": "Quanto costa riparare un MacBook a Roma?",
+          "answer": "Il costo varia in base al tipo di intervento. Genius Lab offre diagnostica gratuita e preventivo trasparente prima di procedere. Contattaci al +39 06 84385510."
+        }
+      ]
     },
     "iphone": {
       "heroTitle": "Riparazione iPhone Roma",
@@ -146,7 +162,19 @@
         "Face ID non funziona",
         "Altoparlante difettoso"
       ],
-      "metaDescription": "Riparazione iPhone a Roma: display, batteria, fotocamera. Assistenza rapida con ricambi originali. Genius Lab."
+      "metaDescription": "Riparazione iPhone a Roma: display, batteria, fotocamera. Assistenza rapida con ricambi originali. Genius Lab.",
+      "answerFirstIntro": "Dove riparare iPhone a Roma? Genius Lab, in Viale Somalia 246, è il centro assistenza iPhone a Roma. Sostituzione schermo, batteria e fotocamera con ricambi originali Apple. Servizio rapido e preventivo gratuito.",
+      "keywords": "dove riparare iphone roma, riparazione iPhone Roma, centro assistenza iPhone Roma",
+      "faq": [
+        {
+          "question": "Dove riparare iPhone a Roma?",
+          "answer": "Genius Lab in Viale Somalia 246, Roma. Sostituzione schermo, batteria, fotocamera con ricambi originali. Preventivo gratuito."
+        },
+        {
+          "question": "Quanto tempo per riparare un iPhone a Roma?",
+          "answer": "La maggior parte delle riparazioni viene completata in giornata. Genius Lab fornisce una stima precisa al momento della diagnosi."
+        }
+      ]
     },
     "ipad": {
       "heroTitle": "Riparazione iPad Roma",
@@ -174,7 +202,15 @@
         "Pulsante Home non funziona",
         "Danni da liquidi"
       ],
-      "metaDescription": "Riparazione iPad a Roma: display, problemi di ricarica, troubleshooting. Genius Lab, centro assistenza Apple."
+      "metaDescription": "Riparazione iPad a Roma: display, problemi di ricarica, troubleshooting. Genius Lab, centro assistenza Apple.",
+      "answerFirstIntro": "Dove riparare iPad a Roma? Genius Lab offre assistenza iPad a Roma in Viale Somalia 246. Riparazione display, problemi di ricarica e troubleshooting per iPad Pro, iPad Air e iPad Mini. Ricambi originali e preventivo gratuito.",
+      "keywords": "dove riparare ipad roma, riparazione iPad Roma, centro assistenza iPad Roma",
+      "faq": [
+        {
+          "question": "Dove riparare iPad a Roma?",
+          "answer": "Genius Lab, Viale Somalia 246, Roma. Riparazioni per tutti i modelli iPad con ricambi originali Apple."
+        }
+      ]
     },
     "watch": {
       "heroTitle": "Riparazione Apple Watch Roma",
@@ -275,7 +311,19 @@
         "Problemi software",
         "SSD/HDD danneggiato"
       ],
-      "metaDescription": "Recupero dati a Roma: dischi danneggiati, SSD, fusion drive. Genius Lab, massima riservatezza."
+      "metaDescription": "Recupero dati a Roma: dischi danneggiati, SSD, fusion drive. Genius Lab, massima riservatezza.",
+      "answerFirstIntro": "Dove fare recupero dati a Roma? Genius Lab offre servizio professionale di recupero dati da iPhone, iPad, MacBook e dischi danneggiati. In Viale Somalia 246 a Roma, con massima riservatezza e valutazione gratuita.",
+      "keywords": "recupero dati roma, dove recuperare dati roma, data recovery Roma",
+      "faq": [
+        {
+          "question": "Dove fare recupero dati a Roma?",
+          "answer": "Genius Lab, Viale Somalia 246, Roma. Recupero dati da dispositivi Apple e dischi danneggiati con valutazione gratuita."
+        },
+        {
+          "question": "È possibile recuperare dati da un iPhone danneggiato?",
+          "answer": "Sì, Genius Lab utilizza tecnologie professionali per recuperare dati da iPhone, iPad e MacBook danneggiati. Contattaci per una valutazione gratuita."
+        }
+      ]
     },
     "battery": {
       "heroTitle": "Batteria MacBook Roma",
