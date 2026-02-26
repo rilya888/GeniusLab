@@ -47,10 +47,22 @@
 
 1. **Tags** → New → Tag Configuration → **Google Analytics: GA4 Configuration**
 2. Measurement ID: вставить `G-XXXXXXXXXX`
-3. Trigger: **All Pages**
-4. **Важно:** снять галочку «Send a page view event when this configuration loads» — иначе дублируем page_view с первым virtual_page_view
-5. **Consent Mode:** включить «Enable consent mode» / «Respect consent mode» в настройках тега — иначе GA4 будет собирать данные до согласия
+3. **Triggers:** добавить **два** триггера:
+   - **All Pages** (для первой загрузки, когда consent уже есть)
+   - **Custom Event** с именем `consent_update` (чтобы тег сработал, когда пользователь нажимает «Принять»)
+4. **Важно:** снять галочку «Send a page view event when this configuration loads» — page_view идёт через virtual_page_view
+5. **Consent Mode:** включить «Enable consent mode» — данные не собираются до согласия
 6. Сохранить тег
+
+**Создать триггер consent_update:** Triggers → New → Custom Event → Event name: `consent_update`
+
+### Проверка и устранение неполадок
+
+**«Не собирает данные» / «Tag not detected»:**
+1. При проверке **нажмите «Принять»** в баннере cookie — без согласия данные не отправляются (GDPR).
+2. Добавьте триггер `consent_update` к GA4 тегу (см. выше).
+3. В GTM: Preview → откройте сайт → Accept → проверьте, что GA4 тег срабатывает.
+4. В GA4: Realtime — после Accept должен появиться активный пользователь.
 
 ### 1.4 Настроить виртуальные page_view для SPA
 

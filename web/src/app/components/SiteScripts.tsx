@@ -38,12 +38,15 @@ export function SiteScripts() {
     };
 
     const pushConsentUpdate = (granted: boolean) => {
-      window.gtag?.("consent", "update", {
+      const state = {
         analytics_storage: granted ? "granted" : "denied",
         ad_storage: granted ? "granted" : "denied",
         ad_user_data: granted ? "granted" : "denied",
         ad_personalization: granted ? "granted" : "denied",
-      });
+      };
+      window.gtag?.("consent", "update", state);
+      // Custom event so GTM can fire GA4 tag when consent is granted (tag won't re-fire on All Pages)
+      window.dataLayer?.push({ event: "consent_update", ...state });
     };
 
     const loadGTM = () => {
