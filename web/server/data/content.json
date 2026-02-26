@@ -5,7 +5,7 @@
     "items": [
       {
         "key": "macbook",
-        "name": "Riparazione MacBook",
+        "name": "Riparazione MacBook TEST",
         "description": "Sostituzione schermo, batteria, tastiera e componenti.",
         "path": "/servizi/macbook",
         "order": 0
@@ -86,6 +86,13 @@
         "description": "Diagnostica, reinstallazione macOS, assistenza.",
         "path": "/servizi/software-assistenza",
         "order": 11
+      },
+      {
+        "key": "TEST",
+        "name": "",
+        "description": "",
+        "path": "",
+        "order": 12
       }
     ]
   },
