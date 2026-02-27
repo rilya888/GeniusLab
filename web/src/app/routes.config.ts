@@ -122,6 +122,8 @@ export function getPath(locale: Locale, routeKey: keyof typeof ROUTES): string {
 export function getLocalizedPath(currentPath: string, newLocale: Locale): string {
   const p = currentPath.replace(/\/+$/, "") || "/";
   if (newLocale === "it") {
+    // Already Italian path (used by sitemap and locale switch)
+    if (!p.startsWith("/en")) return p;
     // English -> Italian
     if (p === "/en") return "/";
     if (p.startsWith("/en/")) {
@@ -151,6 +153,8 @@ export function getLocalizedPath(currentPath: string, newLocale: Locale): string
     }
     return "/";
   } else {
+    // Already English path (used by sitemap and locale switch)
+    if (p.startsWith("/en")) return p;
     // Italian -> English
     if (p === "/") return "/en";
     const enPath = IT_TO_EN_PATH[p];
