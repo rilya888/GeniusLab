@@ -13,8 +13,39 @@ const SITE_URL =
 
 const base = SITE_URL.replace(/\/$/, "");
 
+type SiteLocation = (typeof siteConfig.locations)[number] & {
+  geo?: { latitude: number; longitude: number };
+};
+
+function toPostalAddress(loc: SiteLocation) {
+  return {
+    "@type": "PostalAddress",
+    streetAddress: loc.street,
+    addressLocality: loc.city,
+    postalCode: loc.postalCode,
+    addressCountry: "IT",
+  };
+}
+
+function toGeo(loc: SiteLocation) {
+  if (!loc.geo) return undefined;
+  return {
+    "@type": "GeoCoordinates",
+    latitude: loc.geo.latitude,
+    longitude: loc.geo.longitude,
+  };
+}
+
 export function localBusinessJsonLd(locale?: Locale) {
-  const [loc] = siteConfig.locations;
+  const [primaryLoc, ...otherLocations] = siteConfig.locations as SiteLocation[];
+  const fallbackLoc: SiteLocation = {
+    label: "Lab",
+    street: "",
+    city: "Roma",
+    postalCode: "",
+  };
+  const loc = primaryLoc ?? fallbackLoc;
+
   const schema: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
@@ -27,13 +58,7 @@ export function localBusinessJsonLd(locale?: Locale) {
     image: base + "/logo.png",
     telephone: siteConfig.contacts.phonePrimary,
     email: siteConfig.contacts.email,
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: loc.street,
-      addressLocality: loc.city,
-      postalCode: loc.postalCode,
-      addressCountry: "IT",
-    },
+    address: toPostalAddress(loc),
     openingHoursSpecification: [
       {
         "@type": "OpeningHoursSpecification",
@@ -49,14 +74,22 @@ export function localBusinessJsonLd(locale?: Locale) {
       },
     ],
   };
-  const locWithGeo = loc as { geo?: { latitude: number; longitude: number } };
-  if (locWithGeo.geo) {
-    schema.geo = {
-      "@type": "GeoCoordinates",
-      latitude: locWithGeo.geo.latitude,
-      longitude: locWithGeo.geo.longitude,
-    };
+
+  const primaryGeo = toGeo(loc);
+  if (primaryGeo) schema.geo = primaryGeo;
+
+  if (otherLocations.length > 0) {
+    schema.department = otherLocations.map((item) => {
+      const geo = toGeo(item);
+      return {
+        "@type": "LocalBusiness",
+        name: `${siteConfig.brand.name} ${item.label}`.trim(),
+        address: toPostalAddress(item),
+        ...(geo && { geo }),
+      };
+    });
   }
+
   if (locale) schema.inLanguage = locale === "en" ? "en" : "it";
   const social = siteConfig.social as { instagram?: string; tiktok?: string; facebook?: string } | undefined;
   if (social) {

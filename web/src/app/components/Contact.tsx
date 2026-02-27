@@ -8,14 +8,15 @@ import { SocialLinks } from "./SocialLinks";
 
 export function Contact() {
   const { dict } = useLocale();
-  const [loc] = siteConfig.locations;
-  const address = `${loc.street}, ${loc.postalCode} ${loc.city}`;
+  const addresses = siteConfig.locations.map(
+    (loc) => `${loc.label}: ${loc.street}, ${loc.postalCode} ${loc.city}`
+  );
 
   const contactInfo = [
     {
       icon: MapPin,
       title: dict.pages.contacts.address,
-      details: [address],
+      details: addresses,
     },
     {
       icon: Phone,

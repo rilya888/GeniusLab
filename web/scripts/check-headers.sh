@@ -22,4 +22,15 @@ require_header "x-content-type-options"
 require_header "referrer-policy"
 require_header "permissions-policy"
 require_header "content-security-policy"
+
+csp="$(printf '%s\n' "$headers" | grep -i '^content-security-policy:' | head -n 1 || true)"
+if [[ -z "$csp" ]]; then
+  echo "FAIL missing CSP value" >&2
+  exit 1
+fi
+if [[ "$csp" != *"https://region1.google-analytics.com"* ]]; then
+  echo "FAIL CSP connect-src missing region1.google-analytics.com" >&2
+  exit 1
+fi
+echo "OK   CSP allows region1.google-analytics.com"
 echo "header check passed"

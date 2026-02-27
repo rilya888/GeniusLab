@@ -30,8 +30,44 @@ jobs:
       - name: Install
         run: npm ci
 
+      - name: SEO Content Quality
+        run: npm run check:seo-content-quality
+
+      - name: Intent Map Sync
+        run: npm run check:intent-map-sync
+
+      - name: Analytics Contract
+        run: npm run check:analytics-contract
+
       - name: Build
         run: ASTRO_TELEMETRY_DISABLED=1 npm run build
 
-      - name: Dist Smoke
-        run: npm run check:dist
+      - name: GEO Consistency
+        run: npm run check:geo-consistency
+
+      - name: Start Server
+        run: |
+          npm run start > /tmp/web-server.log 2>&1 &
+          echo $! > /tmp/web-server.pid
+          for i in $(seq 1 30); do
+            if curl -fsS http://localhost:5173/healthz >/dev/null; then
+              exit 0
+            fi
+            sleep 1
+          done
+          echo "Server failed to start"
+          cat /tmp/web-server.log || true
+          exit 1
+
+      - name: Release Gate
+        run: npm run check:release-gate -- http://localhost:5173
+
+      - name: Canonical Policy
+        run: npm run check:canonical-policy -- http://localhost:5173
+
+      - name: Stop Server
+        if: always()
+        run: |
+          if [ -f /tmp/web-server.pid ]; then
+            kill "$(cat /tmp/web-server.pid)" || true
+          fi

@@ -13,7 +13,13 @@
     "smoke:prod": "bash scripts/postdeploy-smoke.sh https://geniuslab.info",
     "check:postdeploy": "bash scripts/postdeploy-smoke.sh",
     "check:headers": "bash scripts/check-headers.sh",
-    "check:seo": "bash scripts/check-seo.sh"
+    "check:seo": "bash scripts/check-seo.sh",
+    "check:seo-content-quality": "tsx scripts/check-seo-content-quality.ts",
+    "check:intent-map-sync": "tsx scripts/check-intent-map-sync.ts",
+    "check:analytics-contract": "tsx scripts/check-analytics-contract.ts",
+    "check:release-gate": "bash scripts/release-gate.sh",
+    "check:canonical-policy": "tsx scripts/check-canonical-policy.ts",
+    "check:geo-consistency": "tsx scripts/check-geo-consistency.ts"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "1.2.3",

@@ -12,6 +12,7 @@ import cookieParser from "cookie-parser";
 import sirv from "sirv";
 import { getRobotsTxt, getSitemapXml } from "./seo";
 import { REDIRECTS } from "./redirects";
+import { getCanonicalRedirect } from "./canonical";
 import apiRouter from "./api";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -20,6 +21,7 @@ const port = Number(process.env.PORT) || 5173;
 const base = process.env.BASE || "/";
 
 const app = express();
+app.set("trust proxy", true);
 app.use(compression());
 app.use(cookieParser());
 app.use(express.json());
@@ -32,9 +34,30 @@ app.use((_req, res, next) => {
   res.set("Permissions-Policy", "geolocation=(), microphone=(), camera=()");
   res.set(
     "Content-Security-Policy",
-    "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; connect-src 'self' https://formspree.io https://www.google-analytics.com https://www.googletagmanager.com; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; frame-src https://www.google.com https://maps.google.com https://maps.googleapis.com; base-uri 'self'; form-action 'self' https://formspree.io"
+    "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; connect-src 'self' https://formspree.io https://www.google-analytics.com https://region1.google-analytics.com https://www.googletagmanager.com; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; frame-src https://www.google.com https://maps.google.com https://maps.googleapis.com; base-uri 'self'; form-action 'self' https://formspree.io"
   );
   next();
+});
+
+// Canonical URL policy in production:
+// 1) http -> https
+// 2) www.geniuslab.info -> geniuslab.info
+// 3) remove trailing slash (except root)
+app.use((req, res, next) => {
+  const hostHeader = req.headers.host || "";
+  const forwardedProto =
+    typeof req.headers["x-forwarded-proto"] === "string"
+      ? req.headers["x-forwarded-proto"]
+      : undefined;
+  const target = getCanonicalRedirect({
+    hostHeader,
+    forwardedProto,
+    fallbackProto: req.protocol,
+    path: req.path || "/",
+    url: req.url || req.path || "/",
+  });
+  if (!target) return next();
+  return res.redirect(301, target);
 });
 
 // 301 redirects: /en/servizi/* -> /en/services/*, exact matches from REDIRECTS
