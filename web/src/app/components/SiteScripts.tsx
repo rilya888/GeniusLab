@@ -53,17 +53,20 @@ export function SiteScripts() {
       if (gtmLoaded || !gtmId) return;
       gtmLoaded = true;
 
-      // Consent Mode v2: default denied so tag is present but no cookies until user accepts
+      // Do not overwrite gtag if already set by direct snippet in index.html
       window.dataLayer = window.dataLayer || [];
-      window.gtag = function gtag(...args: unknown[]) {
-        window.dataLayer?.push(args);
-      };
-      window.gtag("consent", "default", {
-        analytics_storage: "denied",
-        ad_storage: "denied",
-        ad_user_data: "denied",
-        ad_personalization: "denied",
-      });
+      if (!window.gtag) {
+        window.gtag = function gtag(...args: unknown[]) {
+          window.dataLayer?.push(args);
+        };
+        // Consent default is set by gtag snippet in index.html; only set here when no snippet
+        window.gtag("consent", "default", {
+          analytics_storage: "denied",
+          ad_storage: "denied",
+          ad_user_data: "denied",
+          ad_personalization: "denied",
+        });
+      }
 
       const script = document.createElement("script");
       script.async = true;

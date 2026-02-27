@@ -10,4 +10,5 @@ export const env = {
   })(),
   siteUrl: import.meta.env.VITE_PUBLIC_SITE_URL?.trim(),
   gtmId: import.meta.env.VITE_PUBLIC_GTM_ID?.trim(),
+  ga4Id: import.meta.env.VITE_PUBLIC_GA4_ID?.trim(),
 } as const;

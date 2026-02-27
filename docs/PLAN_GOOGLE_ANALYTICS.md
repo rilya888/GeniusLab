@@ -7,8 +7,9 @@
 - [x] data-track на CTA (Hero, ServicePageTemplate, GenericServicePage, MacBookService, IPhoneService, IPadService, WatchService, DataRecovery, Navigation)
 - [x] Event delegation для data-track в SiteScripts
 - [x] DEPLOY.md обновлён (VITE_PUBLIC_GTM_ID)
+- [x] Прямой gtag.js в index.html (Vite plugin) — для прохождения проверки Google «Tag not detected»
 
-**Осталось:** настройка GA4/GTM в интерфейсе Google, установка `VITE_PUBLIC_GTM_ID` в .env и Railway.
+**Осталось:** настройка GA4/GTM в интерфейсе Google, установка `VITE_PUBLIC_GTM_ID` и `VITE_PUBLIC_GA4_ID` в .env и Railway.
 
 ---
 
@@ -58,10 +59,14 @@
 
 ### Проверка и устранение неполадок
 
-**«Не собирает данные» / «Tag not detected»:**
+**«Tag not detected»:**
+- Установите `VITE_PUBLIC_GA4_ID=G-GYDPMQ4R49` в .env и Railway — прямой gtag.js инжектится в HTML.
+- В GTM отключите тег **Google Tag** (дублирование); GA4 Event тег — Measurement ID напрямую.
+
+**«Не собирает данные»:**
 1. При проверке **нажмите «Принять»** в баннере cookie — без согласия данные не отправляются (GDPR).
-2. Добавьте триггер `consent_update` к GA4 тегу (см. выше).
-3. В GTM: Preview → откройте сайт → Accept → проверьте, что GA4 тег срабатывает.
+2. Добавьте триггер `consent_update` к GA4 Event тегу (если используете GTM для событий).
+3. В GTM: Preview → откройте сайт → Accept → проверьте срабатывание тегов.
 4. В GA4: Realtime — после Accept должен появиться активный пользователь.
 
 ### 1.4 Настроить виртуальные page_view для SPA
@@ -89,13 +94,17 @@
 
 ## Часть 2: Изменения в коде
 
-### 2.1 Переменная окружения
+### 2.1 Переменные окружения
 
 Файл: `web/.env`
 
 ```bash
 VITE_PUBLIC_GTM_ID=GTM-XXXXXXX
+VITE_PUBLIC_GA4_ID=G-XXXXXXXXXX
 ```
+
+- **VITE_PUBLIC_GA4_ID** — Measurement ID; при задании встраивает прямой gtag.js в HTML (прохождение проверки Google)
+- **VITE_PUBLIC_GTM_ID** — Container ID для событий (virtual_page_view, form_submit, cta_click)
 
 **Важно:** `VITE_` переменные встраиваются в бандл при **сборке**. После добавления в Railway → Variables нужен **Redeploy**.
 
