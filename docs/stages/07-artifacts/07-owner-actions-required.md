@@ -12,7 +12,7 @@ After propagation, run:
 
 ```bash
 cd web
-npm run check:postdeploy -- https://geniuslab.it
+npm run check:postdeploy -- https://geniuslab.info
 ```
 
 Pre-domain mode:
@@ -39,7 +39,8 @@ Set in Railway variables:
 - `PUBLIC_SITE_URL=https://geniuslab-web-production.up.railway.app`
 
 At final domain cutover change to:
-- `PUBLIC_SITE_URL=https://geniuslab.it`
+- `PUBLIC_SITE_URL=https://geniuslab.info`
+- `VITE_PUBLIC_SITE_URL=https://geniuslab.info`
 
 ## 4) Optional analytics
 

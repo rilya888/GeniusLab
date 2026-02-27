@@ -26,6 +26,16 @@ if ! echo "$body" | grep -q "<loc>"; then
 fi
 echo "OK   sitemap.xml valid"
 
+# sitemap base URL: when checking production, first <loc> must start with BASE_URL
+if [[ "$BASE_URL" != *"localhost"* && "$BASE_URL" != *"127.0.0.1"* ]]; then
+  first_loc=$(echo "$body" | grep -m1 "<loc>" | sed 's/.*<loc>\([^<]*\)<\/loc>.*/\1/')
+  if [[ -n "$first_loc" && "$first_loc" != "$BASE_URL"* ]]; then
+    echo "FAIL sitemap <loc>=$first_loc does not start with BASE_URL=$BASE_URL" >&2
+    exit 1
+  fi
+  echo "OK   sitemap base URL matches"
+fi
+
 # 404 has noindex (SPA: 404 route returns HTML with noindex from React - may not be in initial curl)
 # For SPA, initial HTML might not have noindex. Skip or check after hydration.
 echo "OK   SEO checks passed"

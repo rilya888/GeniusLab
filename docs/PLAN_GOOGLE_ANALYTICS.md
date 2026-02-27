@@ -28,7 +28,7 @@
 ### 1.1 Создать свойство GA4
 
 1. [analytics.google.com](https://analytics.google.com) → Admin → Create Property
-2. Тип: Web, URL: `https://geniuslab.it` (или ваш домен)
+2. Тип: Web, URL: `https://geniuslab.info` (или ваш домен)
 3. В свойстве: **Admin** → **Data Streams** → **Add stream** → **Web**
 4. Stream URL: ваш домен, включить **Enhanced measurement**
 5. Скопировать **Measurement ID** (формат `G-XXXXXXXXXX`)

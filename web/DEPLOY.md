@@ -12,7 +12,9 @@
 - [ ] Form endpoint set in Railway (`VITE_PUBLIC_FORMSPREE_FORM_ID` or `VITE_PUBLIC_FORM_ENDPOINT`)
 - [ ] GTM ID set in Railway (`VITE_PUBLIC_GTM_ID`) for events
 - [ ] GA4 ID set in Railway (`VITE_PUBLIC_GA4_ID`) for direct gtag — enables Google tag verification
+- [ ] `PUBLIC_SITE_URL` and `VITE_PUBLIC_SITE_URL` set to `https://geniuslab.info` (see `.env.example`)
 - [ ] Run `npm run smoke` and `npm run check:headers`
+- [ ] After cutover: `npm run check:postdeploy -- https://geniuslab.info`
 
 ## Local
 

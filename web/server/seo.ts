@@ -13,7 +13,7 @@ const CONTENT_FILE =
   process.env.CONTENT_FILE ||
   path.resolve(CONTENT_DIR, "content.json");
 
-const DEFAULT_SITE_URL = "https://geniuslab-web-production.up.railway.app";
+const DEFAULT_SITE_URL = "https://geniuslab.info";
 
 export function getSiteUrl(): string {
   const url = process.env.PUBLIC_SITE_URL || DEFAULT_SITE_URL;
