@@ -37,7 +37,7 @@ export function SiteScripts() {
       }
     };
 
-    const pushConsentUpdate = (granted: boolean) => {
+    const pushConsentUpdate = (granted: boolean, options?: { sendPageView?: boolean }) => {
       const state = {
         analytics_storage: granted ? "granted" : "denied",
         ad_storage: granted ? "granted" : "denied",
@@ -45,8 +45,15 @@ export function SiteScripts() {
         ad_personalization: granted ? "granted" : "denied",
       };
       window.gtag?.("consent", "update", state);
-      // Custom event so GTM can fire GA4 tag when consent is granted (tag won't re-fire on All Pages)
+      // Custom event so GTM can fire GA4 tag when consent is granted
       window.dataLayer?.push({ event: "consent_update", ...state });
+      // Only send page_view when user just clicked Accept, not on initial sync (AnalyticsPageTracker handles that)
+      if (granted && options?.sendPageView) {
+        window.gtag?.("event", "page_view", {
+          page_path: window.location.pathname || "/",
+          page_title: typeof document !== "undefined" ? document.title : "",
+        });
+      }
     };
 
     const loadGTM = () => {
@@ -78,6 +85,17 @@ export function SiteScripts() {
     };
 
     window.dataLayer = window.dataLayer || [];
+    const GA4_EVENTS: string[] = [
+      "virtual_page_view",
+      "form_submit_attempt",
+      "form_submit_success",
+      "form_submit_fail",
+      "form_submit_click",
+      "cta_click_call",
+      "cta_click_whatsapp",
+      "cta_click_contact",
+    ];
+
     window.GeniusAnalytics = {
       track(eventName: string, payload: Record<string, unknown> = {}) {
         const consent = getConsent();
@@ -88,6 +106,17 @@ export function SiteScripts() {
           ...payload,
           ts: Date.now(),
         });
+        // Send to GA4 via gtag for events we care about (GTM may not forward)
+        if (GA4_EVENTS.includes(eventName)) {
+          if (eventName === "virtual_page_view") {
+            window.gtag?.("event", "page_view", {
+              page_path: payload.page_path ?? "/",
+              page_title: payload.page_title ?? (typeof document !== "undefined" ? document.title : ""),
+            });
+          } else {
+            window.gtag?.("event", eventName, payload);
+          }
+        }
       },
     };
 
@@ -95,7 +124,7 @@ export function SiteScripts() {
     if (gtmId) loadGTM();
 
     const onConsent = (e: CustomEvent<{ analytics: boolean }>) => {
-      pushConsentUpdate(e.detail.analytics);
+      pushConsentUpdate(e.detail.analytics, { sendPageView: e.detail.analytics });
     };
     window.addEventListener("consent-updated", onConsent as EventListener);
 

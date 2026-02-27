@@ -3,11 +3,10 @@ import path from 'path'
 import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
 
-// Injects gtag.js snippet when VITE_PUBLIC_GA4_ID is set; enables Google tag verification
+// Injects gtag.js snippet; uses VITE_PUBLIC_GA4_ID or fallback for Google tag verification
 function ga4GtagPlugin(mode: string) {
   const env = loadEnv(mode, process.cwd(), '')
-  const ga4Id = env.VITE_PUBLIC_GA4_ID?.trim()
-  if (!ga4Id) return { name: 'vite:ga4-gtag', transformIndexHtml: (html: string) => html }
+  const ga4Id = env.VITE_PUBLIC_GA4_ID?.trim() || 'G-GYDPMQ4R49'
 
   const snippet = `
       <script>

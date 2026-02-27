@@ -65,9 +65,9 @@
 
 **«Не собирает данные»:**
 1. При проверке **нажмите «Принять»** в баннере cookie — без согласия данные не отправляются (GDPR).
-2. Добавьте триггер `consent_update` к GA4 Event тегу (если используете GTM для событий).
-3. В GTM: Preview → откройте сайт → Accept → проверьте срабатывание тегов.
-4. В GA4: Realtime — после Accept должен появиться активный пользователь.
+2. GA4 загружается через прямой gtag в HTML (не через GTM). События идут в GA4 напрямую из `GeniusAnalytics.track`.
+3. В GA4: **Reports → Realtime** (не обычные Reports — они обновляются с задержкой 24–48 ч).
+4. См. [docs/PLAN_GA4_ANALYTICS_FIX.md](PLAN_GA4_ANALYTICS_FIX.md) и [docs/ANALYTICS_ARCHITECTURE.md](ANALYTICS_ARCHITECTURE.md).
 
 ### 1.4 Настроить виртуальные page_view для SPA
 
