@@ -10,9 +10,10 @@ import express from "express";
 import compression from "compression";
 import cookieParser from "cookie-parser";
 import sirv from "sirv";
-import { getRobotsTxt, getSitemapXml } from "./seo";
+import { getRobotsTxt, getSitemapXml, getSiteUrl } from "./seo";
 import { REDIRECTS } from "./redirects";
 import { getCanonicalRedirect } from "./canonical";
+import { getLocalizedPath } from "../src/app/routes.config";
 import apiRouter from "./api";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -58,6 +59,35 @@ app.use((req, res, next) => {
   });
   if (!target) return next();
   return res.redirect(301, target);
+});
+
+// Canonical + hreflang headers for HTML responses (helps indexing without JS rendering)
+app.use((req, res, next) => {
+  if (req.method !== "GET") return next();
+  const accept = String(req.headers.accept || "");
+  if (!accept.includes("text/html")) return next();
+  if (req.path.startsWith("/api")) return next();
+  if (req.path === "/robots.txt" || req.path === "/sitemap.xml" || req.path === "/healthz") {
+    return next();
+  }
+
+  const base = getSiteUrl();
+  const normalizedPath = req.path.length > 1 ? req.path.replace(/\/+$/, "") : "/";
+  const canonicalUrl = `${base}${normalizedPath === "/" ? "/" : normalizedPath}`;
+
+  const links: string[] = [`<${canonicalUrl}>; rel="canonical"`];
+
+  if (!normalizedPath.startsWith("/admin")) {
+    const itPath = getLocalizedPath(normalizedPath, "it");
+    const enPath = getLocalizedPath(normalizedPath, "en");
+    links.push(`<${base}${itPath === "/" ? "/" : itPath}>; rel="alternate"; hreflang="it"`);
+    links.push(`<${base}${enPath === "/" ? "/en" : enPath}>; rel="alternate"; hreflang="en"`);
+    links.push(`<${base}${itPath === "/" ? "/" : itPath}>; rel="alternate"; hreflang="x-default"`);
+  }
+
+  res.set("Link", links.join(", "));
+  res.set("X-Robots-Tag", "all");
+  next();
 });
 
 // 301 redirects: /en/servizi/* -> /en/services/*, exact matches from REDIRECTS
