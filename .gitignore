@@ -35,3 +35,6 @@ backup/
 
 # Visitor analytics (do not commit)
 web/server/data/visits.ndjson
+
+# Server access notes (contains real hostnames/IPs, keep local only)
+SERVER_HANDOFF.md
