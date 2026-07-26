@@ -1,6 +1,6 @@
 import { SEOHead } from "../components/SEOHead";
 import { Contact } from "../components/Contact";
-import { localBusinessJsonLd } from "../utils/jsonLd";
+import { breadcrumbJsonLd, localBusinessJsonLd } from "../utils/jsonLd";
 import { useLocale } from "../context/LocaleContext";
 import { getPath } from "../routes.config";
 
@@ -13,7 +13,13 @@ export function Contatti() {
         title={title}
         description={description}
         canonical={getPath(locale, "contatti")}
-        jsonLd={localBusinessJsonLd(locale)}
+        jsonLd={[
+          localBusinessJsonLd(locale),
+          breadcrumbJsonLd([
+            { name: "Genius Lab", path: getPath(locale, "home") },
+            { name: dict.nav.contacts, path: getPath(locale, "contatti") },
+          ]),
+        ]}
         keywords={keywords}
         locale={locale}
       />

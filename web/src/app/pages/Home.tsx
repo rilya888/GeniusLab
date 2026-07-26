@@ -3,16 +3,20 @@ import { Services } from "../components/Services";
 import { Process } from "../components/Process";
 import { Contact } from "../components/Contact";
 import { SEOHead } from "../components/SEOHead";
-import { localBusinessJsonLd, faqJsonLd } from "../utils/jsonLd";
+import { motion } from "motion/react";
+import { localBusinessJsonLd, faqJsonLd, webPageJsonLd } from "../utils/jsonLd";
 import { useLocale } from "../context/LocaleContext";
 import { getPath } from "../routes.config";
-import { motion } from "motion/react";
 
 export function Home() {
   const { dict, locale } = useLocale();
   const { title, description, faq } = dict.pages.home;
   const homeFaq = faq ?? [];
-  const jsonLdItems = [localBusinessJsonLd(locale)];
+  const homePath = getPath(locale, "home");
+  const jsonLdItems = [
+    localBusinessJsonLd(locale),
+    webPageJsonLd(title, description, homePath, locale),
+  ];
   const faqSchema = faqJsonLd(homeFaq, locale);
   if (faqSchema) jsonLdItems.push(faqSchema);
 
@@ -27,6 +31,15 @@ export function Home() {
         locale={locale}
       />
       <Hero />
+      <section className="px-6 py-16 bg-gray-50">
+        <div className="max-w-5xl mx-auto text-center">
+          <p className="text-lg md:text-xl font-light text-gray-700 leading-relaxed">
+            {locale === "it"
+              ? "Centro assistenza Apple a Roma, in Viale Somalia 246, con supporto per MacBook, iMac, iPhone, iPad, Apple Watch e recupero dati."
+              : "Apple support center in Rome, at Viale Somalia 246, with support for MacBook, iMac, iPhone, iPad, Apple Watch and data recovery."}
+          </p>
+        </div>
+      </section>
       <Services />
       <Process />
       {homeFaq.length > 0 && (

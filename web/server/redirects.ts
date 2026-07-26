@@ -23,6 +23,7 @@ export const REDIRECTS: RedirectEntry[] = [
   { from: "/assistenza", to: "/servizi", status: 301 },
   { from: "/contattaci", to: "/contatti", status: 301 },
   { from: "/avatech-chi-siamo", to: "/chi-siamo", status: 301 },
+  { from: "/servizi/macbook", to: "/servizi/riparazione-macbook", status: 301 },
   { from: "/riparazione-ima", to: "/servizi/riparazione-imac", status: 301 },
   { from: "/riparazione-macbook-2", to: "/servizi/riparazione-macbook", status: 301 },
   { from: "/support-help-faq", to: "/contatti", status: 301 },

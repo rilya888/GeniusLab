@@ -27,7 +27,7 @@ export const it = {
   pages: {
     home: {
       title: 'Genius Lab | Assistenza Apple a Roma',
-      description: 'Riparazione MacBook iMac iPhone a Roma. Contatti rapidi via telefono e WhatsApp.',
+      description: 'Riparazione MacBook, iMac, iPhone e recupero dati a Roma, in Viale Somalia 246. Contatti rapidi via telefono e WhatsApp.',
       keywords: 'dove riparare macbook roma, riparazione Apple Roma, assistenza MacBook, riparazione iPhone, Genius Lab, laboratorio Apple',
       faq: [
         { question: 'Dove riparare MacBook a Roma?', answer: 'Genius Lab è il centro assistenza Apple a Roma, in Viale Somalia 246. Offriamo riparazioni professionali per MacBook Pro e MacBook Air con ricambi originali e preventivo gratuito.' },
@@ -43,7 +43,7 @@ export const it = {
     },
     contacts: {
       title: 'Genius Lab | Contatti',
-      description: 'Contatta Genius Lab a Roma: telefoni, WhatsApp, sedi e modulo contatti.',
+      description: 'Contatta Genius Lab a Roma, in Viale Somalia 246: telefoni, WhatsApp, sedi e modulo contatti.',
       keywords: 'contatti Genius Lab Roma, telefono riparazione Apple, WhatsApp assistenza MacBook',
       heading: 'Contatti',
       subtext: 'Vieni a trovarci o contattaci per qualsiasi domanda',
@@ -62,7 +62,7 @@ export const it = {
     },
     about: {
       title: 'Genius Lab | Chi Siamo',
-      description: 'Laboratorio indipendente specializzato nella riparazione Apple a Roma.',
+      description: 'Laboratorio indipendente specializzato nella riparazione Apple a Roma, in Viale Somalia 246.',
       keywords: 'Genius Lab Roma, riparazione Apple, laboratorio indipendente',
       heading: 'Chi Siamo',
       intro: 'Genius Lab e un laboratorio indipendente a Roma specializzato in assistenza Apple. Lavoriamo su casi quotidiani e urgenze professionali con un metodo semplice: diagnosi precisa, comunicazione chiara e consegna verificata.',
@@ -80,7 +80,7 @@ export const it = {
     },
     reviews: {
       title: 'Genius Lab | Recensioni',
-      description: 'Recensioni Google e reputazione clienti Genius Lab.',
+      description: 'Recensioni Google e reputazione clienti Genius Lab a Roma, in Viale Somalia 246.',
       keywords: 'recensioni Genius Lab, feedback clienti riparazione Apple Roma',
       heading: 'Recensioni',
       intro: 'Le recensioni sono un segnale operativo: ci aiutano a misurare tempi, comunicazione e qualita tecnica. Monitoriamo feedback pubblici e li usiamo per migliorare i flussi interni.',
@@ -97,7 +97,7 @@ export const it = {
     },
     policies: {
       privacyTitle: 'Privacy Policy | Genius Lab',
-      privacyDescription: 'Informativa privacy di Genius Lab.',
+      privacyDescription: 'Informativa privacy di Genius Lab a Roma, con dettagli su dati trattati, conservazione e diritti dell\'interessato.',
       privacyBody: [
         { title: 'Titolare del trattamento', text: 'Il titolare del trattamento dei dati e Genius Lab, con sede a Roma. Per esercitare i tuoi diritti puoi contattarci via telefono, email o modulo contatti sul sito.' },
         { title: 'Dati trattati', text: 'Raccogliamo i dati inseriti nel modulo di contatto (nome, telefono o email, messaggio), eventuali preferenze di consenso e dati tecnici minimi (IP, user agent) per il funzionamento del sito.' },
@@ -107,7 +107,7 @@ export const it = {
         { title: 'Diritti dell\'interessato', text: 'Hai diritto di accesso, rettifica, cancellazione, limitazione, portabilita e opposizione. Puoi revocare il consenso in qualsiasi momento. Puoi proporre reclamo al Garante per la protezione dei dati personali.' }
       ],
       cookieTitle: 'Cookie Policy | Genius Lab',
-      cookieDescription: 'Policy cookie e gestione consenso.',
+      cookieDescription: 'Cookie policy di Genius Lab a Roma, con gestione consenso, cookie tecnici e analytics.',
       cookieBody: [
         { title: 'Cosa sono i cookie', text: 'I cookie sono piccoli file di testo che i siti memorizzano sul tuo dispositivo. Servono per il funzionamento del sito, per ricordare preferenze e, con il tuo consenso, per analisi di utilizzo.' },
         { title: 'Cookie tecnici', text: 'I cookie tecnici sono necessari per il corretto funzionamento del sito (es. gestione della sessione, preferenze lingua). Non richiedono consenso esplicito.' },
@@ -124,7 +124,7 @@ export const it = {
     },
     services: {
       title: 'Genius Lab | Servizi',
-      description: 'Servizi di riparazione MacBook, iMac, display e data recovery.',
+      description: 'Servizi di riparazione MacBook, iMac, display e data recovery a Roma, in Viale Somalia 246.',
       keywords: 'riparazione MacBook Roma, assistenza iPhone, riparazione iMac, data recovery',
       heading: 'Servizi',
       subheading: 'Riparazione MacBook, iMac, iPhone e recupero dati.',

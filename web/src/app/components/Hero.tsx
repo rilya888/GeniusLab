@@ -35,6 +35,14 @@ export function Hero() {
         >
           {brand.tagline}
         </motion.p>
+        <motion.p
+          className="text-sm md:text-base font-light text-gray-500 mb-10 max-w-3xl mx-auto leading-relaxed"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+        >
+          {dict.pages.home.description}
+        </motion.p>
         <motion.div 
           className="flex gap-4 justify-center flex-wrap"
           initial={{ opacity: 0, y: 20 }}

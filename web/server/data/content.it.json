@@ -6,35 +6,35 @@
       {
         "key": "macbook",
         "name": "Riparazione MacBook",
-        "description": "Sostituzione schermo, batteria, tastiera e componenti.",
-        "path": "/servizi/macbook",
+        "description": "Diagnosi, schermo, batteria, tastiera, SSD e recupero dati.",
+        "path": "/servizi/riparazione-macbook",
         "order": 0
       },
       {
         "key": "iphone",
         "name": "Riparazione iPhone",
-        "description": "Sostituzione schermo, batteria, fotocamera e molto altro.",
+        "description": "Schermo, batteria, Face ID e ricarica.",
         "path": "/servizi/iphone",
         "order": 1
       },
       {
         "key": "ipad",
         "name": "Riparazione iPad",
-        "description": "Riparazione display, problemi di ricarica, troubleshooting.",
+        "description": "Display, batteria, ricarica e software.",
         "path": "/servizi/ipad",
         "order": 2
       },
       {
         "key": "watch",
         "name": "Riparazione Apple Watch",
-        "description": "Sostituzione batteria, riparazione schermo, sensori.",
+        "description": "Schermo, batteria, sensori e ricarica.",
         "path": "/servizi/watch",
         "order": 3
       },
       {
         "key": "imac",
         "name": "Riparazione iMac",
-        "description": "Riparazione display, alimentazione, componenti interni.",
+        "description": "Assistenza display, alimentazione, SSD e dati.",
         "path": "/servizi/riparazione-imac",
         "order": 4
       },
@@ -48,7 +48,7 @@
       {
         "key": "dataRecovery",
         "name": "Data Recovery",
-        "description": "Recupero dati da dispositivi danneggiati.",
+        "description": "Recupero dati da SSD, dischi e dispositivi Apple.",
         "path": "/servizi/recupero-dati",
         "order": 6
       },
@@ -92,13 +92,13 @@
   "servicePages": {
     "macbook": {
       "heroTitle": "Riparazione MacBook Roma",
-      "heroSubtitle": "Centro assistenza Apple autorizzato specializzato in riparazione MacBook Pro, MacBook Air a Roma",
+      "heroSubtitle": "Laboratorio specializzato in riparazione MacBook Pro e MacBook Air a Roma",
       "servicesSectionTitle": "Servizi di Riparazione MacBook",
       "problemsSectionTitle": "Problemi Comuni MacBook",
       "services": [
-        "Sostituzione schermo MacBook",
-        "Riparazione tastiera MacBook",
+        "Sostituzione schermo e display MacBook",
         "Cambio batteria MacBook",
+        "Riparazione tastiera MacBook",
         "Riparazione trackpad",
         "Upgrade SSD e RAM",
         "Pulizia sistema di raffreddamento",
@@ -109,35 +109,44 @@
       ],
       "problems": [
         "MacBook non si accende",
-        "Schermo rotto o danneggiato",
+        "Schermo nero, rotto o con righe",
         "Batteria che si scarica rapidamente",
         "Surriscaldamento MacBook",
         "Tastiera non funzionante",
         "MacBook lento o bloccato",
+        "SSD con errori o lento",
         "Problemi di ricarica",
         "Danni causati da liquidi"
       ],
-      "metaDescription": "Riparazione MacBook a Roma: sostituzione schermo, batteria, tastiera. Genius Lab, laboratorio specializzato Apple. Preventivo gratuito.",
-      "answerFirstIntro": "Dove riparare MacBook a Roma? Genius Lab è il centro assistenza Apple a Roma, in Viale Somalia 246. Offriamo riparazioni professionali per MacBook Pro e MacBook Air con ricambi originali Apple e preventivo gratuito. Diagnostica precisa, tempi chiari e garanzia sul lavoro svolto.",
-      "keywords": "dove riparare macbook roma, riparazione MacBook Roma, centro assistenza Apple Roma",
+      "metaDescription": "Riparazione MacBook Roma: diagnosi, schermo, batteria, tastiera e recupero dati. Genius Lab in Viale Somalia 246, preventivo gratuito e garanzia.",
+      "answerFirstIntro": "Dove riparare MacBook a Roma? Genius Lab, in Viale Somalia 246, offre riparazioni per MacBook Pro e MacBook Air con diagnosi, preventivo chiaro, ricambi originali e garanzia sul lavoro svolto.",
+      "keywords": "riparazione macbook roma, riparazione macbook pro roma, riparazione macbook air roma, assistenza macbook roma",
       "faq": [
         {
           "question": "Dove riparare MacBook a Roma?",
-          "answer": "Genius Lab, in Viale Somalia 246 a Roma, offre riparazioni professionali per MacBook Pro e MacBook Air. Preventivo gratuito e ricambi originali Apple."
+          "answer": "Genius Lab, in Viale Somalia 246 a Roma, offre riparazioni professionali per MacBook Pro e MacBook Air. Diagnosi, preventivo chiaro e garanzia sul lavoro."
         },
         {
-          "question": "Qual è il miglior centro riparazione Apple a Roma?",
-          "answer": "Genius Lab è un laboratorio specializzato in assistenza Apple a Roma. Tecnici certificati, ricambi originali e garanzia su ogni riparazione."
+          "question": "Quali modelli di MacBook riparate?",
+          "answer": "Ripariamo MacBook Air, MacBook Pro e modelli Intel o Apple Silicon, con interventi su schermo, batteria, tastiera, trackpad, SSD e software."
         },
         {
           "question": "Quanto costa riparare un MacBook a Roma?",
-          "answer": "Il costo varia in base al tipo di intervento. Genius Lab offre diagnostica gratuita e preventivo trasparente prima di procedere. Contattaci al +39 06 84385510."
+          "answer": "Il costo varia in base al tipo di intervento. Genius Lab offre diagnostica e preventivo trasparente prima di procedere."
+        },
+        {
+          "question": "Riparate MacBook con danni da liquidi?",
+          "answer": "Sì, effettuiamo diagnosi e interventi su MacBook con danni da liquidi, per valutare i componenti da ripristinare o sostituire."
+        },
+        {
+          "question": "Fate anche recupero dati da MacBook?",
+          "answer": "Sì, possiamo valutare il recupero dati da MacBook danneggiati o che non si accendono, quando la situazione tecnica lo consente."
         }
       ]
     },
     "iphone": {
       "heroTitle": "Riparazione iPhone Roma",
-      "heroSubtitle": "Centro assistenza iPhone autorizzato a Roma - Riparazione schermo, batteria e altro per tutti i modelli",
+      "heroSubtitle": "Riparazione iPhone a Roma con diagnosi, tempi chiari e preventivo trasparente",
       "servicesSectionTitle": "Servizi di Riparazione iPhone",
       "problemsSectionTitle": "Problemi Comuni iPhone",
       "services": [
@@ -162,23 +171,31 @@
         "Face ID non funziona",
         "Altoparlante difettoso"
       ],
-      "metaDescription": "Riparazione iPhone a Roma: display, batteria, fotocamera. Assistenza rapida con ricambi originali. Genius Lab.",
-      "answerFirstIntro": "Dove riparare iPhone a Roma? Genius Lab, in Viale Somalia 246, è il centro assistenza iPhone a Roma. Sostituzione schermo, batteria e fotocamera con ricambi originali Apple. Servizio rapido e preventivo gratuito.",
-      "keywords": "dove riparare iphone roma, riparazione iPhone Roma, centro assistenza iPhone Roma",
+      "metaDescription": "Riparazione iPhone a Roma: display, batteria, fotocamera e Face ID. Genius Lab, ricambi di qualità e assistenza rapida.",
+      "answerFirstIntro": "Dove riparare iPhone a Roma? Genius Lab in Viale Somalia 246 esegue diagnostica, sostituzione schermo, batteria, fotocamera e altri interventi con preventivo chiaro.",
+      "keywords": "riparazione iphone roma, schermo iphone roma, batteria iphone roma, assistenza iphone roma",
       "faq": [
         {
           "question": "Dove riparare iPhone a Roma?",
-          "answer": "Genius Lab in Viale Somalia 246, Roma. Sostituzione schermo, batteria, fotocamera con ricambi originali. Preventivo gratuito."
+          "answer": "Genius Lab in Viale Somalia 246, Roma. Ripariamo iPhone con diagnostica e preventivo gratuito."
         },
         {
-          "question": "Quanto tempo per riparare un iPhone a Roma?",
-          "answer": "La maggior parte delle riparazioni viene completata in giornata. Genius Lab fornisce una stima precisa al momento della diagnosi."
+          "question": "Quanto tempo richiede la riparazione?",
+          "answer": "Molti interventi sono completati in giornata, ma dipende dal modello e dal tipo di danno."
+        },
+        {
+          "question": "Riparate anche Face ID e connettore di ricarica?",
+          "answer": "Sì, verifichiamo anche problemi di Face ID, tasti e porta di ricarica quando il modello lo consente."
+        },
+        {
+          "question": "Usate ricambi originali?",
+          "answer": "Usiamo ricambi selezionati in base al modello e al tipo di intervento, con focus su qualità e stabilità."
         }
       ]
     },
     "ipad": {
       "heroTitle": "Riparazione iPad Roma",
-      "heroSubtitle": "Centro assistenza iPad a Roma - Riparazione schermo, batteria e componenti per tutti i modelli di iPad",
+      "heroSubtitle": "Riparazione iPad a Roma con diagnosi, display e batteria",
       "servicesSectionTitle": "Servizi di Riparazione iPad",
       "problemsSectionTitle": "Problemi Comuni iPad",
       "services": [
@@ -202,19 +219,31 @@
         "Pulsante Home non funziona",
         "Danni da liquidi"
       ],
-      "metaDescription": "Riparazione iPad a Roma: display, problemi di ricarica, troubleshooting. Genius Lab, centro assistenza Apple.",
-      "answerFirstIntro": "Dove riparare iPad a Roma? Genius Lab offre assistenza iPad a Roma in Viale Somalia 246. Riparazione display, problemi di ricarica e troubleshooting per iPad Pro, iPad Air e iPad Mini. Ricambi originali e preventivo gratuito.",
-      "keywords": "dove riparare ipad roma, riparazione iPad Roma, centro assistenza iPad Roma",
+      "metaDescription": "Riparazione iPad a Roma: display, batteria, ricarica e software. Genius Lab, centro assistenza Apple con preventivo gratuito.",
+      "answerFirstIntro": "Dove riparare iPad a Roma? Genius Lab in Viale Somalia 246 offre riparazione display, batteria, porta di ricarica e assistenza software per iPad Pro, Air e Mini.",
+      "keywords": "riparazione ipad roma, schermo ipad roma, batteria ipad roma, assistenza ipad roma",
       "faq": [
         {
           "question": "Dove riparare iPad a Roma?",
-          "answer": "Genius Lab, Viale Somalia 246, Roma. Riparazioni per tutti i modelli iPad con ricambi originali Apple."
+          "answer": "Genius Lab, Viale Somalia 246, Roma. Ripariamo tutti i modelli iPad con diagnosi e preventivo gratuito."
+        },
+        {
+          "question": "Fate riparazioni su iPad Pro, Air e Mini?",
+          "answer": "Sì, lavoriamo sui principali modelli iPad e verifichiamo sempre il problema prima dell’intervento."
+        },
+        {
+          "question": "Se l’iPad non si accende?",
+          "answer": "Eseguiamo diagnosi su alimentazione, batteria e scheda interna per capire la causa del guasto."
+        },
+        {
+          "question": "Riparate anche connettore di ricarica e WiFi?",
+          "answer": "Sì, controlliamo i problemi di ricarica e connettività quando il difetto non è solo software."
         }
       ]
     },
     "watch": {
       "heroTitle": "Riparazione Apple Watch Roma",
-      "heroSubtitle": "Centro assistenza Apple Watch a Roma - Riparazione schermo, batteria e componenti per tutti i modelli",
+      "heroSubtitle": "Riparazione Apple Watch a Roma con batteria, schermo e sensori",
       "servicesSectionTitle": "Servizi di Riparazione Apple Watch",
       "problemsSectionTitle": "Problemi Comuni Apple Watch",
       "services": [
@@ -237,11 +266,27 @@
         "Sensori non funzionano",
         "Danni da acqua"
       ],
-      "metaDescription": "Riparazione Apple Watch a Roma: batteria, schermo, sensori. Genius Lab, assistenza specialistica."
+      "metaDescription": "Riparazione Apple Watch a Roma: batteria, schermo, sensori e ricarica. Genius Lab, assistenza specialistica e preventivo chiaro.",
+      "answerFirstIntro": "Dove riparare Apple Watch a Roma? Genius Lab in Viale Somalia 246 offre diagnosi e riparazione su schermo, batteria, corona digitale e sensori.",
+      "keywords": "riparazione apple watch roma, batteria apple watch roma, schermo apple watch roma, assistenza apple watch roma",
+      "faq": [
+        {
+          "question": "Dove riparare Apple Watch a Roma?",
+          "answer": "Genius Lab, Viale Somalia 246, Roma. Ripariamo Apple Watch con diagnosi e preventivo trasparente."
+        },
+        {
+          "question": "Fate anche la batteria Apple Watch?",
+          "answer": "Sì, valutiamo la sostituzione della batteria e controlliamo anche i problemi di ricarica."
+        },
+        {
+          "question": "Intervenite su sensori e corona digitale?",
+          "answer": "Sì, verifichiamo sensori, corona digitale e altri componenti quando il modello lo consente."
+        }
+      ]
     },
     "imac": {
       "heroTitle": "Riparazione iMac Roma",
-      "heroSubtitle": "Centro assistenza specializzato in riparazione iMac, iMac Pro e iMac Studio a Roma",
+      "heroSubtitle": "Assistenza iMac, iMac Pro e iMac Studio a Roma con diagnosi e preventivo chiaro",
       "servicesSectionTitle": "Servizi Riparazione iMac",
       "problemsSectionTitle": "Problemi Comuni iMac",
       "services": [
@@ -252,7 +297,9 @@
         "Riparazione webcam e microfoni",
         "Sostituzione hard disk",
         "Risoluzione problemi software",
-        "Recupero dati iMac"
+        "Recupero dati iMac",
+        "Diagnosi scheda logica",
+        "Verifica surriscaldamento e ventole"
       ],
       "problems": [
         "iMac non si accende",
@@ -260,41 +307,85 @@
         "Surriscaldamento",
         "Rumore ventole",
         "iMac lento",
-        "Problemi di rete"
+        "Problemi di rete",
+        "Hard disk o SSD non rilevato"
       ],
-      "metaDescription": "Riparazione iMac a Roma: display, alimentazione, componenti. Genius Lab, laboratorio Apple autorizzato."
+      "metaDescription": "Riparazione iMac a Roma: display, alimentazione, SSD, ventole e recupero dati. Genius Lab, diagnosi e preventivo gratuito.",
+      "answerFirstIntro": "Se il tuo iMac non si accende, è lento o mostra artefatti video, Genius Lab a Roma effettua diagnosi, preventivo e riparazioni su iMac, iMac Pro e iMac Studio.",
+      "keywords": "riparazione imac roma, assistenza imac roma, riparazione imac pro roma, iMac lento Roma",
+      "faq": [
+        {
+          "question": "Riparate iMac che non si accendono?",
+          "answer": "Sì. Verifichiamo alimentatore, scheda logica e componenti interni per individuare la causa del guasto."
+        },
+        {
+          "question": "Fate upgrade SSD e RAM su iMac?",
+          "answer": "Sì, quando il modello lo consente valutiamo upgrade SSD e RAM per migliorare velocità e stabilità."
+        },
+        {
+          "question": "Potete recuperare i dati da iMac guasto?",
+          "answer": "Sì, se il supporto di archiviazione è leggibile possiamo valutare il recupero dati e il trasferimento su un nuovo dispositivo."
+        },
+        {
+          "question": "Intervenite anche su surriscaldamento e ventole?",
+          "answer": "Sì, pulizia interna e controllo del raffreddamento fanno parte della diagnosi sui problemi di prestazioni e rumore."
+        }
+      ]
     },
     "display": {
       "heroTitle": "Display MacBook Roma",
-      "heroSubtitle": "Sostituzione display MacBook Pro e MacBook Air con ricambi originali Apple",
+      "heroSubtitle": "Sostituzione display, LCD e vetro MacBook Pro e MacBook Air a Roma",
       "servicesSectionTitle": "Servizi Display MacBook",
       "problemsSectionTitle": "Problemi Display MacBook",
       "services": [
-        "Sostituzione schermo MacBook",
+        "Sostituzione schermo e display MacBook",
         "Riparazione vetro display",
-        "Sostituzione LCD",
-        "Riparazione backlight",
+        "Sostituzione pannello LCD",
+        "Riparazione retroilluminazione",
         "Display Retina MacBook Pro",
-        "Display MacBook Air M1/M2"
+        "Display MacBook Air M1/M2",
+        "Verifica cavi e connettori display"
       ],
       "problems": [
         "Schermo rotto",
         "Display nero",
-        "Linee sullo schermo",
+        "Linee verticali o orizzontali",
         "Flickering",
+        "Luminosità irregolare",
         "Touch Bar non funzionante"
       ],
-      "metaDescription": "Sostituzione display MacBook a Roma: vetro, LCD, Retina. Genius Lab, riparazione professionale."
+      "metaDescription": "Sostituzione display MacBook a Roma: vetro, LCD, Retina e retroilluminazione. Genius Lab, diagnosi e preventivo gratuito.",
+      "answerFirstIntro": "Hai un display MacBook rotto o con righe? Genius Lab in Viale Somalia 246 a Roma esegue diagnosi, preventivo e sostituzione su MacBook Pro e MacBook Air con tempi chiari.",
+      "keywords": "sostituzione display macbook roma, schermo macbook rotto roma, display macbook pro roma, display macbook air roma",
+      "faq": [
+        {
+          "question": "Riparate display Retina MacBook?",
+          "answer": "Sì, interveniamo su display Retina MacBook Pro e MacBook Air con diagnosi del danno e sostituzione del modulo display quando necessario."
+        },
+        {
+          "question": "Quanto tempo richiede la sostituzione del display?",
+          "answer": "Dipende dal modello e dalla disponibilità dei componenti. Dopo la diagnosi forniamo una stima precisa dei tempi."
+        },
+        {
+          "question": "Se lo schermo ha solo righe o flickering?",
+          "answer": "Verifichiamo se il problema riguarda il display, il cavo o la scheda logica e ti indichiamo la soluzione più adatta."
+        },
+        {
+          "question": "Usate ricambi compatibili o originali?",
+          "answer": "Selezioniamo il ricambio in base al modello e alla riparazione necessaria, privilegiando la qualità e la stabilità del risultato."
+        }
+      ]
     },
     "dataRecovery": {
       "heroTitle": "Data Recovery Roma",
-      "heroSubtitle": "Recupero dati professionale da iPhone, iPad, MacBook e dischi danneggiati a Roma",
+      "heroSubtitle": "Recupero dati professionale da iPhone, iPad, MacBook, iMac e dischi danneggiati a Roma",
       "servicesSectionTitle": "Servizi Recupero Dati",
       "problemsSectionTitle": "Situazioni di Recupero",
       "services": [
         "Recupero dati da iPhone",
         "Recupero dati da MacBook",
         "Recupero dati da iPad",
+        "Recupero dati da iMac",
         "Recupero dati da SSD danneggiati",
         "Recupero dati da hard disk",
         "Recupero dati da dispositivi danneggiati dall'acqua",
@@ -309,25 +400,34 @@
         "Schermo rotto",
         "Cancellazione accidentale",
         "Problemi software",
-        "SSD/HDD danneggiato"
+        "SSD/HDD danneggiato",
+        "File spariti o corrotti"
       ],
-      "metaDescription": "Recupero dati a Roma: dischi danneggiati, SSD, fusion drive. Genius Lab, massima riservatezza.",
-      "answerFirstIntro": "Dove fare recupero dati a Roma? Genius Lab offre servizio professionale di recupero dati da iPhone, iPad, MacBook e dischi danneggiati. In Viale Somalia 246 a Roma, con massima riservatezza e valutazione gratuita.",
-      "keywords": "recupero dati roma, dove recuperare dati roma, data recovery Roma",
+      "metaDescription": "Recupero dati a Roma: SSD, hard disk, iPhone, iPad, MacBook e iMac. Genius Lab, massima riservatezza e valutazione gratuita.",
+      "answerFirstIntro": "Dove fare recupero dati a Roma? Genius Lab offre recupero professionale da iPhone, iPad, MacBook, iMac e dischi danneggiati, con valutazione gratuita e massima riservatezza.",
+      "keywords": "recupero dati roma, data recovery roma, recupero dati macbook roma, recupero dati imac roma",
       "faq": [
         {
           "question": "Dove fare recupero dati a Roma?",
           "answer": "Genius Lab, Viale Somalia 246, Roma. Recupero dati da dispositivi Apple e dischi danneggiati con valutazione gratuita."
         },
         {
-          "question": "È possibile recuperare dati da un iPhone danneggiato?",
-          "answer": "Sì, Genius Lab utilizza tecnologie professionali per recuperare dati da iPhone, iPad e MacBook danneggiati. Contattaci per una valutazione gratuita."
+          "question": "Potete recuperare dati da SSD o hard disk danneggiati?",
+          "answer": "Sì, valutiamo SSD, hard disk e unità danneggiate per capire se i dati sono recuperabili in sicurezza."
+        },
+        {
+          "question": "Il recupero dati è riservato?",
+          "answer": "Sì, trattiamo i dati con riservatezza e condividiamo solo le informazioni strettamente necessarie per il servizio."
+        },
+        {
+          "question": "Recuperate foto, video e documenti?",
+          "answer": "Sì, il recupero può riguardare foto, video, documenti e altri file importanti quando il supporto lo consente."
         }
       ]
     },
     "battery": {
       "heroTitle": "Batteria MacBook Roma",
-      "heroSubtitle": "Sostituzione batteria MacBook con garanzia. Diagnostica gratuita.",
+      "heroSubtitle": "Sostituzione batteria MacBook con diagnosi e garanzia a Roma",
       "servicesSectionTitle": "Servizi Batteria MacBook",
       "problemsSectionTitle": "Problemi Batteria MacBook",
       "services": [
@@ -335,6 +435,7 @@
         "Sostituzione batteria MacBook Air",
         "Calibrazione batteria",
         "Diagnostica stato batteria",
+        "Verifica cicli e salute batteria",
         "Batterie originali Apple"
       ],
       "problems": [
@@ -342,13 +443,30 @@
         "MacBook non carica",
         "Service Battery",
         "Batteria gonfiata",
-        "Autonomia ridotta"
+        "Autonomia ridotta",
+        "Spegnimenti improvvisi"
       ],
-      "metaDescription": "Sostituzione batteria MacBook a Roma con garanzia. Genius Lab, ricambi di qualita."
+      "metaDescription": "Sostituzione batteria MacBook a Roma con diagnosi, verifica salute e garanzia. Genius Lab, ricambi di qualità e preventivo chiaro.",
+      "answerFirstIntro": "Se la batteria del MacBook dura poco o si gonfia, Genius Lab a Roma effettua diagnostica e sostituzione con un preventivo trasparente prima dell’intervento.",
+      "keywords": "sostituzione batteria macbook roma, batteria macbook pro roma, batteria macbook air roma, service battery macbook",
+      "faq": [
+        {
+          "question": "Quando va sostituita la batteria del MacBook?",
+          "answer": "Quando autonomia, salute batteria o messaggi di servizio indicano un deterioramento evidente, oppure se il MacBook si spegne senza preavviso."
+        },
+        {
+          "question": "La batteria gonfiata è pericolosa?",
+          "answer": "Sì, può deformare il telaio e danneggiare altri componenti. In questi casi consigliamo di fermare l’uso e fare una diagnosi."
+        },
+        {
+          "question": "Fate solo batteria o anche diagnostica?",
+          "answer": "Prima della sostituzione verifichiamo lo stato del sistema di alimentazione per evitare interventi inutili."
+        }
+      ]
     },
     "ssd": {
       "heroTitle": "MacBook SSD Roma",
-      "heroSubtitle": "Upgrade SSD MacBook e trasferimento dati. Più spazio, più velocità.",
+      "heroSubtitle": "Upgrade SSD MacBook e trasferimento dati a Roma",
       "servicesSectionTitle": "Servizi SSD MacBook",
       "problemsSectionTitle": "Problemi SSD MacBook",
       "services": [
@@ -356,20 +474,38 @@
         "Trasferimento dati",
         "Sostituzione SSD danneggiato",
         "Clone disco su nuovo SSD",
-        "SSD NVMe compatibili"
+        "SSD NVMe compatibili",
+        "Ottimizzazione prestazioni disco"
       ],
       "problems": [
         "Spazio insufficiente",
         "SSD lento",
         "Errore disco",
         "MacBook non vede SSD",
-        "File corrotti"
+        "File corrotti",
+        "Avvio molto lento"
       ],
-      "metaDescription": "Upgrade SSD MacBook a Roma: trasferimento dati, installazione. Genius Lab, assistenza completa."
+      "metaDescription": "Upgrade SSD MacBook a Roma: trasferimento dati, installazione e clone disco. Genius Lab, assistenza completa e supporto tecnico.",
+      "answerFirstIntro": "Se il MacBook è lento o non hai spazio, Genius Lab a Roma può valutare upgrade SSD, clonazione del disco e trasferimento dati in modo sicuro.",
+      "keywords": "upgrade ssd macbook roma, sostituzione ssd macbook roma, clone disco macbook roma, macbook lento ssd",
+      "faq": [
+        {
+          "question": "L’upgrade SSD migliora davvero la velocità?",
+          "answer": "Sì, è uno degli interventi più efficaci sui MacBook compatibili, soprattutto se il disco attuale è vecchio o quasi pieno."
+        },
+        {
+          "question": "Trasferite i dati sul nuovo SSD?",
+          "answer": "Sì, possiamo clonare il disco o trasferire i dati prima della sostituzione, quando lo stato del vecchio disco lo consente."
+        },
+        {
+          "question": "Posso mantenere il sistema e le app?",
+          "answer": "In molti casi sì: il clone del disco permette di conservare sistema, programmi e dati nel passaggio al nuovo SSD."
+        }
+      ]
     },
     "flexgate": {
       "heroTitle": "Flexgate Display MacBook Roma",
-      "heroSubtitle": "Riparazione cavi display e problema Flexgate su MacBook Pro 2016-2019",
+      "heroSubtitle": "Riparazione Flexgate e cavi display MacBook Pro a Roma",
       "servicesSectionTitle": "Servizi Flexgate",
       "problemsSectionTitle": "Sintomi Flexgate",
       "services": [
@@ -386,11 +522,27 @@
         "Flickering ad angoli",
         "Display nero aprendo coperchio"
       ],
-      "metaDescription": "Riparazione Flexgate e cavi display MacBook a Roma. Genius Lab, risoluzione problemi flicker."
+      "metaDescription": "Riparazione Flexgate e cavi display MacBook a Roma. Genius Lab, diagnosi e risoluzione del problema flicker.",
+      "answerFirstIntro": "Il problema Flexgate colpisce alcuni MacBook Pro 2016-2019. Genius Lab a Roma valuta il cavo display e il pannello per capire se serve la riparazione o la sostituzione.",
+      "keywords": "flexgate macbook roma, cavo display macbook pro roma, stage light macbook roma, riparazione flex cable macbook",
+      "faq": [
+        {
+          "question": "Cos’è il problema Flexgate?",
+          "answer": "È un difetto del cavo display che può causare schermo nero, flickering o effetto stage light su alcuni MacBook Pro."
+        },
+        {
+          "question": "Su quali modelli intervenite?",
+          "answer": "Principalmente su MacBook Pro 2016-2019, ma facciamo sempre una verifica del modello e del danno prima dell’intervento."
+        },
+        {
+          "question": "Serve sempre cambiare tutto il display?",
+          "answer": "Non sempre. In alcuni casi il guasto riguarda il cavo o il gruppo display in modo parziale, quindi facciamo diagnosi mirata."
+        }
+      ]
     },
     "keyboard": {
       "heroTitle": "Tastiera MacBook Roma",
-      "heroSubtitle": "Sostituzione tastiera Butterfly e Magic Keyboard. Programma Apple per tastiere difettose.",
+      "heroSubtitle": "Sostituzione tastiera Butterfly e Magic Keyboard a Roma",
       "servicesSectionTitle": "Servizi Tastiera MacBook",
       "problemsSectionTitle": "Problemi Tastiera MacBook",
       "services": [
@@ -398,16 +550,34 @@
         "Tastiera Butterfly",
         "Magic Keyboard",
         "Riparazione tasti singoli",
-        "Programma Apple tastiere"
+        "Programma Apple tastiere",
+        "Verifica backlight e cavi flat"
       ],
       "problems": [
         "Tasti che si ripetono",
         "Tasti che non rispondono",
         "Tastiera danneggiata da liquidi",
         "Tasti incollati",
-        "Backlight non funziona"
+        "Backlight non funziona",
+        "Tasti mancanti o molli"
       ],
-      "metaDescription": "Sostituzione tastiera MacBook a Roma: Butterfly, Magic Keyboard. Genius Lab, riparazione certificata."
+      "metaDescription": "Sostituzione tastiera MacBook a Roma: Butterfly, Magic Keyboard e tasti difettosi. Genius Lab, riparazione professionale.",
+      "answerFirstIntro": "Se la tastiera del MacBook non risponde o ha tasti ripetuti, Genius Lab a Roma esegue diagnosi e sostituzione con supporto sui modelli Butterfly e Magic Keyboard.",
+      "keywords": "sostituzione tastiera macbook roma, tastiera butterfly macbook roma, magic keyboard macbook roma, tasti macbook non funzionano",
+      "faq": [
+        {
+          "question": "La tastiera Butterfly si ripara o si sostituisce?",
+          "answer": "Di norma valutiamo la sostituzione del modulo tastiera, perché è la soluzione più stabile sui modelli interessati."
+        },
+        {
+          "question": "I tasti che si ripetono sono un difetto comune?",
+          "answer": "Sì, soprattutto su alcune generazioni Butterfly. Verifichiamo la causa e il livello di usura prima di intervenire."
+        },
+        {
+          "question": "Riparate anche il backlight?",
+          "answer": "Sì, controlliamo anche retroilluminazione e cavi collegati quando il problema non è solo meccanico."
+        }
+      ]
     },
     "software": {
       "heroTitle": "Assistenza Software Apple Roma",

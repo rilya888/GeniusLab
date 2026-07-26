@@ -10,7 +10,7 @@ import express from "express";
 import compression from "compression";
 import cookieParser from "cookie-parser";
 import sirv from "sirv";
-import { getRobotsTxt, getSitemapXml, getSiteUrl } from "./seo";
+import { buildHeadHtml, getRobotsTxt, getSitemapXml, getSiteUrl } from "./seo";
 import { REDIRECTS } from "./redirects";
 import { getCanonicalRedirect } from "./canonical";
 import { getLocalizedPath } from "../src/app/routes.config";
@@ -128,10 +128,21 @@ if (isProduction) {
     console.error("dist/ not found. Run: npm run build");
     process.exit(1);
   }
-  app.use(base, sirv(distPath, { extensions: [] }));
-  app.get("/{*path}", (_req, res) => {
-    res.sendFile(path.join(distPath, "index.html"));
+  const indexHtml = fs.readFileSync(path.join(distPath, "index.html"), "utf-8");
+  app.use((req, res, next) => {
+    if (req.method !== "GET") return next();
+    if (req.path.startsWith("/api")) return next();
+    if (req.path === "/robots.txt" || req.path === "/sitemap.xml" || req.path === "/healthz") {
+      return next();
+    }
+    if (path.extname(req.path)) return next();
+    const headHtml = buildHeadHtml(req.path);
+    const html = indexHtml
+      .replace(/<title>.*?<\/title>/s, "")
+      .replace("</head>", `${headHtml}\n    </head>`);
+    res.set("Content-Type", "text/html; charset=utf-8").send(html);
   });
+  app.use(base, sirv(distPath, { extensions: [] }));
 } else {
   const { createServer } = await import("vite");
   const vite = await createServer({

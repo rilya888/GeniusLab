@@ -32,7 +32,7 @@ export const en = {
   pages: {
     home: {
       title: "Genius Lab | Apple Support in Rome",
-      description: "MacBook iMac iPhone repair in Rome. Quick contact via phone and WhatsApp.",
+      description: "MacBook, iMac, iPhone repair and data recovery in Rome, at Viale Somalia 246. Quick contact via phone and WhatsApp.",
       keywords: "where to repair macbook rome, Apple repair Rome, MacBook support, iPhone repair, Genius Lab, Apple lab",
       faq: [
         { question: "Where to repair MacBook in Rome?", answer: "Genius Lab is the Apple support center in Rome, at Viale Somalia 246. We offer professional repairs for MacBook Pro and MacBook Air with original parts and free quote." },
@@ -48,7 +48,7 @@ export const en = {
     },
     contacts: {
       title: "Genius Lab | Contacts",
-      description: "Contact Genius Lab in Rome: phones, WhatsApp, locations and contact form.",
+      description: "Contact Genius Lab in Rome, at Viale Somalia 246: phones, WhatsApp, locations and contact form.",
       keywords: "Genius Lab Rome contacts, Apple repair phone, WhatsApp MacBook support",
       heading: "Contacts",
       subtext: "Visit us or contact us for any questions",
@@ -67,7 +67,7 @@ export const en = {
     },
     about: {
       title: "Genius Lab | About Us",
-      description: "Independent lab specialized in Apple repair in Rome.",
+      description: "Independent lab specialized in Apple repair in Rome, at Viale Somalia 246.",
       keywords: "Genius Lab Rome, Apple repair, independent lab",
       heading: "About Us",
       intro:
@@ -104,7 +104,7 @@ export const en = {
     },
     reviews: {
       title: "Genius Lab | Reviews",
-      description: "Google reviews and Genius Lab customer reputation.",
+      description: "Google reviews and customer reputation for Genius Lab in Rome, at Viale Somalia 246.",
       keywords: "Genius Lab reviews, Apple repair Rome customer feedback",
       heading: "Reviews",
       intro:
@@ -124,7 +124,7 @@ export const en = {
     },
     policies: {
       privacyTitle: "Privacy Policy | Genius Lab",
-      privacyDescription: "Genius Lab privacy policy.",
+      privacyDescription: "Genius Lab privacy policy in Rome, with details on processed data, retention, and data subject rights.",
       privacyBody: [
         { title: "Data controller", text: "The data controller is Genius Lab, based in Rome. You can contact us by phone, email or the contact form on the website to exercise your rights." },
         { title: "Data processed", text: "We collect data entered in the contact form (name, phone or email, message), any consent preferences and minimal technical data (IP, user agent) for site operation." },
@@ -134,7 +134,7 @@ export const en = {
         { title: "Your rights", text: "You have the right to access, rectify, erase, restrict, port and object. You may withdraw consent at any time. You may lodge a complaint with the supervisory authority." }
       ],
       cookieTitle: "Cookie Policy | Genius Lab",
-      cookieDescription: "Cookie policy and consent management.",
+      cookieDescription: "Genius Lab cookie policy in Rome, with consent management, technical cookies, and analytics cookies.",
       cookieBody: [
         { title: "What are cookies", text: "Cookies are small text files that websites store on your device. They are used for site operation, to remember preferences and, with your consent, for usage analytics." },
         { title: "Technical cookies", text: "Technical cookies are necessary for the proper functioning of the site (e.g. session management, language preferences). They do not require explicit consent." },
@@ -151,7 +151,7 @@ export const en = {
     },
     services: {
       title: "Genius Lab | Services",
-      description: "MacBook, iMac, display repair and data recovery services.",
+      description: "MacBook, iMac, display repair and data recovery services in Rome, at Viale Somalia 246.",
       keywords: "MacBook repair Rome, iPhone support, iMac repair, data recovery",
       heading: "Services",
       subheading: "MacBook, iMac, iPhone repair and data recovery.",

@@ -1,8 +1,9 @@
 import { motion } from "motion/react";
 import { SEOHead } from "../components/SEOHead";
 import { ReviewsEmbed } from "../components/ReviewsEmbed";
-import { webPageJsonLd } from "../utils/jsonLd";
+import { webPageJsonLd, localBusinessJsonLd, breadcrumbJsonLd } from "../utils/jsonLd";
 import { useLocale } from "../context/LocaleContext";
+import { Link } from "react-router";
 import { getPath } from "../routes.config";
 
 export function Recensioni() {
@@ -18,7 +19,14 @@ export function Recensioni() {
         canonical={path}
         keywords={dict.pages.reviews.keywords}
         locale={locale}
-        jsonLd={webPageJsonLd(heading, description, path, locale)}
+        jsonLd={[
+          localBusinessJsonLd(locale),
+          webPageJsonLd(heading, description, path, locale),
+          breadcrumbJsonLd([
+            { name: "Genius Lab", path: getPath(locale, "home") },
+            { name: dict.nav.reviews, path },
+          ]),
+        ]}
       />
       <div className="min-h-screen bg-white pt-16 px-6 py-24">
         <div className="max-w-4xl mx-auto">
@@ -38,6 +46,23 @@ export function Recensioni() {
           >
             {intro}
           </motion.p>
+
+          <div className="flex flex-wrap gap-3 mb-12">
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=Genius%20Lab%20Viale%20Somalia%20246%20Roma"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center rounded-full border border-black px-5 py-3 text-sm font-medium text-black hover:bg-black hover:text-white transition-colors"
+            >
+              {locale === "it" ? "Apri in Google Maps" : "Open in Google Maps"}
+            </a>
+            <Link
+              to={getPath(locale, "contatti")}
+              className="inline-flex items-center rounded-full border border-black px-5 py-3 text-sm font-medium text-black hover:bg-black hover:text-white transition-colors"
+            >
+              {locale === "it" ? "Vai ai contatti" : "Go to contacts"}
+            </Link>
+          </div>
 
           <motion.div
             className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12"

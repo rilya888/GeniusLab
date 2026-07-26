@@ -41,14 +41,14 @@ export function MacBookService() {
       <SEOHead
         title={`${serviceName} | Genius Lab`}
         description={desc}
-        canonical="/servizi/macbook"
+        canonical="/servizi/riparazione-macbook"
         keywords={dict.pages.services.keywords}
         jsonLd={[
-          serviceJsonLd(serviceName, desc, "/servizi/macbook"),
+          serviceJsonLd(serviceName, desc, "/servizi/riparazione-macbook"),
           breadcrumbJsonLd([
             { name: "Genius Lab", path: "/" },
             { name: dict.pages.services.heading, path: "/servizi" },
-            { name: serviceName, path: "/servizi/macbook" },
+            { name: serviceName, path: "/servizi/riparazione-macbook" },
           ]),
         ]}
       />

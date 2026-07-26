@@ -1,4 +1,4 @@
-import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Star } from "lucide-react";
 import { motion } from "motion/react";
 import { siteConfig } from "@/config";
 import { useLocale } from "@/app/context/LocaleContext";
@@ -7,10 +7,13 @@ import { ContactForm } from "./ContactForm";
 import { SocialLinks } from "./SocialLinks";
 
 export function Contact() {
-  const { dict } = useLocale();
+  const { dict, locale } = useLocale();
   const addresses = siteConfig.locations.map(
     (loc) => `${loc.label}: ${loc.street}, ${loc.postalCode} ${loc.city}`
   );
+  const [primaryLoc] = siteConfig.locations;
+  const mapsHref = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${siteConfig.brand.name} ${primaryLoc.street} ${primaryLoc.city}`)}`;
+  const contactReviewHref = locale === "it" ? "/recensioni" : "/en/reviews";
 
   const contactInfo = [
     {
@@ -83,6 +86,48 @@ export function Contact() {
             </motion.div>
           ))}
         </div>
+
+        <motion.div
+          className="max-w-5xl mx-auto mb-20 rounded-3xl border border-white/10 bg-white/5 p-6 md:p-8"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
+            <a
+              href={`tel:${siteConfig.contacts.phonePrimary.replace(/\s/g, "")}`}
+              className="flex items-center justify-center gap-3 rounded-2xl border border-white/15 bg-black px-5 py-4 text-center text-sm font-medium text-white hover:bg-white hover:text-black transition-colors"
+            >
+              <Phone className="w-4 h-4" />
+              {dict.nav.call}
+            </a>
+            <a
+              href={`https://wa.me/${siteConfig.contacts.whatsapp.replace(/\s/g, "").replace("+", "")}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-3 rounded-2xl border border-white/15 bg-black px-5 py-4 text-center text-sm font-medium text-white hover:bg-white hover:text-black transition-colors"
+            >
+              WhatsApp
+            </a>
+            <a
+              href={mapsHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-3 rounded-2xl border border-white/15 bg-black px-5 py-4 text-center text-sm font-medium text-white hover:bg-white hover:text-black transition-colors"
+            >
+              <MapPin className="w-4 h-4" />
+              {dict.pages.contacts.mapHeading}
+            </a>
+            <a
+              href={contactReviewHref}
+              className="flex items-center justify-center gap-3 rounded-2xl border border-white/15 bg-black px-5 py-4 text-center text-sm font-medium text-white hover:bg-white hover:text-black transition-colors"
+            >
+              <Star className="w-4 h-4" />
+              {dict.nav.reviews}
+            </a>
+          </div>
+        </motion.div>
 
         {siteConfig.social && (
           <motion.div

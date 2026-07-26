@@ -1,20 +1,31 @@
+import { Link } from "react-router";
 import { motion } from "motion/react";
 import { SEOHead } from "../components/SEOHead";
 import { useLocale } from "../context/LocaleContext";
 import { getPath } from "../routes.config";
+import { localBusinessJsonLd, webPageJsonLd, breadcrumbJsonLd } from "../utils/jsonLd";
 
 export function ChiSiamo() {
   const { dict, locale } = useLocale();
   const { title, description, heading, intro, values, timeline, timelineTitle } =
     dict.pages.about;
+  const path = getPath(locale, "chiSiamo");
   return (
     <>
       <SEOHead
         title={title}
         description={description}
-        canonical={getPath(locale, "chiSiamo")}
+        canonical={path}
         keywords={dict.pages.about.keywords}
         locale={locale}
+        jsonLd={[
+          localBusinessJsonLd(locale),
+          webPageJsonLd(heading, description, path, locale),
+          breadcrumbJsonLd([
+            { name: "Genius Lab", path: getPath(locale, "home") },
+            { name: heading, path },
+          ]),
+        ]}
       />
       <div className="min-h-screen bg-white pt-16 px-6 py-24">
         <div className="max-w-4xl mx-auto">
@@ -34,6 +45,28 @@ export function ChiSiamo() {
           >
             {intro}
           </motion.p>
+
+          <div className="mb-16 rounded-2xl border border-gray-200 bg-gray-50 p-6">
+            <p className="text-gray-700 font-light leading-relaxed">
+              {locale === "it"
+                ? "Lavoriamo da Roma, in Viale Somalia 246, con supporto diretto per MacBook, iPhone, iPad, iMac e recupero dati. La priorità è una diagnosi chiara prima di qualsiasi intervento."
+                : "We work from Rome, at Viale Somalia 246, with direct support for MacBook, iPhone, iPad, iMac and data recovery. The priority is a clear diagnosis before any repair starts."}
+            </p>
+            <div className="mt-5 flex flex-wrap gap-3">
+              <Link
+                to={getPath(locale, "contatti")}
+                className="inline-flex items-center rounded-full border border-black px-5 py-3 text-sm font-medium text-black hover:bg-black hover:text-white transition-colors"
+              >
+                {locale === "it" ? "Contatti" : "Contacts"}
+              </Link>
+              <Link
+                to={getPath(locale, "recensioni")}
+                className="inline-flex items-center rounded-full border border-black px-5 py-3 text-sm font-medium text-black hover:bg-black hover:text-white transition-colors"
+              >
+                {locale === "it" ? "Recensioni" : "Reviews"}
+              </Link>
+            </div>
+          </div>
 
           <motion.div
             className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16"

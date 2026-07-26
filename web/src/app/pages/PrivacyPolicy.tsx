@@ -2,16 +2,25 @@ import { motion } from "motion/react";
 import { SEOHead } from "../components/SEOHead";
 import { useLocale } from "../context/LocaleContext";
 import { getPath } from "../routes.config";
+import { breadcrumbJsonLd, webPageJsonLd } from "../utils/jsonLd";
 
 export function PrivacyPolicy() {
   const { dict, locale } = useLocale();
   const { privacyTitle, privacyDescription, privacyBody } = dict.pages.policies;
+  const path = getPath(locale, "privacyPolicy");
   return (
     <>
       <SEOHead
         title={privacyTitle}
         description={privacyDescription}
-        canonical={getPath(locale, "privacyPolicy")}
+        canonical={path}
+        jsonLd={[
+          webPageJsonLd(privacyTitle, privacyDescription, path, locale),
+          breadcrumbJsonLd([
+            { name: "Genius Lab", path: getPath(locale, "home") },
+            { name: dict.footer.privacy, path },
+          ]),
+        ]}
         locale={locale}
       />
       <div className="min-h-screen bg-white pt-16 px-6 py-24">
@@ -24,6 +33,14 @@ export function PrivacyPolicy() {
           >
             {dict.footer.privacy}
           </motion.h1>
+          <motion.p
+            className="mb-10 max-w-2xl text-sm uppercase tracking-[0.2em] text-gray-500"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
+            {dict.pages.policies.privacyDescription}
+          </motion.p>
           <motion.div
             className="prose prose-gray font-light text-gray-600 space-y-8"
             initial={{ opacity: 0, y: 20 }}
