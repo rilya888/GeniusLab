@@ -91,7 +91,7 @@ function appendVisit(visit: Visit): void {
   fs.appendFileSync(VISITS_FILE, line, "utf-8");
 }
 
-function readVisits(): Visit[] {
+export function readVisits(): Visit[] {
   if (!fs.existsSync(VISITS_FILE)) return [];
   const raw = fs.readFileSync(VISITS_FILE, "utf-8");
   const visits: Visit[] = [];
@@ -108,7 +108,7 @@ function readVisits(): Visit[] {
   return visits;
 }
 
-function aggregateStats(visits: Visit[]): StatsSummary {
+export function aggregateStats(visits: Visit[]): StatsSummary {
   const byDevice = { mobile: 0, tablet: 0, desktop: 0 };
   const byReferrer: Record<string, number> = {};
   const byPath: Record<string, number> = {};
@@ -135,6 +135,14 @@ function aggregateStats(visits: Visit[]): StatsSummary {
     byReferrer: Object.fromEntries(topReferrers),
     byPath: Object.fromEntries(topPaths),
   };
+}
+
+export function getStatsBetween(startAt: number, endAt: number): StatsSummary {
+  const filtered = readVisits().filter((visit) => {
+    const timestamp = Date.parse(visit.ts);
+    return Number.isFinite(timestamp) && timestamp >= startAt && timestamp < endAt;
+  });
+  return aggregateStats(filtered);
 }
 
 export function postTrack(req: Request, res: Response): void {

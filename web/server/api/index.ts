@@ -4,7 +4,8 @@
 
 import { Router } from "express";
 import { getContent, putContent, putContentServices, putContentServicePage } from "./content";
-import { postTrack, getStats } from "./visits";
+import { postTrack, getStats, getStatsBetween } from "./visits";
+import { createBotStatsHandler } from "./bot-stats";
 import { login, me } from "./auth";
 import { requireAuth } from "../middleware/auth";
 
@@ -13,6 +14,11 @@ const router = Router();
 // Public
 router.get("/content", getContent);
 router.post("/track", postTrack);
+router.get("/bot/stats", createBotStatsHandler({
+  token: process.env.GENIUS_STATS_BOT_TOKEN ?? "",
+  loadStats: getStatsBetween,
+  logError: (message) => console.error(message),
+}));
 
 // Admin auth (no auth required)
 router.post("/admin/login", login);

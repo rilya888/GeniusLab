@@ -41,7 +41,22 @@ The site runs as a Docker container on a private server, exposed publicly throug
 └── src/             # git clone of this repo
 ```
 
-Required env (`.env`, not committed): `NODE_ENV=production`, `PORT=8080`, `PUBLIC_SITE_URL`, `VITE_PUBLIC_SITE_URL`, `VITE_PUBLIC_FORMSPREE_FORM_ID` or `VITE_PUBLIC_FORM_ENDPOINT`, `VITE_PUBLIC_GTM_ID`, `VITE_PUBLIC_GA4_ID`, `ADMIN_PASSWORD`, `ADMIN_SECRET`, `GITHUB_TOKEN`/`GITHUB_REPO`/`GITHUB_BRANCH` (admin content saving).
+The production environment must also set `VISITS_FILE=/app/data/visits.ndjson`
+and a dedicated `GENIUS_STATS_BOT_TOKEN` (never reuse an admin credential). The
+Compose service must preserve the visit data mount:
+
+```yaml
+volumes:
+  - ./data:/app/data
+```
+
+The read-only bot endpoint is `GET /api/bot/stats?startAt=<epoch-ms>&endAt=<epoch-ms>`.
+It requires `Authorization: Bearer <GENIUS_STATS_BOT_TOKEN>`, accepts an exact
+inclusive-start/exclusive-end window up to 26 hours, and returns aggregate-only
+JSON. Unauthenticated requests must return `401`; an authenticated valid
+interval returns `200`.
+
+Required env (`.env`, not committed): `NODE_ENV=production`, `PORT=8080`, `PUBLIC_SITE_URL`, `VITE_PUBLIC_SITE_URL`, `VITE_PUBLIC_FORMSPREE_FORM_ID` or `VITE_PUBLIC_FORM_ENDPOINT`, `VITE_PUBLIC_GTM_ID`, `VITE_PUBLIC_GA4_ID`, `ADMIN_PASSWORD`, `ADMIN_SECRET`, `GITHUB_TOKEN`/`GITHUB_REPO`/`GITHUB_BRANCH` (admin content saving), `VISITS_FILE=/app/data/visits.ndjson`, and `GENIUS_STATS_BOT_TOKEN`.
 
 Deploy a new version:
 

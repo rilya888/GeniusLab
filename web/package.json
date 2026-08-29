@@ -9,6 +9,7 @@
     "dev:server": "tsx server/index.ts",
     "preview": "npm run build && tsx server/index.ts",
     "start": "NODE_ENV=production tsx server/index.ts",
+    "test:server": "tsx --test server/api/*.test.ts",
     "smoke": "bash scripts/postdeploy-smoke.sh",
     "smoke:prod": "bash scripts/postdeploy-smoke.sh https://geniuslab.info",
     "check:postdeploy": "bash scripts/postdeploy-smoke.sh",
