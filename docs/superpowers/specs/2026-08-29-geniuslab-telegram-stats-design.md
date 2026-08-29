@@ -80,7 +80,7 @@ The `/data` directory must be backed by the persistent volume before the bot int
 
 ### QuietUnit GeniusLab client
 
-Add a focused HTTP client to the QuietUnit analytics bot. It consumes the existing `ReportWindow.startMs` and `ReportWindow.endMs` values and returns the validated GeniusLab aggregate response.
+Add a focused HTTP client to the QuietUnit analytics bot. It consumes the existing `ReportWindow.startAt` and `ReportWindow.endAt` values and returns the validated GeniusLab aggregate response.
 
 Configuration:
 
