@@ -111,7 +111,7 @@ The daily run starts the Umami and GeniusLab requests independently for the same
 ## Data Flow
 
 1. The scheduler determines the previous calendar day in `Europe/Rome`.
-2. The bot obtains `startMs` and `endMs` from the existing report window.
+2. The bot obtains `startAt` and `endAt` from the existing report window.
 3. The bot queries QuietUnit Umami and the authenticated GeniusLab endpoint.
 4. Each successful response is validated before formatting.
 5. The bot sends one Telegram message containing both sections or the QuietUnit section with a GeniusLab warning.
@@ -151,7 +151,7 @@ The daily run starts the Umami and GeniusLab requests independently for the same
 
 ## Deployment Sequence
 
-1. Provision and verify persistent GeniusLab visit storage.
+1. Verify the existing `/srv/geniuslab/data:/app/data` mount and preserve `visits.ndjson`.
 2. Deploy the protected GeniusLab endpoint with a newly generated shared token.
 3. Verify unauthorized access is rejected and an authorized one-day query returns aggregates.
 4. Add the matching URL and token to `/srv/quietunit/.env` without printing either value to logs.
