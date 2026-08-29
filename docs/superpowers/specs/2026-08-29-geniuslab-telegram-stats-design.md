@@ -10,7 +10,7 @@ Add `geniuslab.info` visitor statistics to the existing daily Telegram report se
 - The bot queries one Umami website for the previous calendar day in `Europe/Rome` and sends one Telegram message.
 - GeniusLab records anonymous visits in an NDJSON file and exposes aggregated data through `GET /api/admin/stats?days=N`.
 - The existing GeniusLab endpoint requires an administrator JWT and only accepts a rolling number of days. It cannot safely provide the exact previous Rome calendar day to an unattended service.
-- GeniusLab is deployed independently from the QuietUnit bot. Its visit file therefore needs persistent storage across application deployments and restarts.
+- GeniusLab is deployed independently under `/srv/geniuslab`. Its `./data:/app/data` bind mount and `VISITS_FILE=/app/data/visits.ndjson` already preserve visits across application deployments and restarts.
 
 ## Chosen Approach
 
@@ -70,13 +70,13 @@ Response rules:
 
 ### GeniusLab visit persistence
 
-The production service must store visits on a persistent Railway Volume or equivalent persistent mount. Set:
+The production service must keep using its existing persistent bind mount. The configured path is:
 
 ```text
-VISITS_FILE=/data/visits.ndjson
+VISITS_FILE=/app/data/visits.ndjson
 ```
 
-The `/data` directory must be backed by the persistent volume before the bot integration is enabled. Existing statistics are preserved when a recoverable source file is available; no destructive migration is performed.
+The container path `/app/data` is backed by `/srv/geniuslab/data`. Deployment must verify the mount and preserve the existing `visits.ndjson`; no data migration or destructive volume operation is required.
 
 ### QuietUnit GeniusLab client
 
